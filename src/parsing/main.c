@@ -6,13 +6,14 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/15 16:30:59 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:42:03 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	main(void)
 {
+	printf("ok\n");
 	return (0);
 }

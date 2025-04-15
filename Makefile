@@ -1,18 +1,18 @@
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -lm
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 LIBFT = libft/libft.a
 LIBFT_PATH = ./libft
 
-FILES_P = 
+FILES_P = main \
 
 FILES_R = 
 		
 PARS_DIR = ./src/parsing/
-RAYC_DIR = ./src/exec/
+RAYC_DIR = ./src/raycast/
 
 OBJS_DIR = ./objet/
 
@@ -40,8 +40,8 @@ $(OBJS_DIR)%.o: $(EXEC_DIR)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$@ : $(GREEN)[OK]$(NC)"
 
-$(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME) -lreadline
+$(NAME): $(LIBFT) $(OBJ) 
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME) -lm
 	@echo "$@ : $(BLUE)[READY]$(NC)"
 
 $(LIBFT):
