@@ -1,3 +1,7 @@
 Cub3d
+
 objet/
+*.o
 test*
+
+.vscode
