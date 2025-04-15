@@ -34,6 +34,7 @@ SRC_FILES = srcs/ft_atoi.c \
 			srcs/ft_tolower.c \
 			srcs/ft_toupper.c \
 			srcs/ft_get_content.c
+
 SRC_FILES_P2 =	srcs/ft_strjoin.c \
 				srcs/ft_substr.c \
 				srcs/ft_strtrim.c \
@@ -46,6 +47,7 @@ SRC_FILES_P2 =	srcs/ft_strjoin.c \
 				srcs/ft_print_tab_fd.c \
 				srcs/ft_strmapi.c \
 				srcs/ft_striteri.c
+
 SRC_BONUS = srcs/ft_lstnew_bonus.c \
 			srcs/ft_lstadd_front_bonus.c \
 			srcs/ft_lstsize_bonus.c \
@@ -58,7 +60,21 @@ SRC_BONUS = srcs/ft_lstnew_bonus.c \
 			srcs/get_next_line.c \
 			srcs/ft_free_tab.c
 
-SRCS = $(SRC_FILES) $(SRC_FILES_P2) $(SRC_BONUS)
+SRC_PRINTF =	srcs/ft_printf/ft_printf.c \
+				srcs/ft_printf/ft_hexa.c \
+				srcs/ft_printf/ft_putstr_ct.c \
+				srcs/ft_printf/ft_putnbr_ct.c \
+				srcs/ft_printf/ft_putchar_ct.c \
+				srcs/ft_printf/ft_putptr.c
+
+SRC_FPRINTF =	srcs/ft_fprintf/ft_fprintf.c \
+				srcs/ft_fprintf/ft_fhexa.c \
+				srcs/ft_fprintf/ft_fputstr_ct.c \
+				srcs/ft_fprintf/ft_fputnbr_ct.c \
+				srcs/ft_fprintf/ft_fputchar_ct.c \
+				srcs/ft_fprintf/ft_fputptr.c
+
+SRCS = $(SRC_FILES) $(SRC_FILES_P2) $(SRC_BONUS) $(SRC_PRINTF) $(SRC_FPRINTF)
 
 SRC_HEADER = includes/libft.h includes/get_next_line.h
 

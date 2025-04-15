@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:31:33 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/03/20 18:47:19 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:55:37 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 //get_next_line
 
 char			*get_next_line(int fd, bool tofree);
+
+// ft_printf && ft_fprintf
+
+int				ft_printf(const char *format, ...);
+int				ft_fprintf(int fd, const char *format, ...);
 
 //else
 
