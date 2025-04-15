@@ -1,71 +1,63 @@
-NAME = minishell
+NAME = cub3d
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
+CFLAGS = -Wall -Werror -Wextra -g3
 
-LIBFT = libft/libft.a
-LIBFT_PATH = ./libft
+MLX = minilibx-linux
+MLX_FLAGS = -L$(MLX) -lmlx_Linux -L/usr/bin -lX11 -lXext -lm -lbsd
 
-FILES_P = main \
-
-FILES_R = 
-		
-PARS_DIR = ./src/parsing/
-RAYC_DIR = ./src/raycast/
-
-OBJS_DIR = ./objet/
-
-SRCS_P = $(addprefix $(PARS_DIR), $(addsuffix .c, $(FILES_P)))
-SRCS_E = $(addprefix $(EXEC_DIR), $(addsuffix .c, $(FILES_E)))
-
-OBJS_P = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_P)))
-OBJS_E = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_E)))
+HEADER = includes/cub3d.h
 
 GREEN = \033[1;32m
 BLUE =  \033[1;34m
 RED = \033[1;31m
 NC = \033[0m
 
-OBJ = $(OBJS_P) $(OBJS_E) $(OBJS_B)
+LIBFT = libft/libft.a
+LIBFT_PATH = ./libft
 
-# Création des .o pour les fichiers généraux
-$(OBJS_DIR)%.o: $(PARS_DIR)%.c
-	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$@ : $(GREEN)[OK]$(NC)"
+FILES_P =
 
-$(OBJS_DIR)%.o: $(EXEC_DIR)%.c
-	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$@ : $(GREEN)[OK]$(NC)"
+FILES_C =
 
-$(NAME): $(LIBFT) $(OBJ) 
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME) -lm
+SRC_P = $(addprefix "./src/parsing/", $(FILES_P))
+
+SRC_C = $(addprefix "./src/casting/", $(FILES_C))
+
+SRCS_OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC_P:.c=.o)) \
+			$(addprefix $(OBJ_DIR)/, $(SRC_C:.c=.o))
+
+OBJ_DIR = obj
+
+all: lib $(NAME)
+
+$(NAME): $(SRCS_OBJ)
+	$(CC) $(CFLAGS) $(SRCS_OBJ) $(LIBFT) -o $(NAME) $(MLX_FLAGS)
 	@echo "$@ : $(BLUE)[READY]$(NC)"
 
-$(LIBFT):
-	@make -C $(LIBFT_PATH) all
+lib:
+	@make -C $(LIBFT_PATH)
+	@make -C $(MLX)
 
-all: $(NAME)
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$@ : $(GREEN)[OK]$(NC)"
 
 clean:
-	@$(RM) -rf $(OBJS_DIR)
+	@rm -rf $(OBJ_DIR)
 	@make -C $(LIBFT_PATH) clean
-#@clear
+	@make -C $(MLX) clean
 	@echo "$(RED)============== [OBJECT DELETED] ==============$(NC)"
 
 fclean: clean
-	@$(RM) $(NAME)
+	@rm -f $(NAME)
 	@make -C $(LIBFT_PATH) fclean
-#@clear
+	@make -C $(MLX) clean
 	@echo "$(RED)========== [ OBJECT / EX DELETED ] ==========$(NC)"
 
 re: fclean all
 	@echo "\n$(BLUE)================= [ START ] =================$(NC)\n"
 	@./$(NAME)
 
-test: fclean all
-	@valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=./readline.supp   --child-silent-after-fork=no --track-fds=yes ./$(NAME)
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re lib

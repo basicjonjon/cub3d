@@ -1,6 +1,7 @@
 Cub3d
 
 objet/
+obj
 *.o
 test*
 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   function_raycast.h                                 :+:      :+:    :+:   */
+/*   functions_parsing.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/15 16:27:34 by jle-doua         ###   ########.fr       */
+/*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
+/*   Updated: 2025/04/15 18:20:41 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNCTION_RAYCAST_H
-# define FUNCTION_RAYCAST_H
+#ifndef FUNCTIONS_PARSING_H
+# define FUNCTIONS_PARSING_H
 
 #endif
