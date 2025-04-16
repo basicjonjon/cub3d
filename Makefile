@@ -16,27 +16,33 @@ NC = \033[0m
 LIBFT = libft/libft.a
 LIBFT_PATH = ./libft
 
-FILES_P = main
+FILES_P = main \
+		verif_args
 
 FILES_C =
 
+P_DIR = ./src/parsing/
+C_DIR = ./src/casting/
+
 FILE_P.C = $(addsuffix .c, $(FILES_P))
+FILES_C.C = $(addsuffix .c, $(FILES_C))
 
-FILES_C.C = $(addsuffix .c, $(FILES_c))
+SRC_P = $(addprefix $(P_DIR), $(FILE_P.C))
+SRC_C = $(addprefix $(C_DIR), $(FILES_C.C))
 
-SRC = $(addprefix ./src/parsing/, $(FILE_P.C)) \
-	  $(addprefix ./src/casting/, $(FILES_C.C))
+SRCS_OBJ = $(addprefix $(OBJ_DIR), $(FILE_P.C:.c=.o)) \
+		   $(addprefix $(OBJ_DIR), $(FILES_C.C:.c=.o))
 
-
-
-SRCS_OBJ =	$(addprefix $(OBJ_DIR)/, $(FILE_P.C:.c=.o)) \
-			$(addprefix $(OBJ_DIR)/, $(FILES_C.C:.c=.o))
-
-OBJ_DIR = obj
+OBJ_DIR = obj/
 
 all: lib $(NAME)
 
-$(SRCS_OBJ):$(SRC)
+$(OBJ_DIR)%.o: $(P_DIR)%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$@ : $(GREEN)[OK]$(NC)"
+
+$(OBJ_DIR)%.o: $(C_DIR)%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$@ : $(GREEN)[OK]$(NC)"

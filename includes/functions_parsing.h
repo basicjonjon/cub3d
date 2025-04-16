@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   functions_parsing.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/15 18:20:41 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:45:18 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FUNCTIONS_PARSING_H
 # define FUNCTIONS_PARSING_H
+
+////////////////////////////////////////////////////////////
+// verif_args
+////////////////////////////////////////////////////////////
+
+int	verif_args(int argc, char **argv);
+
+
 
 #endif
