@@ -17,7 +17,8 @@ LIBFT = libft/libft.a
 LIBFT_PATH = ./libft
 
 FILES_P = main \
-		verif_args
+		verif_args \
+		texture
 
 FILES_C =
 
