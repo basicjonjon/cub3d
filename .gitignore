@@ -4,5 +4,5 @@ objet/
 obj
 *.o
 test*
-
 .vscode
+minilibx*

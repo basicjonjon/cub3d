@@ -16,33 +16,38 @@ NC = \033[0m
 LIBFT = libft/libft.a
 LIBFT_PATH = ./libft
 
-FILES_P =
+FILES_P = main
 
 FILES_C =
 
-SRC_P = $(addprefix "./src/parsing/", $(FILES_P))
+FILE_P.C = $(addsuffix .c, $(FILES_P))
 
-SRC_C = $(addprefix "./src/casting/", $(FILES_C))
+FILES_C.C = $(addsuffix .c, $(FILES_c))
 
-SRCS_OBJ =	$(addprefix $(OBJ_DIR)/, $(SRC_P:.c=.o)) \
-			$(addprefix $(OBJ_DIR)/, $(SRC_C:.c=.o))
+SRC = $(addprefix ./src/parsing/, $(FILE_P.C)) \
+	  $(addprefix ./src/casting/, $(FILES_C.C))
+
+
+
+SRCS_OBJ =	$(addprefix $(OBJ_DIR)/, $(FILE_P.C:.c=.o)) \
+			$(addprefix $(OBJ_DIR)/, $(FILES_C.C:.c=.o))
 
 OBJ_DIR = obj
 
 all: lib $(NAME)
 
+$(SRCS_OBJ):$(SRC)
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$@ : $(GREEN)[OK]$(NC)"
+
 $(NAME): $(SRCS_OBJ)
-	$(CC) $(CFLAGS) $(SRCS_OBJ) $(LIBFT) -o $(NAME) $(MLX_FLAGS)
+	@$(CC) $(CFLAGS) $(SRCS_OBJ) $(LIBFT) -o $(NAME) $(MLX_FLAGS)
 	@echo "$@ : $(BLUE)[READY]$(NC)"
 
 lib:
 	@make -C $(LIBFT_PATH)
 	@make -C $(MLX)
-
-$(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$@ : $(GREEN)[OK]$(NC)"
 
 clean:
 	@rm -rf $(OBJ_DIR)
