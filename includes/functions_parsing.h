@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/16 16:21:35 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:57:37 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,21 @@
 // verif_args
 ////////////////////////////////////////////////////////////
 
-int		verif_args(int argc, char **argv);
+int			verif_args(int argc, char **argv);
 
 ////////////////////////////////////////////////////////////
 // Texture
 ////////////////////////////////////////////////////////////
 
-void	get_texture(char *maps_file);
+t_texture	*get_texture(char *maps_file);
+
+////////////////////////////////////////////////////////////
+// Texture_Init
+////////////////////////////////////////////////////////////
+
+t_texture	*init_texture_null(void);
+t_texture	*get_texture_path(t_texture *texture, char *line);
+
+void		print_texture_path(t_texture *texture);
 
 #endif
