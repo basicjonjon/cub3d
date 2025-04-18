@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/17 16:33:44 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:23:26 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,17 @@ t_color	*get_color(char *value)
 void	save_path(t_texture *texture, char *key, char *value)
 {
 	if (!strncmp(key, "SO", 2))
-	{
 		texture->so_path = value;
-	}
 	if (!strncmp(key, "NO", 2))
-	{
 		texture->no_path = value;
-	}
 	if (!strncmp(key, "WE", 2))
-	{
 		texture->we_path = value;
-	}
 	if (!strncmp(key, "EA", 2))
-	{
 		texture->ea_path = value;
-	}
 	if (!strncmp(key, "F", 1))
-	{
 		texture->floor = get_color(value);
-	}
 	if (!strncmp(key, "C", 1))
-	{
 		texture->ceiling = get_color(value);
-	}
 }
 
 t_texture	*get_texture_path(t_texture *texture, char *line)
