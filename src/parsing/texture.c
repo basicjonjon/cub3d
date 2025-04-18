@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/17 16:20:46 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/18 14:26:28 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,5 @@ t_texture	*get_texture(char *maps_file)
 		free(line);
 		line = get_next_line(fd, 0);
 	}
-	print_texture_path(texture);
 	return (texture);
 }
