@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/18 14:23:26 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:02:40 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_color	*get_color(char *value)
 	}
 	if (i != 3)
 	{
-		ft_fprintf(2, "%sERROR: wrong color format%s\n", BRED, NC);
+		ft_fprintf(2, "%sERROR :wrong color format%s\n", BRED, NC);
 		return (NULL);
 	}
 	color = malloc(sizeof(t_color));

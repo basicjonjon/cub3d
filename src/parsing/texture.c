@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 13:03:42 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:02:06 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,16 @@ int	is_texture(char *line)
 	}
 	return (0);
 }
-
+int	verif_texture(t_texture *texture)
+{
+	if (texture->so_path == NULL || texture->no_path == NULL
+		|| texture->we_path == NULL || texture->ea_path == NULL
+		|| texture->floor == NULL || texture->ceiling == NULL)
+	{
+		return (1);
+	}
+	return (0);
+}
 t_texture	*get_texture(char *maps_file)
 {
 	int			fd;
@@ -52,5 +61,7 @@ t_texture	*get_texture(char *maps_file)
 		line = get_next_line(fd, 0);
 	}
 	close(fd);
+	if (verif_texture(texture))
+		return (NULL);
 	return (texture);
 }

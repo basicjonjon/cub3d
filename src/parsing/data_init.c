@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 15:56:16 by jle-doua         ###   ########.fr       */
+/*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
+/*   Updated: 2025/04/22 15:56:40 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	main(int argc, char **argv, char **envp)
+void	init_data_null(t_data *data)
+{
+	data->map = NULL;
+	data->mlx = NULL;
+	data->texture = NULL;
+	data->win = NULL;
+}
+
+t_data	*init_data(char *map_file)
 {
 	t_data *data;
 
-	if (!envp[0] || verif_args(argc, argv))
-		return (1);
-	data = init_data(argv[1]);
-	if (data == NULL)
-		return (1);
-	print_texture_path(data->texture);
-	print_map(data->map);
-	return (0);
+	data = malloc(sizeof(t_data));
+	if (!data)
+		return (NULL);
+	init_data_null(data);
+	data->texture = get_texture(map_file);
+	if (data->texture == NULL)
+		return (free(data), NULL);
+	data->map = get_map(map_file);
+	if (data->map == NULL)
+		return (free(data), free(data->texture), NULL);
+	return (data);
 }

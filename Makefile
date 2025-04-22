@@ -22,6 +22,8 @@ FILES_P = main \
 		texture_init \
 		print \
 		map_init \
+		map_utils \
+		data_init \
 
 FILES_C =
 

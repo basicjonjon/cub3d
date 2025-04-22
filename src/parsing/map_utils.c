@@ -1,27 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 15:56:16 by jle-doua         ###   ########.fr       */
+/*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
+/*   Updated: 2025/04/22 15:48:47 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	main(int argc, char **argv, char **envp)
+char	*dup_map_line(char *line, int x)
 {
-	t_data *data;
+	int		i;
+	int		y;
+	int		z;
+	char	*res;
 
-	if (!envp[0] || verif_args(argc, argv))
-		return (1);
-	data = init_data(argv[1]);
-	if (data == NULL)
-		return (1);
-	print_texture_path(data->texture);
-	print_map(data->map);
-	return (0);
+	i = 0;
+	y = 0;
+	res = malloc(sizeof(char) * (x + 1));
+	if (!res)
+		return (NULL);
+	while (i != x)
+	{
+		z = 0;
+		if (line[i] == 9)
+		{
+			while (z < 4)
+			{
+				res[y++] = ' ';
+				z++;
+			}
+		}
+		else if (line[i] == '0' || line[i] == '1')
+			res[y++] = line[i];
+		else
+			res[y++] = ' ';
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
