@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/17 15:57:37 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:03:34 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,18 @@ t_texture	*get_texture(char *maps_file);
 t_texture	*init_texture_null(void);
 t_texture	*get_texture_path(t_texture *texture, char *line);
 
+////////////////////////////////////////////////////////////
+// Print
+////////////////////////////////////////////////////////////
+
 void		print_texture_path(t_texture *texture);
+void		print_map(char **map);
+
+////////////////////////////////////////////////////////////
+// Map_init
+////////////////////////////////////////////////////////////
+
+int			is_map(char *line);
+char		**get_map(char *maps_file);
 
 #endif

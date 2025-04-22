@@ -21,6 +21,7 @@ FILES_P = main \
 		texture \
 		texture_init \
 		print \
+		map_init \
 
 FILES_C =
 
