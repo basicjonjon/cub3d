@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 15:56:16 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:26:33 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	main(int argc, char **argv, char **envp)
 		return (1);
 	print_texture_path(data->texture);
 	print_map(data->map);
+	mlx_loop(data->mlx);
 	return (0);
 }
