@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 15:55:09 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:05:56 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,53 @@
 // verif_args
 ////////////////////////////////////////////////////////////
 
-int			verif_args(int argc, char **argv);
+int		verif_args(int argc, char **argv);
 
 ////////////////////////////////////////////////////////////
-// Texture
+// Asset
 ////////////////////////////////////////////////////////////
 
-t_texture	*get_texture(char *maps_file);
+t_asset	*get_asset(char *maps_file);
 
 ////////////////////////////////////////////////////////////
-// Texture_Init
+// Asset_Init
 ////////////////////////////////////////////////////////////
 
-t_texture	*init_texture_null(void);
-t_texture	*get_texture_path(t_texture *texture, char *line);
+t_asset	*init_asset_null(t_asset *asset);
+void	save_path(t_asset *asset, char *key, char *value);
+t_asset	*get_asset_path(t_asset *asset, char *line);
 
 ////////////////////////////////////////////////////////////
 // Print
 ////////////////////////////////////////////////////////////
 
-void		print_texture_path(t_texture *texture);
-void		print_map(char **map);
+void	print_asset_path(t_asset *texture);
+void	print_map(char **map);
 
 ////////////////////////////////////////////////////////////
 // Map_init
 ////////////////////////////////////////////////////////////
 
-int			is_map(char *line);
-char		**get_map(char *maps_file);
+int		is_map(char *line);
+char	**get_map(char *maps_file);
 
 ////////////////////////////////////////////////////////////
 // Map_utils
 ////////////////////////////////////////////////////////////
 
-char		*dup_map_line(char *line, int x);
+char	*dup_map_line(char *line, int x);
 
 ////////////////////////////////////////////////////////////
 // Data_init
 ////////////////////////////////////////////////////////////
 
-t_data		*init_data(char *map_file);
+t_data	*init_data(char *map_file);
+
+////////////////////////////////////////////////////////////
+// Free
+////////////////////////////////////////////////////////////
+
+void	free_all(t_data *data);
+void	free_tab(char **tab);
 
 #endif

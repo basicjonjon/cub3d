@@ -18,12 +18,14 @@ LIBFT_PATH = ./libft
 
 FILES_P = main \
 		verif_args \
-		texture \
-		texture_init \
+		asset \
+		asset_init \
 		print \
 		map_init \
 		map_utils \
 		data_init \
+		free \
+		end \
 
 FILES_C =
 

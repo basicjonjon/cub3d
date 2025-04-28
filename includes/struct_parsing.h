@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 15:56:17 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/24 13:52:31 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,26 @@ typedef struct s_color
 typedef struct s_texture
 {
 	void		*no_wall;
-	char		*no_path;
 	void		*so_wall;
-	char		*so_path;
 	void		*we_wall;
-	char		*we_path;
 	void		*ea_wall;
+
+}				t_texture;
+
+typedef struct s_asset
+{
+	char		*no_path;
+	char		*so_path;
+	char		*we_path;
 	char		*ea_path;
 	t_color		*ceiling;
 	t_color		*floor;
-}				t_texture;
+}				t_asset;
 
 typedef struct s_data
 {
 	t_texture	*texture;
+	t_asset		*asset;
 	void		*mlx;
 	void		*win;
 	char		**map;

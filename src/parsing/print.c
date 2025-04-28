@@ -6,22 +6,22 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:52:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 16:07:23 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/24 14:05:04 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	print_texture_path(t_texture *texture)
+void	print_asset_path(t_asset *asset)
 {
-	printf("no wall %s%s%s", BGREEN, texture->no_path, NC);
-	printf("so wall %s%s%s", BGREEN, texture->so_path, NC);
-	printf("we wall %s%s%s", BGREEN, texture->we_path, NC);
-	printf("ea wall %s%s%s", BGREEN, texture->ea_path, NC);
-	printf("floor %s%i/%i/%i%s\n", BGREEN, texture->floor->r, texture->floor->g,
-		texture->floor->b, NC);
-	printf("ceiling %s%i/%i/%i%s\n", BGREEN, texture->ceiling->r,
-		texture->ceiling->g, texture->ceiling->b, NC);
+	printf("no wall %s%s%s", BGREEN, asset->no_path, NC);
+	printf("so wall %s%s%s", BGREEN, asset->so_path, NC);
+	printf("we wall %s%s%s", BGREEN, asset->we_path, NC);
+	printf("ea wall %s%s%s", BGREEN, asset->ea_path, NC);
+	printf("floor %s%i/%i/%i%s\n", BGREEN, asset->floor->r, asset->floor->g,
+		asset->floor->b, NC);
+	printf("ceiling %s%i/%i/%i%s\n", BGREEN, asset->ceiling->r,
+		asset->ceiling->g, asset->ceiling->b, NC);
 }
 
 void	print_map(char **map)

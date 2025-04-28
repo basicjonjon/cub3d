@@ -57,6 +57,7 @@ SRC_BONUS = srcs/ft_lstnew_bonus.c \
 			srcs/ft_lstclear_bonus.c \
 			srcs/ft_lstmap_bonus.c \
 			srcs/ft_lstiter_bonus.c \
+			srcs/get_next_line_utils.c \
 			srcs/get_next_line.c \
 			srcs/ft_free_tab.c
 

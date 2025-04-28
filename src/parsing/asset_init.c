@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_init.c                                     :+:      :+:    :+:   */
+/*   asset_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 16:02:40 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:04:52 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_texture	*init_texture_null(void)
+t_asset	*init_asset_null(t_asset *asset)
 {
-	t_texture	*texture;
-
-	texture = malloc(sizeof(t_texture));
-	texture->no_wall = NULL;
-	texture->no_path = NULL;
-	texture->so_wall = NULL;
-	texture->so_path = NULL;
-	texture->we_wall = NULL;
-	texture->we_path = NULL;
-	texture->ea_wall = NULL;
-	texture->ea_path = NULL;
-	texture->ceiling = NULL;
-	texture->floor = NULL;
-	return (texture);
+	asset->no_path = NULL;
+	asset->so_path = NULL;
+	asset->we_path = NULL;
+	asset->ea_path = NULL;
+	asset->ceiling = NULL;
+	asset->floor = NULL;
+	return (asset);
 }
 
 t_color	*get_color(char *value)
@@ -51,26 +44,26 @@ t_color	*get_color(char *value)
 	color->r = ft_atol(cut_line[0]) % 255;
 	color->g = ft_atol(cut_line[1]) % 255;
 	color->b = ft_atol(cut_line[2]) % 255;
-	return (color);
+	return (free_tab(cut_line), color);
 }
 
-void	save_path(t_texture *texture, char *key, char *value)
+void	save_path(t_asset *asset, char *key, char *value)
 {
 	if (!strncmp(key, "SO", 2))
-		texture->so_path = value;
+		asset->so_path = ft_strdup(value);
 	if (!strncmp(key, "NO", 2))
-		texture->no_path = value;
+		asset->no_path = ft_strdup(value);
 	if (!strncmp(key, "WE", 2))
-		texture->we_path = value;
+		asset->we_path = ft_strdup(value);
 	if (!strncmp(key, "EA", 2))
-		texture->ea_path = value;
+		asset->ea_path = ft_strdup(value);
 	if (!strncmp(key, "F", 1))
-		texture->floor = get_color(value);
+		asset->floor = get_color(value);
 	if (!strncmp(key, "C", 1))
-		texture->ceiling = get_color(value);
+		asset->ceiling = get_color(value);
 }
 
-t_texture	*get_texture_path(t_texture *texture, char *line)
+t_asset	*get_asset_path(t_asset *asset, char *line)
 {
 	char	**cut_line;
 	int		i;
@@ -85,6 +78,7 @@ t_texture	*get_texture_path(t_texture *texture, char *line)
 		ft_fprintf(2, "%sERROR: wrong texture format%s\n", BRED, NC);
 		return (NULL);
 	}
-	save_path(texture, cut_line[0], cut_line[1]);
-	return (texture);
+	save_path(asset, cut_line[0], cut_line[1]);
+	free_tab(cut_line);
+	return (asset);
 }

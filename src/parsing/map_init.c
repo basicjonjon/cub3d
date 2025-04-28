@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 15:38:13 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:24:23 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_map_size_x(char *maps_file)
 	char	*line;
 
 	fd = open(maps_file, O_RDONLY);
-	line = get_next_line(fd, 0);
+	line = get_next_line(fd);
 	max_value = 0;
 	while (line != NULL)
 	{
@@ -51,7 +51,7 @@ int	get_map_size_x(char *maps_file)
 				max_value = i;
 		}
 		free(line);
-		line = get_next_line(fd, 0);
+		line = get_next_line(fd);
 	}
 	return (free(line), close(fd), max_value);
 }
@@ -64,13 +64,13 @@ int	get_map_size_y(char *maps_file)
 
 	i = 0;
 	fd = open(maps_file, O_RDONLY);
-	line = get_next_line(fd, 0);
+	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		if (is_map(line))
 			i++;
 		free(line);
-		line = get_next_line(fd, 0);
+		line = get_next_line(fd);
 	}
 	return (free(line), close(fd), i);
 }
@@ -101,12 +101,7 @@ char	**malloc_map(char *maps_file)
 	map = malloc(sizeof(char *) * (y + 1));
 	if (map == NULL)
 		return (NULL);
-	map = init_map_null(map, y);
-	while (i < y)
-	{
-		map[i] = malloc(sizeof(char) * (x + 1));
-		i++;
-	}
+	map = init_map_null(map, y + 1);
 	return (map);
 }
 
@@ -121,7 +116,7 @@ char	**get_map(char *maps_file)
 	i = 0;
 	size = get_map_size_y(maps_file);
 	fd = open(maps_file, O_RDONLY);
-	line = get_next_line(fd, 0);
+	line = get_next_line(fd);
 	map = malloc_map(maps_file);
 	while (line != NULL)
 	{
@@ -131,7 +126,7 @@ char	**get_map(char *maps_file)
 			i++;
 		}
 		free(line);
-		line = get_next_line(fd, 0);
+		line = get_next_line(fd);
 	}
 	return (free(line), close(fd), map);
 }

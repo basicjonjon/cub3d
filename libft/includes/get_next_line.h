@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/04/18 14:32:16 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:18:28 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,18 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define MAX_FD 1024
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
-# if (BUFFER_SIZE < 0)
-#  undef BUFFER_SIZE
-#  define BUFFER_SIZE 256
-# endif
 
-char	*get_next_line(int fd, bool tofree);
+char	*get_next_line(int fd);
+char	*ft_read(int fd, char *res);
+char	*ft_cut_line(char *res);
+char	*ft_start_next_line(char *res);
 
-// Utils
-
-size_t	ft_strlen(const char *str);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strchr(const char *str, int to_find);
-char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_gnl_strlen(char *s);
+char	*ft_gnl_strchr(char *s, int c);
+char	*ft_gnl_strjoin(char *s1, char *s2);
+char	*ft_gnl_strdup(char *str);
 
 #endif

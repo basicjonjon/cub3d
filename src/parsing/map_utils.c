@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 16:05:56 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/28 12:48:01 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*dup_map_line(char *line, int x)
 	res = malloc(sizeof(char) * (x + 1));
 	if (!res)
 		return (NULL);
-	while (i != x)
+	while (line[i])
 	{
 		z = 0;
 		if (line[i] == 9)
@@ -36,12 +36,14 @@ char	*dup_map_line(char *line, int x)
 			}
 		}
 		else if (line[i] == '0' || line[i] == '1' || line[i] == 'N'
-			|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+			|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W' || line[i] == ' ')
 			res[y++] = line[i];
-		else
-			res[y++] = ' ';
 		i++;
 	}
-	res[i] = '\0';
+	while (y != x)
+	{
+		res[y++] = ' ';
+	}
+	res[y] = '\0';
 	return (res);
 }

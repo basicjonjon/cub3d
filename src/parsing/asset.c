@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   asset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/22 16:02:06 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:19:44 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	is_texture(char *line)
+int	is_asset(char *line)
 {
 	if (!strncmp(line, "NO ", 3) || !strncmp(line, "SO ", 3) || !strncmp(line,
 			"WE ", 3) || !strncmp(line, "EA ", 3) || !strncmp(line, "F ", 2)
@@ -22,46 +22,51 @@ int	is_texture(char *line)
 	}
 	return (0);
 }
-int	verif_texture(t_texture *texture)
+
+int	verif_asset(t_asset *asset)
 {
-	if (texture->so_path == NULL || texture->no_path == NULL
-		|| texture->we_path == NULL || texture->ea_path == NULL
-		|| texture->floor == NULL || texture->ceiling == NULL)
+	if (asset->so_path == NULL || asset->no_path == NULL
+		|| asset->we_path == NULL || asset->ea_path == NULL
+		|| asset->floor == NULL || asset->ceiling == NULL)
 	{
 		return (1);
 	}
 	return (0);
 }
-t_texture	*get_texture(char *maps_file)
+
+t_asset	*get_asset(char *maps_file)
 {
-	int			fd;
-	int			nb_texture;
-	char		*line;
-	t_texture	*texture;
+	int		fd;
+	int		nb_asset;
+	char	*line;
+	t_asset	*asset;
 
 	fd = open(maps_file, O_RDONLY);
-	line = get_next_line(fd, 0);
-	nb_texture = 6;
-	texture = init_texture_null();
+	line = get_next_line(fd);
+	nb_asset = 6;
+	asset = malloc(sizeof(t_asset));
+	if (!asset)
+		return (NULL);
+	init_asset_null(asset);
 	while (line != NULL)
 	{
-		if (is_texture(line))
+		if (is_asset(line))
 		{
-			texture = get_texture_path(texture, line);
-			if (texture == NULL)
+			asset = get_asset_path(asset, line);
+			if (asset == NULL)
 				return (close(fd), free(line), NULL);
-			nb_texture--;
+			nb_asset--;
 		}
-		if (is_map(line) && nb_texture != 0)
+		if (is_map(line) && nb_asset != 0)
 		{
-			ft_fprintf(2, "%sERROR :not enought texture%s\n", BRED, NC);
+			ft_fprintf(2, "%sERROR :not enought asset%s\n", BRED, NC);
 			return (free(line), NULL);
 		}
 		free(line);
-		line = get_next_line(fd, 0);
+		line = get_next_line(fd);
 	}
 	close(fd);
-	if (verif_texture(texture))
+	if (verif_asset(asset))
 		return (NULL);
-	return (texture);
+	return (asset);
 }
