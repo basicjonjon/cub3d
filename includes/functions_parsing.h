@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/28 13:05:56 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:34:50 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ t_data	*init_data(char *map_file);
 
 void	free_all(t_data *data);
 void	free_tab(char **tab);
+void	free_asset(t_asset *asset);
 
 #endif

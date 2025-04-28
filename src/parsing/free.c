@@ -6,27 +6,27 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/28 13:07:53 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/04/28 13:34:18 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	free_asset(t_data *data)
+void	free_asset(t_asset *asset)
 {
-	if (data->asset->no_path)
-		free(data->asset->no_path);
-	if (data->asset->so_path)
-		free(data->asset->so_path);
-	if (data->asset->ea_path)
-		free(data->asset->ea_path);
-	if (data->asset->we_path)
-		free(data->asset->we_path);
-	if (data->asset->floor)
-		free(data->asset->floor);
-	if (data->asset->ceiling)
-		free(data->asset->ceiling);
-	free(data->asset);
+	if (asset->no_path)
+		free(asset->no_path);
+	if (asset->so_path)
+		free(asset->so_path);
+	if (asset->ea_path)
+		free(asset->ea_path);
+	if (asset->we_path)
+		free(asset->we_path);
+	if (asset->floor)
+		free(asset->floor);
+	if (asset->ceiling)
+		free(asset->ceiling);
+	free(asset);
 }
 
 void	free_map(t_data *data)
@@ -59,7 +59,7 @@ void	free_all(t_data *data)
 	if (data)
 	{
 		if (data->asset)
-			free_asset(data);
+			free_asset(data->asset);
 		if (data->map)
 			free_map(data);
 		if (data->texture)
