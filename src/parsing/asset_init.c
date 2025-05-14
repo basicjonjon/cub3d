@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/28 13:31:37 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:36:05 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,25 @@ t_color	*get_color(char *value)
 void	save_path(t_asset *asset, char *key, char *value)
 {
 	if (!strncmp(key, "SO", 2))
+	{
 		asset->so_path = ft_strdup(value);
+		asset->so_path[ft_strlen(asset->so_path) - 1] = '\0';
+	}
 	if (!strncmp(key, "NO", 2))
+	{
 		asset->no_path = ft_strdup(value);
+		asset->no_path[ft_strlen(asset->no_path) - 1] = '\0';
+	}
 	if (!strncmp(key, "WE", 2))
+	{
 		asset->we_path = ft_strdup(value);
+		asset->we_path[ft_strlen(asset->we_path) - 1] = '\0';
+	}
 	if (!strncmp(key, "EA", 2))
+	{
 		asset->ea_path = ft_strdup(value);
+		asset->ea_path[ft_strlen(asset->ea_path) - 1] = '\0';
+	}
 	if (!strncmp(key, "F", 1))
 		asset->floor = get_color(value);
 	if (!strncmp(key, "C", 1))

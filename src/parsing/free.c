@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/28 13:34:18 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/13 14:37:28 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	destroy_texture(t_data *data)
 		mlx_destroy_image(data->mlx, data->texture->ea_wall);
 	if (data->texture->we_wall)
 		mlx_destroy_image(data->mlx, data->texture->we_wall);
+	if (data->texture)
+		free(data->texture);
 }
 
 void	free_all(t_data *data)

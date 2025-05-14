@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/24 13:52:31 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/13 13:46:57 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_texture
 	void		*so_wall;
 	void		*we_wall;
 	void		*ea_wall;
-
+	int			size;
 }				t_texture;
 
 typedef struct s_asset

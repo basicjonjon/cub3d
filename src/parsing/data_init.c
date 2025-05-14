@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/28 13:30:18 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/13 15:14:47 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ t_data	*init_data(char *map_file)
 		return (free_all(data), NULL);
 	data->win = mlx_new_window(data->mlx, 1920, 1080, "Cub3d");
 	if (!data->win)
+		return (free_all(data), NULL);
+	data->texture = init_texture(data);
+	if (data->texture == NULL || verif_texture(data))
 		return (free_all(data), NULL);
 	return (data);
 }
