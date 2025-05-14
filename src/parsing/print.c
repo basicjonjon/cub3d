@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:52:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/14 13:37:43 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/14 13:51:04 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_map(char **map)
 		while (map[i][y] != '\0')
 		{
 			if (map[i][y] == '1')
-				printf("[%s%c%s]", BRED, map[i][y], NC);
+				printf("[%s%c%s]", BYELLOW, map[i][y], NC);
 			if (map[i][y] == '0')
 				printf("[%s%c%s]", BLACK, map[i][y], NC);
 			if (map[i][y] == ' ')
