@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/28 13:24:23 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:00:04 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	get_map_size_x(char *maps_file)
 	int		i;
 	int		y;
 	int		fd;
-	int		max_value;
+	int		x;
 	char	*line;
 
 	fd = open(maps_file, O_RDONLY);
 	line = get_next_line(fd);
-	max_value = 0;
+	x = 0;
 	while (line != NULL)
 	{
 		i = 0;
@@ -47,32 +47,32 @@ int	get_map_size_x(char *maps_file)
 					i++;
 				y++;
 			}
-			if (i > max_value)
-				max_value = i;
+			if (i > x)
+				x = i;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
-	return (free(line), close(fd), max_value);
+	return (free(line), close(fd), x);
 }
 
 int	get_map_size_y(char *maps_file)
 {
-	int		i;
+	int		y;
 	int		fd;
 	char	*line;
 
-	i = 0;
+	y = 0;
 	fd = open(maps_file, O_RDONLY);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		if (is_map(line))
-			i++;
+			y++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	return (free(line), close(fd), i);
+	return (free(line), close(fd), y);
 }
 
 char	**init_map_null(char **map, int y)

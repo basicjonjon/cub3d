@@ -23,10 +23,12 @@ FILES_P = main \
 		print \
 		map_init \
 		map_utils \
+		map_verif \
 		data_init \
 		free \
 		end \
-		texture_init
+		texture_init \
+
 
 FILES_C =
 

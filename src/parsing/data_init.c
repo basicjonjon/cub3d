@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/13 15:14:47 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/16 15:50:01 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_data	*init_data(char *map_file)
 		return (free_all(data), NULL);
 	data->texture = init_texture(data);
 	if (data->texture == NULL || verif_texture(data))
+		return (free_all(data), NULL);
+	if (verif_map(data))
 		return (free_all(data), NULL);
 	return (data);
 }
