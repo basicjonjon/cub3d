@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/16 14:00:48 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/21 17:22:03 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,24 @@ typedef struct s_asset
 	t_color		*floor;
 }				t_asset;
 
+typedef struct s_player
+{
+	double		posX;
+	double		posY;
+	double		orient;
+
+}				t_player;
+
 typedef struct s_data
 {
 	t_texture	*texture;
 	t_asset		*asset;
+	t_player	*player;
 	void		*mlx;
 	void		*win;
 	char		**map;
+	int			mapX;
+	int			mapY;
 }				t_data;
 
 #endif
