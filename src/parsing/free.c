@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/13 14:37:28 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/22 17:28:41 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	free_map(t_data *data)
 	int	i;
 
 	i = 0;
-	while (data->map[i])
+	while (data->map->map[i])
 	{
-		free(data->map[i]);
+		free(data->map->map[i]);
 		i++;
 	}
 	free(data->map);
@@ -66,6 +66,8 @@ void	free_all(t_data *data)
 			free_map(data);
 		if (data->texture)
 			destroy_texture(data);
+		if (data->img.img_ptr)
+			mlx_destroy_image(data->mlx, data->img.img_ptr);
 		if (data->win)
 			mlx_destroy_window(data->mlx, data->win);
 		if (data->mlx)
@@ -74,6 +76,7 @@ void	free_all(t_data *data)
 			free(data->mlx);
 		}
 		free(data);
+		data = NULL;
 	}
 }
 

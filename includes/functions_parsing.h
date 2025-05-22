@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions_parsing.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/16 14:44:00 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/22 17:45:19 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void		print_map(char **map);
 ////////////////////////////////////////////////////////////
 
 int			is_map(char *line);
-char		**get_map(char *maps_file);
+t_map		*get_map(char *maps_file);
+
 
 ////////////////////////////////////////////////////////////
 // Map_utils

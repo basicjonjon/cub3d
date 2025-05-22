@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/22 17:44:36 by mmarpaul         ###   ########.fr       */
+/*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
+/*   Updated: 2025/05/22 17:44:00 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#ifndef MACROS_H
+# define MACROS_H
 
-int	main(int argc, char **argv, char **envp)
-{
-	t_data *data;
+# define M_PI 3.14159265358979323846
 
-	if (!envp[0] || verif_args(argc, argv))
-		return (1);
-	data = init_data(argv[1]);
-	if (data == NULL)
-		return (1);
-	print_asset_path(data->asset);
-	print_map(data->map->map);
-	// mlx_loop(data->mlx);
-	free_all(data);
-	return (0);
-}
+# define playerSize 10
+
+# define screenWidth 640
+# define screenHeight 640
+
+# define BLOCK 64
+
+#endif
