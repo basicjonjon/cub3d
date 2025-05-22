@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/21 17:22:03 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/22 17:00:43 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,43 @@ typedef struct s_player
 {
 	double		posX;
 	double		posY;
-	double		orient;
+	double		angle;
 
+	bool		keyUp;
+	bool		keyDown;
+	bool		keyLeft;
+	bool		keyRight;
+
+	bool		rotLeft;
+	bool		rotRight;
 }				t_player;
+
+typedef struct s_map
+{
+	char		**map;
+	int			mapX;
+	int			mapY;
+}				t_map;
+
+typedef struct s_img
+{
+	void		*img_ptr;
+	char		*addr;
+	int			bit_per_pixels;
+	int			line_lenght;
+	int			endian;
+}				t_img;
 
 typedef struct s_data
 {
 	t_texture	*texture;
 	t_asset		*asset;
-	t_player	*player;
+	t_map		*map;
+	t_img		img;
+	t_player	player;
 	void		*mlx;
 	void		*win;
-	char		**map;
-	int			mapX;
-	int			mapY;
+
 }				t_data;
 
 #endif
