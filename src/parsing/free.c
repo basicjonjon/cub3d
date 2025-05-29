@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/22 17:28:41 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/05/23 15:02:23 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	free_asset(t_asset *asset)
+void	free_asset(t_data *data)
 {
-	if (asset->no_path)
-		free(asset->no_path);
-	if (asset->so_path)
-		free(asset->so_path);
-	if (asset->ea_path)
-		free(asset->ea_path);
-	if (asset->we_path)
-		free(asset->we_path);
-	if (asset->floor)
-		free(asset->floor);
-	if (asset->ceiling)
-		free(asset->ceiling);
-	free(asset);
+	if (data->asset.no_path)
+		free(data->asset.no_path);
+	if (data->asset.so_path)
+		free(data->asset.so_path);
+	if (data->asset.ea_path)
+		free(data->asset.ea_path);
+	if (data->asset.we_path)
+		free(data->asset.we_path);
+	if (data->asset.floor)
+		free(data->asset.floor);
+	if (data->asset.ceiling)
+		free(data->asset.ceiling);
 }
 
 void	free_map(t_data *data)
@@ -34,38 +33,20 @@ void	free_map(t_data *data)
 	int	i;
 
 	i = 0;
-	while (data->map->map[i])
+	while (data->param.map[i])
 	{
-		free(data->map->map[i]);
+		free(data->param.map[i]);
 		i++;
 	}
-	free(data->map);
-}
-
-void	destroy_texture(t_data *data)
-{
-	if (data->texture->no_wall)
-		mlx_destroy_image(data->mlx, data->texture->no_wall);
-	if (data->texture->so_wall)
-		mlx_destroy_image(data->mlx, data->texture->so_wall);
-	if (data->texture->ea_wall)
-		mlx_destroy_image(data->mlx, data->texture->ea_wall);
-	if (data->texture->we_wall)
-		mlx_destroy_image(data->mlx, data->texture->we_wall);
-	if (data->texture)
-		free(data->texture);
+	free(data->param.map);
 }
 
 void	free_all(t_data *data)
 {
 	if (data)
 	{
-		if (data->asset)
-			free_asset(data->asset);
-		if (data->map)
-			free_map(data);
-		if (data->texture)
-			destroy_texture(data);
+		free_asset(data);
+		free_map(data);
 		if (data->img.img_ptr)
 			mlx_destroy_image(data->mlx, data->img.img_ptr);
 		if (data->win)

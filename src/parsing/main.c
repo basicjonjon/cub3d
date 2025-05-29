@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/22 17:44:36 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:57:35 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	if (data == NULL)
 		return (1);
 	print_asset_path(data->asset);
-	print_map(data->map->map);
+	print_map(data->param.map);
 	// mlx_loop(data->mlx);
 	free_all(data);
 	return (0);

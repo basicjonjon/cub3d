@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions_parsing.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/22 17:45:19 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/05/23 15:01:41 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,71 +17,61 @@
 // verif_args
 ////////////////////////////////////////////////////////////
 
-int			verif_args(int argc, char **argv);
+int		verif_args(int argc, char **argv);
 
 ////////////////////////////////////////////////////////////
 // Asset
 ////////////////////////////////////////////////////////////
 
-t_asset		*get_asset(char *maps_file);
+int		get_asset(char *maps_file, t_data *data);
 
 ////////////////////////////////////////////////////////////
 // Asset_Init
 ////////////////////////////////////////////////////////////
 
-t_asset		*init_asset_null(t_asset *asset);
-void		save_path(t_asset *asset, char *key, char *value);
-t_asset		*get_asset_path(t_asset *asset, char *line);
+void	init_asset_null(t_asset *asset);
+void	save_path(t_asset *asset, char *key, char *value);
+int		get_asset_path(t_asset *asset, char *line);
 
 ////////////////////////////////////////////////////////////
 // Print
 ////////////////////////////////////////////////////////////
 
-void		print_asset_path(t_asset *texture);
-void		print_map(char **map);
+void	print_asset_path(t_asset asset);
+void	print_map(char **map);
 
 ////////////////////////////////////////////////////////////
 // Map_init
 ////////////////////////////////////////////////////////////
 
-int			is_map(char *line);
-t_map		*get_map(char *maps_file);
-
+int		is_map(char *line);
+int		get_map(t_data *data, char *maps_file);
 
 ////////////////////////////////////////////////////////////
 // Map_utils
 ////////////////////////////////////////////////////////////
 
-char		*dup_map_line(char *line, int x);
-
+char	*dup_map_line(char *line, int x);
 
 ////////////////////////////////////////////////////////////
 // Map_verif
 ////////////////////////////////////////////////////////////
 
-int	verif_map(t_data *data);
+int		verif_map(t_data *data);
 
 ////////////////////////////////////////////////////////////
 // Data_init
 ////////////////////////////////////////////////////////////
 
-t_data		*init_data(char *map_file);
+t_data	*init_data(char *map_file);
 
 ////////////////////////////////////////////////////////////
 // Free
 ////////////////////////////////////////////////////////////
 
-void		free_all(t_data *data);
-void		free_tab(char **tab);
-void		destroy_texture(t_data *data);
-void		free_asset(t_asset *asset);
-
-////////////////////////////////////////////////////////////
-// Init_texture
-////////////////////////////////////////////////////////////
-
-void		init_texture_null(t_texture *texture);
-int			verif_texture(t_data *data);
-t_texture	*init_texture(t_data *data);
+void	free_all(t_data *data);
+void	free_tab(char **tab);
+void	destroy_texture(t_data *data);
+void	free_asset(t_data *data);
 
 #endif

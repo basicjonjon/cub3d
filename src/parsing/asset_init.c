@@ -6,13 +6,13 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/13 14:36:05 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:36:15 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_asset	*init_asset_null(t_asset *asset)
+void	init_asset_null(t_asset *asset)
 {
 	asset->no_path = NULL;
 	asset->so_path = NULL;
@@ -20,7 +20,6 @@ t_asset	*init_asset_null(t_asset *asset)
 	asset->ea_path = NULL;
 	asset->ceiling = NULL;
 	asset->floor = NULL;
-	return (asset);
 }
 
 t_color	*get_color(char *value)
@@ -75,7 +74,7 @@ void	save_path(t_asset *asset, char *key, char *value)
 		asset->ceiling = get_color(value);
 }
 
-t_asset	*get_asset_path(t_asset *asset, char *line)
+int	get_asset_path(t_asset *asset, char *line)
 {
 	char	**cut_line;
 	int		i;
@@ -88,9 +87,9 @@ t_asset	*get_asset_path(t_asset *asset, char *line)
 				|| cut_line[1][0] == '\n')))
 	{
 		ft_fprintf(2, "%sERROR: wrong texture format%s\n", BRED, NC);
-		return (NULL);
+		return (1);
 	}
 	save_path(asset, cut_line[0], cut_line[1]);
 	free_tab(cut_line);
-	return (asset);
+	return (0);
 }

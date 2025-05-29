@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/22 17:00:43 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/23 15:01:02 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,6 @@ typedef struct s_color
 	int			g;
 	int			b;
 }				t_color;
-
-typedef struct s_texture
-{
-	void		*no_wall;
-	void		*so_wall;
-	void		*we_wall;
-	void		*ea_wall;
-	int			size;
-}				t_texture;
 
 typedef struct s_asset
 {
@@ -72,9 +63,8 @@ typedef struct s_img
 
 typedef struct s_data
 {
-	t_texture	*texture;
-	t_asset		*asset;
-	t_map		*map;
+	t_asset		asset;
+	t_map		param;
 	t_img		img;
 	t_player	player;
 	void		*mlx;

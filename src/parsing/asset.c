@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/22 17:05:26 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:58:42 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,39 +34,34 @@ int	verif_asset(t_asset *asset)
 	return (0);
 }
 
-t_asset	*get_asset(char *maps_file)
+int	get_asset(char *maps_file, t_data *data)
 {
 	int		fd;
 	int		nb_asset;
 	char	*line;
-	t_asset	*asset;
 
 	fd = open(maps_file, O_RDONLY);
 	nb_asset = 6;
-	asset = malloc(sizeof(t_asset));
-	if (!asset)
-		return (NULL);
-	init_asset_null(asset);
+	init_asset_null(&data->asset);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		if (is_asset(line))
 		{
-			asset = get_asset_path(asset, line);
-			if (asset == NULL)
-				return (close(fd), free(line), free_asset(asset), NULL);
+			if (get_asset_path(&data->asset, line))
+				return (close(fd), free(line), free_asset(data), 1);
 			nb_asset--;
 		}
 		if (is_map(line) && nb_asset != 0)
 		{
 			ft_fprintf(2, "%sERROR :not enought asset%s\n", BRED, NC);
-			return (close(fd), free(line), free_asset(asset), NULL);
+			return (close(fd), free(line), free_asset(data), 1);
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (verif_asset(asset))
-		return (free(line), free_asset(asset), NULL);
-	return (asset);
+	if (verif_asset(&data->asset))
+		return (free(line), free_asset(data), 1);
+	return (0);
 }

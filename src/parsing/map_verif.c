@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:04:31 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/22 17:46:13 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:59:33 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ int	verif_map(t_data *data)
 	int	y;
 
 	y = 0;
-	while (data->map->map[y])
+	while (data->param.map[y])
 	{
 		x = 0;
-		while (data->map->map[y][x])
+		while (data->param.map[y][x])
 		{
-			if (data->map->map[y][x] == '0')
+			if (data->param.map[y][x] == '0')
 			{
-				if (verif_floor(data->map->map, x, y) || verif_floor_diag(data->map->map,
-						x, y))
+				if (verif_floor(data->param.map, x, y)
+					|| verif_floor_diag(data->param.map, x, y))
 				{
 					printf("%sERROR: map is invalide%s\n", BRED, NC);
 					return (1);

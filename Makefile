@@ -27,7 +27,6 @@ FILES_P = main \
 		data_init \
 		free \
 		end \
-		texture_init \
 
 
 FILES_C =

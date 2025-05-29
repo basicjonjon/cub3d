@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/22 16:58:39 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:53:42 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,30 +105,26 @@ char	**malloc_map(char *maps_file)
 	return (map);
 }
 
-t_map	*get_map(char *maps_file)
+int	get_map(t_data *data, char *maps_file)
 {
 	int		i;
 	int		fd;
 	char	*line;
-	t_map	*map;
 
 	i = 0;
-	map = malloc(sizeof(t_map));
-	if (!map)
-		return (NULL);
-	map->mapY = get_map_size_y(maps_file);
+	data->param.mapY = get_map_size_y(maps_file);
 	fd = open(maps_file, O_RDONLY);
 	line = get_next_line(fd);
-	map->map = malloc_map(maps_file);
+	data->param.map = malloc_map(maps_file);
 	while (line != NULL)
 	{
 		if (is_map(line))
 		{
-			map->map[i] = dup_map_line(line, get_map_size_x(maps_file));
+			data->param.map[i] = dup_map_line(line, get_map_size_x(maps_file));
 			i++;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
-	return (free(line), close(fd), map);
+	return (free(line), close(fd), 0);
 }
