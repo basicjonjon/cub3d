@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/23 15:01:02 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:24:42 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_asset
 
 typedef struct s_player
 {
+	int			x;
+	int			y;
 	double		posX;
 	double		posY;
 	double		angle;

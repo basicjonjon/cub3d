@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:04:31 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/23 14:59:33 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/02 13:36:43 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,34 @@ int	verif_map(t_data *data)
 			x++;
 		}
 		y++;
+	}
+	return (0);
+}
+
+int	verif_map_player(t_data *data)
+{
+	int	x;
+	int	y;
+	int	player;
+
+	player = 0;
+	y = 0;
+	while (data->param.map[y])
+	{
+		x = 0;
+		while (data->param.map[y][x])
+		{
+			if (data->param.map[y][x] == 'N' || data->param.map[y][x] == 'S'
+				|| data->param.map[y][x] == 'W' || data->param.map[y][x] == 'E')
+				player++;
+			x++;
+		}
+		y++;
+	}
+	if (player != 1)
+	{
+		printf("%sERROR: player is invalide%s\n", BRED, NC);
+		return (1);
 	}
 	return (0);
 }

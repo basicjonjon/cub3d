@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/23 15:01:41 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/02 14:09:25 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int		get_asset_path(t_asset *asset, char *line);
 ////////////////////////////////////////////////////////////
 
 void	print_asset_path(t_asset asset);
+void	print_player_info(t_data *data);
+void	print_map_info(t_data *data);
 void	print_map(char **map);
 
 ////////////////////////////////////////////////////////////
@@ -58,6 +60,7 @@ char	*dup_map_line(char *line, int x);
 ////////////////////////////////////////////////////////////
 
 int		verif_map(t_data *data);
+int		verif_map_player(t_data *data);
 
 ////////////////////////////////////////////////////////////
 // Data_init
@@ -74,4 +77,9 @@ void	free_tab(char **tab);
 void	destroy_texture(t_data *data);
 void	free_asset(t_data *data);
 
+////////////////////////////////////////////////////////////
+// PLayer_init
+////////////////////////////////////////////////////////////
+
+int		init_player(t_data *data);
 #endif

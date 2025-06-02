@@ -27,6 +27,7 @@ FILES_P = main \
 		data_init \
 		free \
 		end \
+		player_init \
 
 
 FILES_C =

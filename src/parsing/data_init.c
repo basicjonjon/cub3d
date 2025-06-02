@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/23 15:03:16 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/02 14:03:17 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ t_data	*init_data(char *map_file)
 		return (free_all(data), NULL);
 	if (get_map(data, map_file))
 		return (free_all(data), NULL);
-
-	if (verif_map(data))
+	if (verif_map(data) || verif_map_player(data))
 		return (free_all(data), NULL);
+	init_player(data);
 	return (data);
 }

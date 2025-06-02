@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:52:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/23 14:40:41 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/02 14:09:08 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ void	print_asset_path(t_asset asset)
 		asset.floor->b, NC);
 	printf("ceiling %s%i/%i/%i%s\n", BGREEN, asset.ceiling->r, asset.ceiling->g,
 		asset.ceiling->b, NC);
+}
+
+void	print_player_info(t_data *data)
+{
+	printf("palyer x %s%i%s\n", BGREEN, data->player.x, NC);
+	printf("player y %s%i%s\n", BGREEN, data->player.y, NC);
+	printf("player angle %s%.2f%s\n", BGREEN, data->player.angle, NC);
+}
+
+void	print_map_info(t_data *data)
+{
+	printf("map x %s%i%s\n", BGREEN, data->param.mapX, NC);
+	printf("map Y %s%i%s\n", BGREEN, data->param.mapY, NC);
 }
 
 void	print_map(char **map)
