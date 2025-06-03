@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/02 14:03:17 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:06:04 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (ft_fprintf(2, "Error: mlx malloc"), free_all(data), 1);
-	data->win = mlx_new_window(data->mlx, 1920, 1080, "Cub3d");
+	data->win = mlx_new_window(data->mlx, screenWidth, screenHeight, "Cub3d");
 	if (!data->win)
 		return (ft_fprintf(2, "Error: window malloc"), free_all(data), 1);
 	data->img.img_ptr = mlx_new_image(data->mlx, screenWidth, screenHeight);

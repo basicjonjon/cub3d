@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/02 14:10:15 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:19:30 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int argc, char **argv, char **envp)
 	print_player_info(data);
 	print_map_info(data);
 	print_map(data->param.map);
-	// mlx_loop(data->mlx);
+	hooks(data);
+	mlx_loop(data->mlx);
 	free_all(data);
 	return (0);
 }

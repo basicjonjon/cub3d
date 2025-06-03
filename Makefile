@@ -30,7 +30,8 @@ FILES_P = main \
 		player_init \
 
 
-FILES_C =
+FILES_C =	hooks \
+			raycasting
 
 P_DIR = ./src/parsing/
 C_DIR = ./src/casting/
