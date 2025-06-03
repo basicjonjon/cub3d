@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/03 17:28:38 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:26:50 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,29 +64,10 @@ int	key_press(int keysym, t_data *data)
 	return (keysym);
 }
 
-// int	move_loop(t_data *data)
-// {
-// 	// double	x;
-// 	// double	y;
-
-// 	if (verif_move(&data->player) == 1)
-// 	{
-// 		// x = data->player.posX;
-// 		// y = data->player.posY;
-// 		move_player(data);
-// 		background(data);
-// 		draw_map(data);
-// 		// draw_player(x, y, playerSize, WHITE, data);
-// 		draw_player(data->player.posX, data->player.posY, playerSize, BLACK, data);
-// 		data_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
-// 	}
-// 	return (0);
-// }
-
 void	hooks(t_data *data)
 {
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
 	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, close_win, data);
-	// mlx_loop_hook(data->mlx, move_loop, data);
+	mlx_loop_hook(data->mlx, move_loop, data);
 }

@@ -3,15 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:04:21 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/04/15 16:26:48 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:21:37 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
+
+// hexa
+# define HYELLOW 0xFFFF00
+# define HPURPLE 0x800080
+# define HWHITE 0xFFFFFF
+# define HBLACK 0x000000
+# define HGREEN 0x00FF00
+# define HBLUE 0x0000FF
+# define HCYAN 0x00FFFF
+# define HRED 0xFF0000
 
 // classique
 # define YELLOW "\e[0;33m"

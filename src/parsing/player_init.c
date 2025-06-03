@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/02 14:07:23 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:58:12 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	get_player_pos(t_data *data)
 				|| data->param.map[y][x] == 'W' || data->param.map[y][x] == 'E')
 			{
 				data->player.x = x;
+				data->player.posX = x * BLOCK + BLOCK / 2;
 				data->player.y = y;
+				data->player.posY = y * BLOCK + BLOCK / 2;
 				return ;
 			}
 			x++;

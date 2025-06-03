@@ -31,7 +31,10 @@ FILES_P = main \
 
 
 FILES_C =	hooks \
-			raycasting
+			raycasting \
+			movement \
+			map_casting \
+			utils \
 
 P_DIR = ./src/parsing/
 C_DIR = ./src/casting/

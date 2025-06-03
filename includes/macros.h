@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/03 17:05:41 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:27:26 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # define screenWidth 640
 # define screenHeight 480
 
-# define BLOCK 64
+# define BLOCK 32
 
 #endif
