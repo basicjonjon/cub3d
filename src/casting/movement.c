@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/03 18:30:06 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:39:23 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	move_loop(t_data *data)
 {
 	if (verif_move(&data->player) == 1)
 	{
+		draw_player(data->player.posX, data->player.posY, playerSize, HBLACK, data);
 		move_player(data);
 		draw_map(data);
 		draw_player(data->player.posX, data->player.posY, playerSize, HRED, data);

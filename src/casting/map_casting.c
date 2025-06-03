@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:06:53 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/03 18:34:19 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/03 18:38:58 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	draw_map(t_data *data)
 			{
 				draw_wall(j * BLOCK, i * BLOCK, BLOCK, data);
 			}
-			else
-				draw_player(j * BLOCK, i * BLOCK, BLOCK, HBLACK, data);
 			j++;
 		}
 		i++;
