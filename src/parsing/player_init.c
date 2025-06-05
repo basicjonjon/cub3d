@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/03 17:58:12 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 16:35:51 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	get_player_direction(t_data *data)
 
 	player = data->param.map[data->player.y][data->player.x];
 	if (player == 'N')
-		data->player.angle = 0;
+		data->player.angle = M_PI / 2;
 	else if (player == 'W')
-		data->player.angle = 90;
+		data->player.angle = M_PI;
 	else if (player == 'S')
-		data->player.angle = 180;
+		data->player.angle = -(M_PI / 2);
 	else
-		data->player.angle = 270;
+		data->player.angle = 0;
 }
 
 void	init_bool(t_data *data)

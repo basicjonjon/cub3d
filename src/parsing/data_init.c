@@ -6,17 +6,17 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/03 17:06:04 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:07:52 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	init_data_null(t_data *data)
-{
-	data->mlx = NULL;
-	data->win = NULL;
-}
+// void	init_data_null(t_data *data)
+// {
+// 	data->mlx = NULL;
+// 	data->win = NULL;
+// }
 
 int	init_mlx(t_data *data)
 {
@@ -38,6 +38,17 @@ int	init_mlx(t_data *data)
 	return (0);
 }
 
+void	init_config(t_config *conf)
+{
+	conf->block = 64;
+	conf->player_size = 10;
+	conf->mapX = 0;
+	conf->mapY = 0;
+	conf->fov = 0.0;
+	conf->move_speed = 0.5;
+	conf->rot_speed = 0.1;
+}
+
 t_data	*init_data(char *map_file)
 {
 	t_data	*data;
@@ -45,7 +56,7 @@ t_data	*init_data(char *map_file)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (NULL);
-	init_data_null(data);
+	ft_memset(data, 0, sizeof(t_data));
 	if (init_mlx(data) == 1)
 		return (NULL);
 	if (get_asset(map_file, data))
@@ -54,6 +65,7 @@ t_data	*init_data(char *map_file)
 		return (free_all(data), NULL);
 	if (verif_map(data) || verif_map_player(data))
 		return (free_all(data), NULL);
+	init_config(&data->conf);
 	init_player(data);
 	return (data);
 }

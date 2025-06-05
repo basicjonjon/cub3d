@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/03 18:27:26 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 16:23:02 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 # define screenHeight 480
 
 # define BLOCK 32
+
+# define NUM_RAYS 60
 
 #endif

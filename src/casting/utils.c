@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/03 18:05:43 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:03:07 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_pixel_put(int x, int y, t_img *img, int color)
 
 int verif_move(t_player *player)
 {
-	if (player->keyDown == true || player->keyLeft == true
-		|| player->keyRight == true || player->keyUp == true
-		|| player->rotLeft == true || player->rotRight == true)
+	if (player->keyDown || player->keyLeft
+		|| player->keyRight || player->keyUp
+		|| player->rotLeft || player->rotRight)
 		return (1);
 	else
 		return (0);
