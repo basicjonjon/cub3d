@@ -35,6 +35,7 @@ FILES_C =	hooks \
 			movement \
 			map_casting \
 			utils \
+			debug \
 
 P_DIR = ./src/parsing/
 C_DIR = ./src/casting/

@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/05 16:55:03 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 18:05:17 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct s_player
 {
 	int			x;
 	int			y;
-	double		posX;
-	double		posY;
-	double		angle;
+	float		posX;
+	float		posY;
+	float		angle;
 
 	bool		keyUp;
 	bool		keyDown;
@@ -69,9 +69,9 @@ typedef struct s_config
 	int		player_size;
 	int		mapX;
 	int		mapY;
-	double	fov;
-	double	rot_speed;
-	double	move_speed;
+	float	fov;
+	float	rot_speed;
+	float	move_speed;
 }			t_config;
 
 typedef struct s_data

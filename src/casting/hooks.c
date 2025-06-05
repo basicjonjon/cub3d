@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/05 17:08:21 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:40:09 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ void	hooks(t_data *data)
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
 	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, close_win, data);
-	mlx_loop_hook(data->mlx, move_loop, data);
+	// mlx_loop_hook(data->mlx, move_loop, data);
 }

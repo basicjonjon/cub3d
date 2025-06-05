@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:06:53 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/03 18:38:58 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:56:15 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ void	draw_map(t_data *data)
 {
 	int		i;
 	int		j;
-	char	**map = data->param.map;
+	char	**map;
 	
+	map = data->param.map;
 	i = 0;
 	while (i < data->param.mapY)
 	{

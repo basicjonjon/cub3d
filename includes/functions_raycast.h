@@ -6,12 +6,17 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/03 18:24:28 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 17:53:22 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FUNCTIONS_RAYCAST_H
 # define FUNCTIONS_RAYCAST_H
+
+////////////////////////////////////////////////////////////
+// DEBUG
+////////////////////////////////////////////////////////////
+int		debug(t_data *data);
 
 ////////////////////////////////////////////////////////////
 // HOOKS
@@ -21,14 +26,14 @@ void	hooks(t_data *data);
 ////////////////////////////////////////////////////////////
 // MOVEMENT
 ////////////////////////////////////////////////////////////
-int		move_loop(t_data *data);
+int		move_player(t_data *data, t_player *player, t_config *c);
 
 ////////////////////////////////////////////////////////////
 // UTILS
 ////////////////////////////////////////////////////////////
 void	ft_pixel_put(int x, int y, t_img *img, int color);
 int 	verif_move(t_player *player);
-int		check_colision(double x, double y, char **map);
+int		check_colision(float x, float y, char **map);
 
 ////////////////////////////////////////////////////////////
 // MAP CASTING

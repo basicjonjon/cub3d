@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/05 17:07:52 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/05 18:05:18 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ int	init_mlx(t_data *data)
 	return (0);
 }
 
-void	init_config(t_config *conf)
+void	init_config(t_config *conf, t_map *map)
 {
 	conf->block = 64;
 	conf->player_size = 10;
-	conf->mapX = 0;
-	conf->mapY = 0;
-	conf->fov = 0.0;
-	conf->move_speed = 0.5;
+	conf->mapX = map->mapX;
+	conf->mapY = map->mapY;
+	conf->fov = M_PI / 3;
+	conf->move_speed = 0.05;
 	conf->rot_speed = 0.1;
 }
 
@@ -65,7 +65,7 @@ t_data	*init_data(char *map_file)
 		return (free_all(data), NULL);
 	if (verif_map(data) || verif_map_player(data))
 		return (free_all(data), NULL);
-	init_config(&data->conf);
+	init_config(&data->conf, &data->param);
 	init_player(data);
 	return (data);
 }
