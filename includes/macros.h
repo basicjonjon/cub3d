@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/05 18:05:26 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 18:50:42 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 
 # define BLOCK 64
 
-# define NBR_RAYS 60
+# define NBR_RAYS 80
 
 #endif

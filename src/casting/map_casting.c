@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:06:53 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/09 18:24:16 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:21:36 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ void clear_image(t_img *img, int width, int height)
     }
 }
 
-void	clear_map(t_data *data)
-{
-	int	i;
-	int	j;
+// void	clear_map(t_data *data)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	while (i++ < screenHeight)
-	{
-		j = 0;
-		while (j++ < screenWidth)
-		{
-			ft_pixel_put(i, j, &data->img, HBLACK);
-		}
-	}
-}
+// 	i = 0;
+// 	while (i++ < screenHeight)
+// 	{
+// 		j = 0;
+// 		while (j++ < screenWidth)
+// 		{
+// 			ft_pixel_put(i, j, &data->img, HBLACK);
+// 		}
+// 	}
+// }
 
 void	draw_wall(int x, int y, int size, t_data *data)
 {

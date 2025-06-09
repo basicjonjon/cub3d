@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/05 17:52:50 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:38:00 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,111 @@
 
 int	move_player(t_data *data, t_player *player, t_config *c)
 {
-	float	x;
-	float	y;
+	float x = player->posX;
+	float y = player->posY;
 
-	float	cos_angle;
-	float	sin_angle;
+	float dx = cos(player->angle) * c->move_speed;
+	float dy = sin(player->angle) * c->move_speed;
 
-	x = player->posX;
-	y = player->posY;
-	cos_angle = cos(player->angle);
-	sin_angle = sin(player->angle);
-	if (player->keyUp == true
-		&& check_colision(x, y - c->move_speed, data->param.map))
+	if (player->keyUp == true)
 	{
-		player->posY -= c->move_speed;
+		if (check_colision(x + dx, y + dy, data->param.map))
+		{
+			player->posX += dx;
+			player->posY += dy;
+		}
 	}
-	if (player->keyDown == true
-		&& check_colision(x, y + c->move_speed, data->param.map))
+	if (player->keyDown == true)
 	{
-		player->posY += c->move_speed;
+		if (check_colision(x - dx, y - dy, data->param.map))
+		{
+			player->posX -= dx;
+			player->posY -= dy;
+		}
 	}
-	if (player->keyLeft == true
-		&& check_colision(x - c->move_speed, y, data->param.map))
+
+	if (player->keyLeft == true)
 	{
-		player->posX -= c->move_speed;
+		float strafeX = cos(player->angle - M_PI / 2) * c->move_speed;
+		float strafeY = sin(player->angle - M_PI / 2) * c->move_speed;
+		if (check_colision(x + strafeX, y + strafeY, data->param.map))
+		{
+			player->posX += strafeX;
+			player->posY += strafeY;
+		}
 	}
-	if (player->keyRight == true
-		&& check_colision(x + c->move_speed, y, data->param.map))
+	if (player->keyRight == true)
 	{
-		player->posX += c->move_speed;
+		float strafeX = cos(player->angle + M_PI / 2) * c->move_speed;
+		float strafeY = sin(player->angle + M_PI / 2) * c->move_speed;
+		if (check_colision(x + strafeX, y + strafeY, data->param.map))
+		{
+			player->posX += strafeX;
+			player->posY += strafeY;
+		}
 	}
+
+	if (player->rotLeft == true)
+		player->angle -= c->rot_speed;
+	if (player->rotRight == true)
+		player->angle += c->rot_speed;
+
+	if (player->angle < 0)
+		player->angle += 2 * M_PI;
+	else if (player->angle >= 2 * M_PI)
+		player->angle -= 2 * M_PI;
+
 	return (0);
 }
+
+// int	move_player(t_data *data, t_player *player, t_config *c)
+// {
+// 	float	x;
+// 	float	y;
+
+// 	float	cos_angle;
+// 	float	sin_angle;
+
+// 	x = player->posX;
+// 	y = player->posY;
+// 	cos_angle = cos(player->angle);
+// 	sin_angle = sin(player->angle);
+// 	if (player->keyUp == true
+// 		&& check_colision(x, y - c->move_speed, data->param.map))
+// 	{
+// 		player->posY -= c->move_speed;
+// 	}
+// 	if (player->keyDown == true
+// 		&& check_colision(x, y + c->move_speed, data->param.map))
+// 	{
+// 		player->posY += c->move_speed;
+// 	}
+// 	if (player->keyLeft == true
+// 		&& check_colision(x - c->move_speed, y, data->param.map))
+// 	{
+// 		player->posX -= c->move_speed;
+// 	}
+// 	if (player->keyRight == true
+// 		&& check_colision(x + c->move_speed, y, data->param.map))
+// 	{
+// 		player->posX += c->move_speed;
+// 	}
+
+// 	if (player->rotLeft == true)
+// 	{
+// 		player->angle -= c->rot_speed;
+// 	}
+// 	if (player->rotRight == true)
+// 	{
+// 		player->angle += c->rot_speed;
+// 	}
+// 	if (player->angle < 0)
+// 		player->angle += 2 * M_PI;
+// 	else if (player->angle >= 2 * M_PI)
+// 		player->angle -= 2 * M_PI;
+
+// 	return (0);
+// }
 
 // int	move_player(t_data *data)
 // {
