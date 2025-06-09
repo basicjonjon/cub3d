@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/05 17:53:22 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 18:20:43 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int		check_colision(float x, float y, char **map);
 void	draw_wall(int x, int y, int size, t_data *data);
 void	draw_player(int x, int y, int size, int color, t_data *data);
 void	draw_map(t_data *data);
+void	clear_map(t_data *data);
+void	clear_image(t_img *img, int width, int height);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/05 18:05:17 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 16:47:42 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ typedef struct s_config
 {
 	int		block;
 	int		player_size;
-	int		mapX;
-	int		mapY;
+	int		mapW;
+	int		mapH;
 	float	fov;
 	float	rot_speed;
 	float	move_speed;

@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/05 18:05:18 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 16:47:53 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	init_config(t_config *conf, t_map *map)
 {
 	conf->block = 64;
 	conf->player_size = 10;
-	conf->mapX = map->mapX;
-	conf->mapY = map->mapY;
+	conf->mapW = map->mapX;
+	conf->mapH = map->mapY;
 	conf->fov = M_PI / 3;
 	conf->move_speed = 0.05;
 	conf->rot_speed = 0.1;

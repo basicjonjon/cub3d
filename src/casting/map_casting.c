@@ -6,11 +6,41 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:06:53 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/05 17:56:15 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 18:24:16 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void clear_image(t_img *img, int width, int height)
+{
+    int x, y;
+
+    for (y = 0; y < height; y++)
+    {
+        for (x = 0; x < width; x++)
+        {
+            char *dst = img->addr + y * img->line_lenght + x * img->bit_per_pixels;
+            *(unsigned int *)dst = 0x000000;
+        }
+    }
+}
+
+void	clear_map(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i++ < screenHeight)
+	{
+		j = 0;
+		while (j++ < screenWidth)
+		{
+			ft_pixel_put(i, j, &data->img, HBLACK);
+		}
+	}
+}
 
 void	draw_wall(int x, int y, int size, t_data *data)
 {
