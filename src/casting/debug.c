@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 17:37:06 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/16 16:15:12 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/16 17:01:38 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	cast_rays(t_data *data, int x0, int y0, int x1, int y1, int color)
 	}
 }
 
-void	calc_rays(t_data *data, char **map, float ray_angle, int *hit_x, int *hit_y)
+float	calc_rays(t_data *data, char **map, float ray_angle, int *hit_x, int *hit_y)
 {
 	float	x;
 	float	y;
@@ -131,12 +131,42 @@ void	calc_rays(t_data *data, char **map, float ray_angle, int *hit_x, int *hit_y
 		else
 			dist = sideDistY - deltaDistY;
 
-		// dist *= cos(ray_angle - data->player.angle);
+		dist *= cos(ray_angle - data->player.angle);
 
 		*hit_x = (int)((x + rayDirX * dist) * BLOCK);
 		*hit_y = (int)((y + rayDirY * dist) * BLOCK);
 	}
+	return (dist);
 }
+
+// void	draw_rays(t_data *data, t_player *player, t_config *c)
+// {
+// 	int		i;
+// 	float	ray_angle;
+// 	int		hit_x;
+// 	int		hit_y;
+// 	float	dist;
+// 	float	wall_height;
+// 	int		start;
+// 	int		end;
+
+// 	hit_x = 0;
+// 	hit_y = 0;
+// 	i = 0;
+// 	ray_angle = 0;
+// 	while (i < NBR_RAYS)
+// 	{
+// 		ray_angle = player->angle - (c->fov / 2) + i * (c->fov / NBR_RAYS);
+// 		dist = calc_rays(data, data->param.map, ray_angle, &hit_x, &hit_y);
+// 		wall_height = (screenHeight) / dist;
+// 		start = (screenHeight / 2) - (wall_height / 2);
+// 		end = (screenHeight / 2) + (wall_height / 2);
+// 		for (int y = start; y < end; y++)
+// 			ft_pixel_put(i, y, &data->img, HGREEN);
+// 		// cast_rays(data, player->x * BLOCK, player->y * BLOCK, hit_x, hit_y, HGREEN);
+// 		i++;
+// 	}
+// }
 
 void	draw_rays(t_data *data, t_player *player, t_config *c)
 {
@@ -144,17 +174,34 @@ void	draw_rays(t_data *data, t_player *player, t_config *c)
 	float	ray_angle;
 	int		hit_x;
 	int		hit_y;
+	float	dist;
+	float	wall_height;
+	int		start;
+	int		end;
+	int		column_width = screenWidth / NBR_RAYS + 1;
 
-	hit_x = 0;
-	hit_y = 0;
-	i = 0;
-	ray_angle = 0;
-	while (i < NBR_RAYS)
+	for (i = 0; i < NBR_RAYS; i++)
 	{
 		ray_angle = player->angle - (c->fov / 2) + i * (c->fov / NBR_RAYS);
-		calc_rays(data, data->param.map, ray_angle, &hit_x, &hit_y);
-		cast_rays(data, player->x * BLOCK, player->y * BLOCK, hit_x, hit_y, HGREEN);
-		i++;
+		dist = calc_rays(data, data->param.map, ray_angle, &hit_x, &hit_y);
+		if (dist < 0.001)
+			dist = 0.001;
+		wall_height = screenHeight / dist;
+		if (wall_height > screenHeight)
+			wall_height = screenHeight;
+
+		start = (screenHeight / 2) - (wall_height / 2);
+		end = (screenHeight / 2) + (wall_height / 2);
+
+		for (int x = 0; x < column_width; x++)
+		{
+			int screen_x = i * column_width + x;
+			if (screen_x >= 0 && screen_x < screenWidth)
+			{
+				for (int y = start; y < end; y++)
+					ft_pixel_put(screen_x, y, &data->img, HGREEN);
+			}
+		}
 	}
 }
 
@@ -165,8 +212,8 @@ int	debug(t_data *data)
 		// draw_player(data->player.posX, data->player.posY, playerSize, HBLACK, data);
 		clear_image(&data->img, screenWidth, screenHeight);
 		move_player(data, &data->player, &data->conf);
-		draw_map(data);
-		draw_player(data->player.x * BLOCK, data->player.y * BLOCK, playerSize, HRED, data);
+		// draw_map(data);
+		// draw_player(data->player.x * BLOCK, data->player.y * BLOCK, playerSize, HRED, data);
 		draw_rays(data, &data->player, &data->conf);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	}

@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/09 19:53:39 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/16 16:27:48 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	move_player(t_data *data, t_player *player, t_config *c)
 
 	if (player->keyLeft == true)
 	{
-		float strafeX = cos(player->angle - M_PI / 2) * c->move_speed;
-		float strafeY = sin(player->angle - M_PI / 2) * c->move_speed;
+		float strafeX = cos(player->angle - M_PI_2) * c->move_speed;
+		float strafeY = sin(player->angle - M_PI_2) * c->move_speed;
 		if (check_colision(player->x + strafeX, player->y + strafeY, &data->param))
 		{
 			player->x += strafeX;
@@ -49,8 +49,8 @@ int	move_player(t_data *data, t_player *player, t_config *c)
 	}
 	if (player->keyRight == true)
 	{
-		float strafeX = cos(player->angle + M_PI / 2) * c->move_speed;
-		float strafeY = sin(player->angle + M_PI / 2) * c->move_speed;
+		float strafeX = cos(player->angle + M_PI_2) * c->move_speed;
+		float strafeY = sin(player->angle + M_PI_2) * c->move_speed;
 		if (check_colision(player->x + strafeX, player->y + strafeY, &data->param))
 		{
 			player->x += strafeX;
