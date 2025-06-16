@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/09 19:21:45 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:49:36 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		move_player(t_data *data, t_player *player, t_config *c);
 ////////////////////////////////////////////////////////////
 void	ft_pixel_put(int x, int y, t_img *img, int color);
 int 	verif_move(t_player *player);
-int		check_colision(float x, float y, char **map);
+int		check_colision(float x, float y, t_map *m);
 
 ////////////////////////////////////////////////////////////
 // MAP CASTING

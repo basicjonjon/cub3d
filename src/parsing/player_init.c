@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/09 19:37:37 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:53:23 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	get_player_pos(t_data *data)
 			if (data->param.map[y][x] == 'N' || data->param.map[y][x] == 'S'
 				|| data->param.map[y][x] == 'W' || data->param.map[y][x] == 'E')
 			{
-				data->player.x = x;
+				data->player.x = x + 0.5;
 				data->player.posX = x * BLOCK + BLOCK / 2;
-				data->player.y = y;
+				data->player.y = y + 0.5;
 				data->player.posY = y * BLOCK + BLOCK / 2;
 				return ;
 			}
@@ -42,7 +42,7 @@ void	get_player_direction(t_data *data)
 {
 	char	player;
 
-	player = data->param.map[data->player.y][data->player.x];
+	player = data->param.map[(int)data->player.y][(int)data->player.x];
 	if (player == 'N')
 		data->player.angle = -(M_PI / 2);
 	else if (player == 'W')

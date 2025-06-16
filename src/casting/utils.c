@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/05 17:46:06 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:48:23 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ int verif_move(t_player *player)
 		return (0);
 }
 
-int	check_colision(float x, float y, char **map)
+int	check_colision(float x, float y, t_map *m)
 {
-	// int	i = ((x + playerSize / 2) + 1) / BLOCK;
-	// int	j = ((y + playerSize / 2) + 1) / BLOCK;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	**map;
 
-	i = x / BLOCK;
-	j = y / BLOCK;
-	if (x < 0 || x >= screenWidth || y < 0 || y >= screenHeight)
+	i = (int)x;
+	j = (int)y;
+	map = m->map;
+	if (x < 0 || x >= m->mapX || y < 0 || y >= m->mapY)
 		return (0);
 	if (map[j][i] && map[j][i] == '1')
 		return (0);

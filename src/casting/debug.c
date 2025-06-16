@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 17:37:06 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/09 18:51:42 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/16 16:15:12 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	calc_rays(t_data *data, char **map, float ray_angle, int *hit_x, int *hit_y
     float	sideDistX;
     float	sideDistY;
 
-	x = data->player.posX / BLOCK;
-	y = data->player.posY / BLOCK;
+	x = data->player.x;
+	y = data->player.y;
 
 	mapX = (int)x;
 	mapY = (int)y;
@@ -153,7 +153,7 @@ void	draw_rays(t_data *data, t_player *player, t_config *c)
 	{
 		ray_angle = player->angle - (c->fov / 2) + i * (c->fov / NBR_RAYS);
 		calc_rays(data, data->param.map, ray_angle, &hit_x, &hit_y);
-		cast_rays(data, (int)player->posX, (int)player->posY, hit_x, hit_y, HGREEN);
+		cast_rays(data, player->x * BLOCK, player->y * BLOCK, hit_x, hit_y, HGREEN);
 		i++;
 	}
 }
@@ -166,7 +166,7 @@ int	debug(t_data *data)
 		clear_image(&data->img, screenWidth, screenHeight);
 		move_player(data, &data->player, &data->conf);
 		draw_map(data);
-		draw_player(data->player.posX, data->player.posY, playerSize, HRED, data);
+		draw_player(data->player.x * BLOCK, data->player.y * BLOCK, playerSize, HRED, data);
 		draw_rays(data, &data->player, &data->conf);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	}

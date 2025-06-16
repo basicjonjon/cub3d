@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/05 17:40:09 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:55:32 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	key_press(int keysym, t_data *data)
 		close_win(data);
 	if (keysym == XK_p)
 		printf("posX = %f ; posY = %f ; angle = %f\n\n", \
-			data->player.posX, data->player.posY, data->player.angle);
+			data->player.x, data->player.y, data->player.angle);
 	return (keysym);
 }
 

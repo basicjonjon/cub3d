@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:52:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/02 14:09:08 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:51:07 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	print_asset_path(t_asset asset)
 
 void	print_player_info(t_data *data)
 {
-	printf("palyer x %s%i%s\n", BGREEN, data->player.x, NC);
-	printf("player y %s%i%s\n", BGREEN, data->player.y, NC);
+	printf("player x %s%f%s\n", BGREEN, data->player.x, NC);
+	printf("player y %s%f%s\n", BGREEN, data->player.y, NC);
 	printf("player angle %s%.2f%s\n", BGREEN, data->player.angle, NC);
 }
 

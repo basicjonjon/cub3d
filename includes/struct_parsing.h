@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/09 19:37:12 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/09 19:39:49 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_asset
 
 typedef struct s_player
 {
-	int			x;
-	int			y;
+	float		x;
+	float		y;
 	float		posX;
 	float		posY;
 	float		angle;

@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/09 18:50:42 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/16 16:19:22 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 # define playerSize 10
 
-# define screenWidth 12 * 64
-# define screenHeight 12 * 64
+# define screenWidth 640
+# define screenHeight 480
 
 # define BLOCK 64
 
