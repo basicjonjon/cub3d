@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:06:53 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/09 19:21:36 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/18 00:36:14 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void clear_image(t_img *img, int width, int height)
 // 	}
 // }
 
-void	draw_wall(int x, int y, int size, t_data *data)
+void	draw_wall_map(int x, int y, int size, t_data *data)
 {
 	int	i;
 
@@ -88,7 +88,7 @@ void	draw_map(t_data *data)
 		{
 			if (map[i][j] == '1')
 			{
-				draw_wall(j * BLOCK, i * BLOCK, BLOCK, data);
+				draw_wall_map(j * BLOCK, i * BLOCK, BLOCK, data);
 			}
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/09 19:39:49 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/18 01:07:26 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,26 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
+typedef struct s_ray
+{
+	float	posX;
+	float	posY;
+
+	int		mapX;
+	int		mapY;
+
+	float	rayDirX;
+	float	rayDirY;
+
+	float	deltaDistX;
+	float	deltaDistY;
+	
+	int		stepX;
+	int		stepY;
+	float	sideDistX;
+	float	sideDistY;
+}			t_ray;
+
 typedef struct s_config
 {
 	int		block;
@@ -72,6 +92,8 @@ typedef struct s_config
 	float	fov;
 	float	rot_speed;
 	float	move_speed;
+	int		nbr_rays;
+	float	column_width;
 }			t_config;
 
 typedef struct s_data

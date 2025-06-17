@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/16 16:53:55 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/17 22:10:25 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	init_config(t_config *conf, t_map *map)
 	conf->fov = M_PI / 3;
 	conf->move_speed = 0.005;
 	conf->rot_speed = 0.005;
+	conf->nbr_rays = NBR_RAYS;
+	conf->column_width = screenWidth / conf->nbr_rays + 1;
 }
 
 t_data	*init_data(char *map_file)

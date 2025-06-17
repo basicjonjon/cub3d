@@ -32,10 +32,10 @@ FILES_P = main \
 
 FILES_C =	hooks \
 			raycasting \
+			raycasting_utils \
 			movement \
 			map_casting \
 			utils \
-			debug \
 
 P_DIR = ./src/parsing/
 C_DIR = ./src/casting/

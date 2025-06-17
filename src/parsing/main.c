@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/05 17:40:48 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/18 00:44:29 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv, char **envp)
 	print_map_info(data);
 	print_map(data->param.map);
 	hooks(data);
-	mlx_loop_hook(data->mlx, debug, data);
+	mlx_loop_hook(data->mlx, raycasting, data);
 	mlx_loop(data->mlx);
 	free_all(data);
 	return (0);
