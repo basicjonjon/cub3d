@@ -4,3 +4,4 @@ obj
 *.o
 .vscode
 minilibx*
+libft.a
