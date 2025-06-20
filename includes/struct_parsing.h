@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_parsing.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/18 01:07:26 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/19 23:40:19 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ typedef struct s_color
 	int			g;
 	int			b;
 }				t_color;
+
+typedef enum e_dir
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}	s_dir;
 
 typedef struct s_asset
 {
@@ -100,6 +108,7 @@ typedef struct s_data
 {
 	t_config	conf;
 	t_asset		asset;
+	s_dir		dir;
 	t_map		param;
 	t_player	player;
 	t_img		img;

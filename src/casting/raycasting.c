@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/18 01:00:22 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/19 23:44:20 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+s_dir	find_dir(t_ray *ray, int side)
+{
+	if (side == 0)
+	{
+		if (ray->rayDirX > 0)
+			return (EAST);
+		else
+			return (WEST);
+	}
+	else
+	{
+		if (ray->rayDirY > 0)
+			return (SOUTH);
+		else
+			return (NORTH);
+	}
+}
 
 float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 {
@@ -36,7 +54,21 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 		*hit_x = (int)((ray.posX + ray.rayDirX * dist) * BLOCK);
 		*hit_y = (int)((ray.posY + ray.rayDirY * dist) * BLOCK);
 	}
+	data->dir = find_dir(&ray, side);
 	return (dist);
+}
+
+int		find_color(t_data *data)
+{
+	if (data->dir == NORTH)
+		return (HYELLOW);
+	if (data->dir == SOUTH)
+		return (HGREEN);
+	if (data->dir == EAST)
+		return (HBLUE);
+	if (data->dir == WEST)
+		return (HRED);
+	return (0);
 }
 
 void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
@@ -46,7 +78,9 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 	int		screen_x;
 	int		start;
 	int		end;
+	int		color;
 
+	color = find_color(data);
 	start = (screenHeight / 2) - (wall_height / 2);
 	end = (screenHeight / 2) + (wall_height / 2);
 	x = 0;
@@ -57,7 +91,7 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 		{
 			y = start;
 			while (y++ < end)
-				ft_pixel_put(screen_x, y, &data->img, HWHITE);
+				ft_pixel_put(screen_x, y, &data->img, color);
 		}
 		x++;
 	}

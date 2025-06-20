@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/29 15:25:20 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/06/19 21:32:50 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,13 @@ char	**init_map_null(char **map, int y)
 
 char	**malloc_map(char *maps_file)
 {
-	int		x;
 	int		y;
-	int		i;
+	// int		i;
 	char	**map;
 
-	x = get_map_size_x(maps_file);
+	// x = get_map_size_x(maps_file);
 	y = get_map_size_y(maps_file);
-	i = 0;
+	// i = 0;
 	map = malloc(sizeof(char *) * (y + 1));
 	if (map == NULL)
 		return (NULL);

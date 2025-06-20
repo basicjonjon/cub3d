@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/17 22:10:25 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/20 00:05:26 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void	init_config(t_config *conf, t_map *map)
 	conf->mapW = map->mapX;
 	conf->mapH = map->mapY;
 	conf->fov = M_PI / 3;
-	conf->move_speed = 0.005;
-	conf->rot_speed = 0.005;
+	conf->move_speed = 0.008;
+	conf->rot_speed = 0.008;
 	conf->nbr_rays = NBR_RAYS;
 	conf->column_width = screenWidth / conf->nbr_rays + 1;
 }
@@ -69,5 +69,6 @@ t_data	*init_data(char *map_file)
 		return (free_all(data), NULL);
 	init_config(&data->conf, &data->param);
 	init_player(data);
+	data->dir = NORTH;
 	return (data);
 }
