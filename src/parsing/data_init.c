@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/20 00:05:26 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/20 17:43:56 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ t_data	*init_data(char *map_file)
 	if (init_mlx(data) == 1)
 		return (NULL);
 	if (get_asset(map_file, data))
+		return (free_all(data), NULL);
+	if (texture_init(data, &data->asset))
 		return (free_all(data), NULL);
 	if (get_map(data, map_file))
 		return (free_all(data), NULL);

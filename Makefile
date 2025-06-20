@@ -28,6 +28,7 @@ FILES_P = main \
 		free \
 		end \
 		player_init \
+		texture_init \
 
 
 FILES_C =	hooks \

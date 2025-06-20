@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_parsing.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/19 23:40:19 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:39:15 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,25 @@ typedef enum e_dir
 	EAST,
 	WEST
 }	s_dir;
+
+typedef struct s_img
+{
+	void		*img_ptr;
+	char		*addr;
+	int			bit_per_pixels;
+	int			line_lenght;
+	int			endian;
+}				t_img;
+
+typedef struct s_texture
+{
+	t_img	north;
+	t_img	south;
+	t_img	east;
+	t_img	west;
+	t_color	*ceiling;
+	t_color	*floor;
+}			t_texture;
 
 typedef struct s_asset
 {
@@ -61,15 +80,6 @@ typedef struct s_map
 	int			mapX;
 	int			mapY;
 }				t_map;
-
-typedef struct s_img
-{
-	void		*img_ptr;
-	char		*addr;
-	int			bit_per_pixels;
-	int			line_lenght;
-	int			endian;
-}				t_img;
 
 typedef struct s_ray
 {
@@ -108,6 +118,7 @@ typedef struct s_data
 {
 	t_config	conf;
 	t_asset		asset;
+	t_texture	texture;
 	s_dir		dir;
 	t_map		param;
 	t_player	player;

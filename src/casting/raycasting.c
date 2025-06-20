@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/19 23:44:20 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:50:49 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,71 @@ void	rays_process(t_data *data, t_player *player, t_config *c)
 	}
 }
 
+int	get_color2(t_color rgb)
+{
+	return ((rgb.r << 16) | (rgb.g << 8) | (rgb.b));
+}
+
+void	cast_floor(t_img *img, t_color *c)
+{
+	int	x;
+	int	y;
+	int	color;
+	static int flg = 0;
+
+	color = get_color2(*c);
+	if (flg == 0)
+	{
+		printf(BLUE"c %d\n",c->r);
+		printf(PURPLE"color = %d\n"NC, color);
+	}
+	flg = 1;
+	y = screenHeight / 2;
+	while (y < screenHeight)
+	{
+		x = 0;
+		while (x < screenWidth)
+		{
+			ft_pixel_put(x, y, img, color);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	cast_ceiling(t_img *img, t_color *c)
+{
+	int	x;
+	int	y;
+	int	color;
+	static int flg = 0;
+
+	color = get_color2(*c);
+	if (flg == 0)
+	{
+		printf(BLUE"c %d\n",c->r);
+		printf(PURPLE"color = %d\n"NC, color);
+	}
+	flg = 1;
+	x = 0;
+	while (x < screenWidth)
+	{
+		y = 0;
+		while (y < screenHeight / 2)
+		{
+			ft_pixel_put(x, y, img, color);
+			y++;
+		}
+		x++;
+	}
+}
+
 int	raycasting(t_data *data)
 {
 	clear_image(&data->img, screenWidth, screenHeight);
 	move_player(data, &data->player, &data->conf);
+	cast_ceiling(&data->img, data->asset.ceiling);
+	cast_floor(&data->img, data->asset.floor);
 	rays_process(data, &data->player, &data->conf);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	return (0);
