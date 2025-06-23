@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/20 18:50:49 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:54:01 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,8 +184,8 @@ int	raycasting(t_data *data)
 {
 	clear_image(&data->img, screenWidth, screenHeight);
 	move_player(data, &data->player, &data->conf);
-	cast_ceiling(&data->img, data->asset.ceiling);
-	cast_floor(&data->img, data->asset.floor);
+	// cast_ceiling(&data->img, data->asset.ceiling);
+	// cast_floor(&data->img, data->asset.floor);
 	rays_process(data, &data->player, &data->conf);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	return (0);

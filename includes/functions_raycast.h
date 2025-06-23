@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions_raycast.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/18 00:36:39 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/23 18:40:26 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		move_player(t_data *data, t_player *player, t_config *c);
 // UTILS
 ////////////////////////////////////////////////////////////
 void	ft_pixel_put(int x, int y, t_img *img, int color);
+int		get_texture_pixel(t_img *texture, int x, int y);
 int 	verif_move(t_player *player);
 int		check_colision(float x, float y, t_map *m);
 
@@ -47,7 +48,7 @@ void	clear_image(t_img *img, int width, int height);
 ////////////////////////////////////////////////////////////
 // RAYCASTING
 ////////////////////////////////////////////////////////////
-int	raycasting(t_data *data);
+int		raycasting(t_data *data);
 
 ////////////////////////////////////////////////////////////
 // RAYCATING UTILS

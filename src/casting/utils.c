@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/09 19:48:23 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/23 18:39:20 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ void	ft_pixel_put(int x, int y, t_img *img, int color)
 		return ;
 	offset = (y * img->line_lenght) + (x * (img->bit_per_pixels));
 	*(unsigned int *)(img->addr + offset) = color;
+}
+
+int	get_texture_pixel(t_img *texture, int x, int y)
+{
+	char	*pixel;
+	int		color;
+
+	pixel = texture->addr + (y * texture->line_lenght) + (x * texture->bit_per_pixels);
+	color = *(unsigned int *)pixel;
+	return (color);
 }
 
 int verif_move(t_player *player)
