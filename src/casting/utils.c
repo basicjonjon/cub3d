@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/23 18:39:20 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/26 16:15:17 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,9 @@ int	check_colision(float x, float y, t_map *m)
 	if (map[j][i] && map[j][i] == '1')
 		return (0);
 	return (1);
+}
+
+int	rgb_to_int(t_color rgb)
+{
+	return ((rgb.r << 16) | (rgb.g << 8) | (rgb.b));
 }

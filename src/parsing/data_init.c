@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/20 17:43:56 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:47:38 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-// void	init_data_null(t_data *data)
-// {
-// 	data->mlx = NULL;
-// 	data->win = NULL;
-// }
 
 int	init_mlx(t_data *data)
 {
@@ -71,6 +65,6 @@ t_data	*init_data(char *map_file)
 		return (free_all(data), NULL);
 	init_config(&data->conf, &data->param);
 	init_player(data);
-	data->dir = NORTH;
+	ft_memset(&data->hit, 0, sizeof(t_hit));
 	return (data);
 }
