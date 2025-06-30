@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/09 19:53:23 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:24:17 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	init_bool(t_data *data)
 	data->player.keyRight = false;
 	data->player.rotLeft = false;
 	data->player.rotRight = false;
+	data->player.map = false;
 }
 
 int	init_player(t_data *data)

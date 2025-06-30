@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:06:53 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/18 00:36:14 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/30 18:04:35 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,29 @@ void	draw_wall_map(int x, int y, int size, t_data *data)
 	}
 }
 
-void	draw_player(int x, int y, int size, int color, t_data *data)
+void	draw_player(t_data *data, t_player *p, t_config *c)
 {
 	int	i;
 	int	j;
+	int	posX;
+	int	posY;
 	
+	posX = p->x * c->block;
+	posY = p->y * c->block;
 	i = -1;
-	while (i++ < size)
+	while (i++ < c->player_size)
 	{
 		j = -1;
-		while (j++ < size)
+		while (j++ < c->player_size)
 		{
-			ft_pixel_put(x + j - playerSize / 2, y - playerSize / 2, &data->img, color);
+			ft_pixel_put(posX + j - data->conf.player_size / 2,
+				posY - data->conf.player_size / 2, &data->img, HRED);
 		}
-		y += 1;
+		posY += 1;
 	}
 }
 
-void	draw_map(t_data *data)
+void	draw_map(t_data *data, t_config *c)
 {
 	int		i;
 	int		j;
@@ -88,10 +93,63 @@ void	draw_map(t_data *data)
 		{
 			if (map[i][j] == '1')
 			{
-				draw_wall_map(j * BLOCK, i * BLOCK, BLOCK, data);
+				draw_wall_map(j * c->block, i * c->block, c->block, data);
 			}
 			j++;
 		}
 		i++;
 	}
 }
+
+void put_line(t_data *d, t_config *c, t_player *p, int x1, int y1)
+{
+	int	posX;
+	int	posY;
+	
+	posX = p->x * c->block;
+	posY = p->y * c->block;
+	
+    int dx = abs(x1 - posX);
+    int dy = abs(y1 - posY);
+
+    int sx = (posX < x1) ? 1 : -1;
+    int sy = (posY < y1) ? 1 : -1;
+
+    int err = dx - dy;
+
+    while (1)
+    {
+        ft_pixel_put(posX, posY, &d->img, HGREEN);
+        if (posX == x1 && posY == y1)
+            break;
+
+        int e2 = 2 * err;
+
+        if (e2 > -dy)
+        {
+            err -= dy;
+            posX += sx;
+        }
+
+        if (e2 < dx)
+        {
+            err += dx;
+            posY += sy;
+        }
+    }
+}
+
+// void	draw_rays(t_data *d, t_config *c, t_player *p, int hit_x, int hit_y)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (i < c->nbr_rays)
+// 	{
+// 		float ray_angle = p->angle - (c->fov / 2.0) + (c->fov * i / c->nbr_rays);
+// 		int hitX, hitY;
+// 		cast_ray(d, ray_angle, &hitX, &hitY);
+// 		put_line(d, c, p, hit_x, hit_y);
+// 		i++;
+// 	}
+// }

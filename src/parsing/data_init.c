@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/26 17:47:38 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/30 17:27:32 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ int	init_mlx(t_data *data)
 
 void	init_config(t_config *conf, t_map *map)
 {
-	conf->block = 64;
-	conf->player_size = 10;
+	if (map->mapX > map->mapY)
+		conf->block = screenWidth / map->mapX;
+	else
+		conf->block = screenHeight / map->mapY;
+	conf->player_size = conf->block / 10;
 	conf->mapW = map->mapX;
 	conf->mapH = map->mapY;
 	conf->fov = M_PI / 3;

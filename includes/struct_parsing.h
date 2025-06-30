@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/26 17:50:43 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/30 18:11:44 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ typedef struct s_player
 
 	bool		rotLeft;
 	bool		rotRight;
+
+	bool		map;
 }				t_player;
 
 typedef struct s_map

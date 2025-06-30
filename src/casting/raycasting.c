@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/26 18:02:30 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/30 18:06:07 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 
 		dist *= cos(ray_angle - data->player.angle);
 
-		*hit_x = (int)((ray.posX + ray.rayDirX * dist) * BLOCK);
-		*hit_y = (int)((ray.posY + ray.rayDirY * dist) * BLOCK);
+		*hit_x = (int)((ray.posX + ray.rayDirX * dist) * data->conf.block);
+		*hit_y = (int)((ray.posY + ray.rayDirY * dist) * data->conf.block);
 	}
 	data->hit.wall_dir = find_dir(&ray, side);
 	data->hit.wall_hit_x = calc_wall_hit_x(&ray, side, dist);
@@ -136,16 +136,21 @@ void	rays_process(t_data *data, t_player *player, t_config *c)
 		dist = calc_rays(data, ray_angle, &hit_x, &hit_y);
 		if (dist < 0.001)
 			dist = 0.001;
-		wall_height = screenHeight / dist;
-		if (wall_height > screenHeight)
-			wall_height = screenHeight;
-		if (data->hit.wall_dir == EAST || data->hit.wall_dir == WEST)
-			data->hit.wall_hit_x = fmod(data->player.y + dist * sin(ray_angle), 1.0);
+		if (!player->map)
+		{
+			wall_height = screenHeight / dist;
+			if (wall_height > screenHeight)
+				wall_height = screenHeight;
+			if (data->hit.wall_dir == EAST || data->hit.wall_dir == WEST)
+				data->hit.wall_hit_x = fmod(data->player.y + dist * sin(ray_angle), 1.0);
+			else
+				data->hit.wall_hit_x = fmod(data->player.x + dist * cos(ray_angle), 1.0);
+			if (data->hit.wall_hit_x < 0)
+				data->hit.wall_hit_x += 1.0;
+			draw_wall(data, c, i, wall_height);
+		}
 		else
-			data->hit.wall_hit_x = fmod(data->player.x + dist * cos(ray_angle), 1.0);
-		if (data->hit.wall_hit_x < 0)
-			data->hit.wall_hit_x += 1.0;
-		draw_wall(data, c, i, wall_height);
+			put_line(data, c, player, hit_x, hit_y);
 		i++;
 	}
 }
@@ -194,5 +199,14 @@ int	raycasting(t_data *data)
 	// cast_floor(&data->img, data->texture.floor);
 	rays_process(data, &data->player, &data->conf);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
+	if (data->player.map == true)
+	{
+		clear_image(&data->img, screenWidth, screenHeight);
+		move_player(data, &data->player, &data->conf);
+		draw_map(data, &data->conf);
+		draw_player(data, &data->player, &data->conf);
+		rays_process(data, &data->player, &data->conf);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
+	}
 	return (0);
 }

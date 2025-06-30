@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/26 17:40:55 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/30 17:50:55 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int		rgb_to_int(t_color rgb);
 // MAP CASTING
 ////////////////////////////////////////////////////////////
 void	draw_wall_map(int x, int y, int size, t_data *data);
-void	draw_player(int x, int y, int size, int color, t_data *data);
-void	draw_map(t_data *data);
+void	draw_player(t_data *data, t_player *p, t_config *c);
+void	draw_map(t_data *data, t_config *c);
 // void	clear_map(t_data *data);
 void	clear_image(t_img *img, int width, int height);
+void	draw_rays(t_data *d, t_config *c, t_player *p, int hit_x, int hit_y);
+void	put_line(t_data *d, t_config *c, t_player *p, int x1, int y1);
 
 ////////////////////////////////////////////////////////////
 // RAYCASTING
