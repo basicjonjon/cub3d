@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/30 18:11:44 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/30 20:11:18 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef struct s_player
 	bool		rotRight;
 
 	bool		map;
+
+	bool		run;
 }				t_player;
 
 typedef struct s_map
@@ -122,6 +124,7 @@ typedef struct s_config
 	float	fov;
 	float	rot_speed;
 	float	move_speed;
+	float	run_speed;
 	int		nbr_rays;
 	float	column_width;
 }			t_config;

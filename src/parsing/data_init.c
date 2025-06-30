@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/30 17:27:32 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/30 20:21:23 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,12 @@ void	init_config(t_config *conf, t_map *map)
 	conf->mapH = map->mapY;
 	conf->fov = M_PI / 3;
 	conf->move_speed = 0.008;
+	conf->run_speed = conf->move_speed * 2.5;
 	conf->rot_speed = 0.008;
-	conf->nbr_rays = NBR_RAYS;
-	conf->column_width = screenWidth / conf->nbr_rays + 1;
+	// conf->nbr_rays = NBR_RAYS;
+	// conf->column_width = screenWidth / conf->nbr_rays;
+	conf->nbr_rays = screenWidth;
+	conf->column_width = 1;
 }
 
 t_data	*init_data(char *map_file)

@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/30 15:27:58 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/06/30 19:20:14 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	get_texture_pixel(t_img *texture, int x, int y)
 	char	*pixel;
 	int		color;
 
+	// if (x < 0 || y < 0 || x >= 64 || y >= 64)
+	// 	return (0);
 	pixel = texture->addr + (y * texture->line_lenght) + (x * texture->bit_per_pixels);
 	color = *(unsigned int *)pixel;
 	return (color);
