@@ -3,57 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:38:01 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/30 15:33:04 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/02 15:04:08 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+int	create_img(t_data *data, t_img *img, char *path, int *h)
+{
+	img->img_ptr = mlx_xpm_file_to_image(data->mlx, path, h, h);
+	if (!img->img_ptr)
+		return (1);
+	img->addr = mlx_get_data_addr(img->img_ptr, &img->bit_per_pixels,
+			&img->line_lenght, &img->endian);
+	img->bit_per_pixels /= 8;
+	return (0);
+}
+
 int	texture_init(t_data *data, t_asset *a)
 {
 	t_texture	t;
-	int			w;
 	int			h;
 
-	t.north.img_ptr = mlx_xpm_file_to_image(data->mlx, a->no_path, &w, &h);
-	if (!t.north.img_ptr)
-		return (1);
-	t.north.addr = mlx_get_data_addr(t.north.img_ptr,
-										&t.north.bit_per_pixels,
-										&t.north.line_lenght,
-										&t.north.endian);
-	t.south.img_ptr = mlx_xpm_file_to_image(data->mlx, a->so_path, &w, &h);
-	if (!t.south.img_ptr)
-		return (1);
-	t.south.addr = mlx_get_data_addr(t.south.img_ptr,
-										&t.south.bit_per_pixels,
-										&t.south.line_lenght,
-										&t.south.endian);
-	t.east.img_ptr = mlx_xpm_file_to_image(data->mlx, a->ea_path, &w, &h);
-	if (!t.east.img_ptr)
-		return (1);
-	t.east.addr = mlx_get_data_addr(t.east.img_ptr,
-										&t.east.bit_per_pixels,
-										&t.east.line_lenght,
-										&t.east.endian);
-	t.west.img_ptr = mlx_xpm_file_to_image(data->mlx, a->we_path, &w, &h);
-	if (!t.west.img_ptr)
-		return (1);
-	t.west.addr = mlx_get_data_addr(t.west.img_ptr,
-										&t.west.bit_per_pixels,
-										&t.west.line_lenght,
-										&t.west.endian);
-	t.north.bit_per_pixels /= 8;
-	t.south.bit_per_pixels /= 8;
-	t.east.bit_per_pixels /= 8;
-	t.west.bit_per_pixels /= 8;
-	t.ceiling = rgb_to_int(*a->ceiling);
-	t.floor = rgb_to_int(*a->floor);
+	create_img(data, &t.north, a->no_path, &h);
+	create_img(data, &t.south, a->so_path, &h);
+	create_img(data, &t.east, a->ea_path, &h);
+	create_img(data, &t.west, a->we_path, &h);
 	t.tex_h = h;
-	t.tex_w = w;
+	t.tex_w = h;
 	data->texture = t;
 	return (0);
 }

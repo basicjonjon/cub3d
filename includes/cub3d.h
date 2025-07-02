@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:23:30 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/09 18:59:39 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/02 15:02:04 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <stdbool.h>
 # include "macros.h"
+# include "struct_bonus.h"
+# include "macros_bonus.h" 
+# include "fuctions_bonus.h" 
 # include "struct_parsing.h"
 # include "functions_raycast.h"
 # include "functions_parsing.h"

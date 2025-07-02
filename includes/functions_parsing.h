@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions_parsing.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/20 17:43:29 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/02 15:06:49 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int		init_player(t_data *data);
 // Texture_init
 ////////////////////////////////////////////////////////////
 
+int	create_img(t_data *data, t_img *img, char *path, int *h);
 int	texture_init(t_data *data, t_asset *a);
 
 #endif
