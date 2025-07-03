@@ -6,9 +6,10 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/02 15:03:35 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:52:57 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef STRUCT_PARSING_H
 # define STRUCT_PARSING_H
@@ -85,6 +86,7 @@ typedef struct s_map
 	char		**map;
 	int			mapX;
 	int			mapY;
+	int			exist;
 }				t_map;
 
 typedef struct s_ray

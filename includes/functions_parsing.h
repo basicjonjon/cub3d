@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/02 15:06:49 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:50:39 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		get_asset(char *maps_file, t_data *data);
 // Asset_Init
 ////////////////////////////////////////////////////////////
 
-void	init_asset_null(t_asset *asset);
+void	init_asset_null(t_data *data);
 void	save_path(t_asset *asset, char *key, char *value);
 int		get_asset_path(t_asset *asset, char *line);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/30 20:21:23 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/03 15:51:41 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_data	*init_data(char *map_file)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (NULL);
+	data->param.exist = 0;
 	ft_memset(data, 0, sizeof(t_data));
 	if (init_mlx(data) == 1)
 		return (NULL);

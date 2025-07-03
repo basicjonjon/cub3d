@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/05 17:04:11 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:53:31 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	free_all(t_data *data)
 	if (data)
 	{
 		free_asset(data);
-		free_map(data);
+		if (data->param.exist)
+			free_map(data);
 		if (data->img.img_ptr)
 			mlx_destroy_image(data->mlx, data->img.img_ptr);
 		if (data->win)

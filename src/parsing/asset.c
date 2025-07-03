@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/05/23 14:58:42 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:42:13 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,26 @@ int	get_asset(char *maps_file, t_data *data)
 
 	fd = open(maps_file, O_RDONLY);
 	nb_asset = 6;
-	init_asset_null(&data->asset);
+	init_asset_null(data);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
 		if (is_asset(line))
 		{
 			if (get_asset_path(&data->asset, line))
-				return (close(fd), free(line), free_asset(data), 1);
+				return (close(fd), free(line), 1);
 			nb_asset--;
 		}
 		if (is_map(line) && nb_asset != 0)
 		{
 			ft_fprintf(2, "%sERROR :not enought asset%s\n", BRED, NC);
-			return (close(fd), free(line), free_asset(data), 1);
+			return (close(fd), free(line), 1);
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
 	if (verif_asset(&data->asset))
-		return (free(line), free_asset(data), 1);
+		return (free(line), 1);
 	return (0);
 }
