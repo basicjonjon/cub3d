@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/30 21:06:49 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/04 21:09:57 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,36 +29,6 @@ s_dir	find_dir(t_ray *ray, int side)
 			return (NORTH);
 	}
 }
-
-// float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
-// {
-// 	t_ray	ray;
-// 	int		side;
-// 	float	dist;
-
-// 	ray = init_ray_struct(&data->player, ray_angle);
-
-// 	side = 0;
-// 	calc_hit(data, &ray, data->param.map, &side);
-
-// 	dist = 0;
-// 	if (hit_x && hit_y)
-// 	{
-// 		if (side == 0)
-// 			dist = ray.sideDistX - ray.deltaDistX;
-// 		else
-// 			dist = ray.sideDistY - ray.deltaDistY;
-
-// 		data->hit.wall_hit_x = calc_wall_hit_x(&ray, side, dist);
-		
-// 		*hit_x = (int)((ray.posX + ray.rayDirX * dist) * data->conf.block);
-// 		*hit_y = (int)((ray.posY + ray.rayDirY * dist) * data->conf.block);
-		
-// 		dist *= cos(ray_angle - data->player.angle);
-// 	}
-// 	data->hit.wall_dir = find_dir(&ray, side);
-// 	return (dist);
-// }
 
 float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 {
@@ -86,6 +56,7 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 	}
 
 	dist = dist_uncorrected * cos(ray_angle - data->player.angle);
+	// dist = dist_uncorrected;
 	return (dist);
 }
 
@@ -102,15 +73,6 @@ t_img	*find_texture(t_data *data)
 	return (NULL);
 }
 
-// void	draw_texture()
-// {
-// 	int d = y * 256 - screenHeight * 128 + wall_height * 128;
-// 	tex_y = ((d * tex_h) / (int)wall_height) / 256;
-// 	color = get_texture_pixel(texture, tex_x, tex_y);
-// 	ft_pixel_put(screen_x, y, &data->img, color);
-// 	y++;
-// }
-
 void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 {
 	int		x;
@@ -122,7 +84,11 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 
 	// color = find_color(data);
 	start = (screenHeight / 2) - (wall_height / 2);
+	if (start < 0)
+		start = 0;
 	end = (screenHeight / 2) + (wall_height / 2);
+	if (end >= screenHeight)
+		end = screenHeight - 1;
 
 	data->hit.tex_x = (int)(data->hit.wall_hit_x * data->texture.tex_w);
 	if (data->hit.tex_x < 0)
@@ -168,8 +134,6 @@ void	rays_process(t_data *data, t_player *player, t_config *c)
 		if (!player->map)
 		{
 			wall_height = screenHeight / dist;
-			if (wall_height > screenHeight)
-				wall_height = screenHeight;
 			draw_wall(data, c, i, wall_height);
 		}
 		else
