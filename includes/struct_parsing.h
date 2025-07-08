@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_parsing.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/20 18:39:15 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/30 20:11:18 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ typedef struct s_texture
 	t_img	south;
 	t_img	east;
 	t_img	west;
-	t_color	*ceiling;
-	t_color	*floor;
+	int		tex_w;
+	int		tex_h;
+	int		ceiling;
+	int		floor;
 }			t_texture;
 
 typedef struct s_asset
@@ -72,6 +74,10 @@ typedef struct s_player
 
 	bool		rotLeft;
 	bool		rotRight;
+
+	bool		map;
+
+	bool		run;
 }				t_player;
 
 typedef struct s_map
@@ -101,6 +107,14 @@ typedef struct s_ray
 	float	sideDistY;
 }			t_ray;
 
+typedef struct s_hit_info
+{
+	s_dir	wall_dir;
+	float	wall_hit_x;
+	int		tex_x;
+	int		tex_y;
+}			t_hit;
+
 typedef struct s_config
 {
 	int		block;
@@ -110,6 +124,7 @@ typedef struct s_config
 	float	fov;
 	float	rot_speed;
 	float	move_speed;
+	float	run_speed;
 	int		nbr_rays;
 	float	column_width;
 }			t_config;
@@ -119,7 +134,7 @@ typedef struct s_data
 	t_config	conf;
 	t_asset		asset;
 	t_texture	texture;
-	s_dir		dir;
+	t_hit		hit;
 	t_map		param;
 	t_player	player;
 	t_img		img;

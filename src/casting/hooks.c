@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/09 19:55:32 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/30 20:08:05 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int	key_release(int keysym, t_data *data)
 	if (keysym == XK_Right)
 		data->player.rotRight = false;
 
+	if (keysym == XK_Shift_L)
+		data->player.run = false;
+
 	return (keysym);
 }
 
@@ -58,6 +61,14 @@ int	key_press(int keysym, t_data *data)
 		data->player.rotLeft = true;
 	if (keysym == XK_Right)
 		data->player.rotRight = true;
+
+	if (keysym == XK_m && data->player.map == false)
+		data->player.map = true;
+	else if (keysym == XK_m && data->player.map == true)
+		data->player.map = false;
+
+	if (keysym == XK_Shift_L)
+		data->player.run = true;
 
 	if (keysym == XK_Escape)
 		close_win(data);

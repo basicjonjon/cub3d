@@ -6,17 +6,11 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/20 17:43:56 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:15:14 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-// void	init_data_null(t_data *data)
-// {
-// 	data->mlx = NULL;
-// 	data->win = NULL;
-// }
 
 int	init_mlx(t_data *data)
 {
@@ -40,15 +34,21 @@ int	init_mlx(t_data *data)
 
 void	init_config(t_config *conf, t_map *map)
 {
-	conf->block = 64;
-	conf->player_size = 10;
+	if (map->mapX > map->mapY)
+		conf->block = screenWidth / map->mapX;
+	else
+		conf->block = screenHeight / map->mapY;
+	conf->player_size = conf->block / 10;
 	conf->mapW = map->mapX;
 	conf->mapH = map->mapY;
 	conf->fov = M_PI / 3;
 	conf->move_speed = 0.008;
+	conf->run_speed = conf->move_speed * 2.5;
 	conf->rot_speed = 0.008;
-	conf->nbr_rays = NBR_RAYS;
-	conf->column_width = screenWidth / conf->nbr_rays + 1;
+	// conf->nbr_rays = NBR_RAYS;
+	// conf->column_width = screenWidth / conf->nbr_rays;
+	conf->nbr_rays = screenWidth;
+	conf->column_width = 1;
 }
 
 t_data	*init_data(char *map_file)
@@ -71,6 +71,6 @@ t_data	*init_data(char *map_file)
 		return (free_all(data), NULL);
 	init_config(&data->conf, &data->param);
 	init_player(data);
-	data->dir = NORTH;
+	ft_memset(&data->hit, 0, sizeof(t_hit));
 	return (data);
 }

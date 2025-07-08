@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:18:43 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/18 00:35:45 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/04 18:49:39 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,18 @@ static void	calc_ray_dir(t_ray *ray)
 		ray->stepY = 1;
 		ray->sideDistY = (ray->mapY + 1.0 - ray->posY) * ray->deltaDistY;
 	}
+}
+
+float	calc_wall_hit_x(t_ray *ray, int side, float dist)
+{
+	float	wall_hit_x;
+
+	if (side == 0)
+		wall_hit_x = ray->posY + dist * ray->rayDirY;
+	else
+		wall_hit_x = ray->posX + dist * ray->rayDirX;
+	wall_hit_x -= floor(wall_hit_x);
+	return (wall_hit_x);
 }
 
 t_ray	init_ray_struct(t_player *player, float ray_angle)

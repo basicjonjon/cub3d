@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/09 19:48:23 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:22:30 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@ void	ft_pixel_put(int x, int y, t_img *img, int color)
 		return ;
 	offset = (y * img->line_lenght) + (x * (img->bit_per_pixels));
 	*(unsigned int *)(img->addr + offset) = color;
+}
+
+int	get_texture_pixel(t_img *texture, int x, int y)
+{
+	char	*pixel;
+	int		color;
+
+	if (x < 0 || y < 0 || x >= 200 || y >= 200)
+		return (0);
+	pixel = texture->addr + (y * texture->line_lenght) + (x * texture->bit_per_pixels);
+	color = *(unsigned int *)pixel;
+	return (color);
 }
 
 int verif_move(t_player *player)
@@ -38,6 +50,7 @@ int	check_colision(float x, float y, t_map *m)
 	int		j;
 	char	**map;
 
+	// return (1);
 	i = (int)x;
 	j = (int)y;
 	map = m->map;
@@ -46,4 +59,9 @@ int	check_colision(float x, float y, t_map *m)
 	if (map[j][i] && map[j][i] == '1')
 		return (0);
 	return (1);
+}
+
+int	rgb_to_int(t_color rgb)
+{
+	return ((rgb.r << 16) | (rgb.g << 8) | (rgb.b));
 }

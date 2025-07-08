@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/20 18:50:49 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/04 21:09:57 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,40 +35,42 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 	t_ray	ray;
 	int		side;
 	float	dist;
+	float	dist_uncorrected;
 
 	ray = init_ray_struct(&data->player, ray_angle);
-
 	side = 0;
 	calc_hit(data, &ray, data->param.map, &side);
 
-	dist = 0;
+	if (side == 0)
+		dist_uncorrected = ray.sideDistX - ray.deltaDistX;
+	else
+		dist_uncorrected = ray.sideDistY - ray.deltaDistY;
+
+	data->hit.wall_dir = find_dir(&ray, side);
+	data->hit.wall_hit_x = calc_wall_hit_x(&ray, side, dist_uncorrected);
+
 	if (hit_x && hit_y)
 	{
-		if (side == 0)
-			dist = ray.sideDistX - ray.deltaDistX;
-		else
-			dist = ray.sideDistY - ray.deltaDistY;
-
-		dist *= cos(ray_angle - data->player.angle);
-
-		*hit_x = (int)((ray.posX + ray.rayDirX * dist) * BLOCK);
-		*hit_y = (int)((ray.posY + ray.rayDirY * dist) * BLOCK);
+		*hit_x = (int)((ray.posX + ray.rayDirX * dist_uncorrected) * data->conf.block);
+		*hit_y = (int)((ray.posY + ray.rayDirY * dist_uncorrected) * data->conf.block);
 	}
-	data->dir = find_dir(&ray, side);
+
+	dist = dist_uncorrected * cos(ray_angle - data->player.angle);
+	// dist = dist_uncorrected;
 	return (dist);
 }
 
-int		find_color(t_data *data)
+t_img	*find_texture(t_data *data)
 {
-	if (data->dir == NORTH)
-		return (HYELLOW);
-	if (data->dir == SOUTH)
-		return (HGREEN);
-	if (data->dir == EAST)
-		return (HBLUE);
-	if (data->dir == WEST)
-		return (HRED);
-	return (0);
+	if (data->hit.wall_dir == NORTH)
+		return (&data->texture.north);
+	if (data->hit.wall_dir == SOUTH)
+		return (&data->texture.south);
+	if (data->hit.wall_dir == EAST)
+		return (&data->texture.east);
+	if (data->hit.wall_dir == WEST)
+		return (&data->texture.west);
+	return (NULL);
 }
 
 void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
@@ -80,9 +82,20 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 	int		end;
 	int		color;
 
-	color = find_color(data);
+	// color = find_color(data);
 	start = (screenHeight / 2) - (wall_height / 2);
+	if (start < 0)
+		start = 0;
 	end = (screenHeight / 2) + (wall_height / 2);
+	if (end >= screenHeight)
+		end = screenHeight - 1;
+
+	data->hit.tex_x = (int)(data->hit.wall_hit_x * data->texture.tex_w);
+	if (data->hit.tex_x < 0)
+		data->hit.tex_x = 0;
+	if (data->hit.tex_x >= data->texture.tex_w)
+		data->hit.tex_x = data->texture.tex_w - 1;
+
 	x = 0;
 	while (x < c->column_width)
 	{
@@ -91,7 +104,12 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 		{
 			y = start;
 			while (y++ < end)
+			{
+				int d = y * 256 - screenHeight * 128 + wall_height * 128;
+				data->hit.tex_y = ((d * data->texture.tex_h) / (int)wall_height) / 256;
+				color = get_texture_pixel(find_texture(data), data->hit.tex_x, data->hit.tex_y);
 				ft_pixel_put(screen_x, y, &data->img, color);
+			}
 		}
 		x++;
 	}
@@ -113,33 +131,22 @@ void	rays_process(t_data *data, t_player *player, t_config *c)
 		dist = calc_rays(data, ray_angle, &hit_x, &hit_y);
 		if (dist < 0.001)
 			dist = 0.001;
-		wall_height = screenHeight / dist;
-		if (wall_height > screenHeight)
-			wall_height = screenHeight;
-		draw_wall(data, c, i, wall_height);
+		if (!player->map)
+		{
+			wall_height = screenHeight / dist;
+			draw_wall(data, c, i, wall_height);
+		}
+		else
+			put_line(data, c, player, hit_x, hit_y);
 		i++;
 	}
 }
 
-int	get_color2(t_color rgb)
-{
-	return ((rgb.r << 16) | (rgb.g << 8) | (rgb.b));
-}
-
-void	cast_floor(t_img *img, t_color *c)
+void	cast_floor(t_img *img, int color)
 {
 	int	x;
 	int	y;
-	int	color;
-	static int flg = 0;
-
-	color = get_color2(*c);
-	if (flg == 0)
-	{
-		printf(BLUE"c %d\n",c->r);
-		printf(PURPLE"color = %d\n"NC, color);
-	}
-	flg = 1;
+	
 	y = screenHeight / 2;
 	while (y < screenHeight)
 	{
@@ -153,20 +160,11 @@ void	cast_floor(t_img *img, t_color *c)
 	}
 }
 
-void	cast_ceiling(t_img *img, t_color *c)
+void	cast_ceiling(t_img *img, int color)
 {
 	int	x;
 	int	y;
-	int	color;
-	static int flg = 0;
 
-	color = get_color2(*c);
-	if (flg == 0)
-	{
-		printf(BLUE"c %d\n",c->r);
-		printf(PURPLE"color = %d\n"NC, color);
-	}
-	flg = 1;
 	x = 0;
 	while (x < screenWidth)
 	{
@@ -182,10 +180,20 @@ void	cast_ceiling(t_img *img, t_color *c)
 
 int	raycasting(t_data *data)
 {
+	if (data->player.map == true)
+	{
+		clear_image(&data->img, screenWidth, screenHeight);
+		move_player(data, &data->player, &data->conf);
+		draw_map(data, &data->conf);
+		draw_player(data, &data->player, &data->conf);
+		rays_process(data, &data->player, &data->conf);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
+		return (0);
+	}
 	clear_image(&data->img, screenWidth, screenHeight);
 	move_player(data, &data->player, &data->conf);
-	cast_ceiling(&data->img, data->asset.ceiling);
-	cast_floor(&data->img, data->asset.floor);
+	// cast_ceiling(&data->img, data->texture.ceiling);
+	// cast_floor(&data->img, data->texture.floor);
 	rays_process(data, &data->player, &data->conf);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	return (0);

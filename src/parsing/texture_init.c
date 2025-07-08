@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:38:01 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/20 18:39:20 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:33:04 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ int	texture_init(t_data *data, t_asset *a)
 	t.south.bit_per_pixels /= 8;
 	t.east.bit_per_pixels /= 8;
 	t.west.bit_per_pixels /= 8;
-	t.ceiling = a->ceiling;
-	t.floor = a->floor;
+	t.ceiling = rgb_to_int(*a->ceiling);
+	t.floor = rgb_to_int(*a->floor);
+	t.tex_h = h;
+	t.tex_w = w;
+	data->texture = t;
 	return (0);
 }

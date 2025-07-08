@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/06/16 16:27:48 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/30 20:16:47 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	move_player(t_data *data, t_player *player, t_config *c)
 {
 	// float x = player->posX;
 	// float y = player->posY;
+
+	if (player->run)
+		c->move_speed = c->run_speed;
+	else
+		c->move_speed = 0.008;
 
 	float dx = cos(player->angle) * c->move_speed;
 	float dy = sin(player->angle) * c->move_speed;
