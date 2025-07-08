@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/08 17:22:15 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:17:42 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,30 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 	return (dist);
 }
 
-t_img	*find_texture(t_data *data)
+t_texture	*find_texture(t_data *data)
 {
 	if (data->hit.wall_dir == NORTH)
-		return (&data->texture.north);
+		return (&data->asset.north);
 	if (data->hit.wall_dir == SOUTH)
-		return (&data->texture.south);
+		return (&data->asset.south);
 	if (data->hit.wall_dir == EAST)
-		return (&data->texture.east);
+		return (&data->asset.east);
 	if (data->hit.wall_dir == WEST)
-		return (&data->texture.west);
+		return (&data->asset.west);
 	return (NULL);
 }
 
 void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 {
-	int		x;
-	int		y;
-	int		screen_x;
-	int		start;
-	int		end;
-	int		color;
+	int			x;
+	int			y;
+	int			screen_x;
+	int			start;
+	int			end;
+	int			color;
+	t_texture	*texture;
 
-	// color = find_color(data);
+	texture = find_texture(data);
 	start = (screenHeight / 2) - (wall_height / 2);
 	if (start < 0)
 		start = 0;
@@ -90,11 +91,11 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 	if (end >= screenHeight)
 		end = screenHeight - 1;
 
-	data->hit.tex_x = (int)(data->hit.wall_hit_x * data->texture.tex_w);
+	data->hit.tex_x = (int)(data->hit.wall_hit_x * texture->tex_w);
 	if (data->hit.tex_x < 0)
 		data->hit.tex_x = 0;
-	if (data->hit.tex_x >= data->texture.tex_w)
-		data->hit.tex_x = data->texture.tex_w - 1;
+	if (data->hit.tex_x >= texture->tex_w)
+		data->hit.tex_x = texture->tex_w - 1;
 
 	x = 0;
 	while (x < c->column_width)
@@ -106,8 +107,8 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 			while (y++ < end)
 			{
 				int d = y * 256 - screenHeight * 128 + wall_height * 128;
-				data->hit.tex_y = ((d * data->texture.tex_h) / (int)wall_height) / 256;
-				color = get_texture_pixel(find_texture(data), data->hit.tex_x, data->hit.tex_y);
+				data->hit.tex_y = ((d * texture->tex_h) / (int)wall_height) / 256;
+				color = get_texture_pixel(texture, data->hit.tex_x, data->hit.tex_y);
 				ft_pixel_put(screen_x, y, &data->img, color);
 			}
 		}

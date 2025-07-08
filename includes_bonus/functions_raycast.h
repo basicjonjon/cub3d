@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions_raycast.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/30 17:50:55 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/08 19:26:26 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int		move_player(t_data *data, t_player *player, t_config *c);
 // UTILS
 ////////////////////////////////////////////////////////////
 void	ft_pixel_put(int x, int y, t_img *img, int color);
-int		get_texture_pixel(t_img *texture, int x, int y);
+int		get_texture_pixel(t_texture *texture, int x, int y);
 int 	verif_move(t_player *player);
 int		check_colision(float x, float y, t_map *m);
-int		rgb_to_int(t_color rgb);
+// int		rgb_to_int(t_color rgb);
 
 ////////////////////////////////////////////////////////////
 // MAP CASTING
@@ -45,7 +45,7 @@ void	draw_player(t_data *data, t_player *p, t_config *c);
 void	draw_map(t_data *data, t_config *c);
 // void	clear_map(t_data *data);
 void	clear_image(t_img *img, int width, int height);
-void	draw_rays(t_data *d, t_config *c, t_player *p, int hit_x, int hit_y);
+// void	draw_rays(t_data *d, t_config *c, t_player *p, int hit_x, int hit_y);
 void	put_line(t_data *d, t_config *c, t_player *p, int x1, int y1);
 
 ////////////////////////////////////////////////////////////

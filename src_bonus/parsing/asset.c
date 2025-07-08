@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 17:22:15 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:20:36 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	verif_asset(t_asset *asset)
 {
 	if (asset->so_path == NULL || asset->no_path == NULL
 		|| asset->we_path == NULL || asset->ea_path == NULL
-		|| asset->floor == NULL || asset->ceiling == NULL)
+		|| asset->floor == -1 || asset->ceiling == -1)
 	{
 		return (1);
 	}
@@ -42,7 +42,8 @@ int	get_asset(char *maps_file, t_data *data)
 
 	fd = open(maps_file, O_RDONLY);
 	nb_asset = 6;
-	init_asset_null(&data->asset);
+	// init_asset_null(&data->asset);
+	ft_memset(&data->asset, 0, sizeof(t_asset));
 	line = get_next_line(fd);
 	while (line != NULL)
 	{

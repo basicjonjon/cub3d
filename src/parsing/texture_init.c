@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:38:01 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/08 17:28:44 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:25:52 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,42 @@
 
 int	texture_init(t_data *data, t_asset *a)
 {
-	t_texture	t;
-	int			w;
-	int			h;
+	// int			w;
+	// int			h;
 
-	t.north.img_ptr = mlx_xpm_file_to_image(data->mlx, a->no_path, &w, &h);
-	if (!t.north.img_ptr)
+	a->north.img.img_ptr = mlx_xpm_file_to_image(data->mlx, a->no_path, &a->north.tex_w, &a->north.tex_h);
+	if (!a->north.img.img_ptr)
 		return (1);
-	t.north.addr = mlx_get_data_addr(t.north.img_ptr,
-										&t.north.bit_per_pixels,
-										&t.north.line_lenght,
-										&t.north.endian);
-	t.south.img_ptr = mlx_xpm_file_to_image(data->mlx, a->so_path, &w, &h);
-	if (!t.south.img_ptr)
+	a->north.img.addr = mlx_get_data_addr(a->north.img.img_ptr,
+										&a->north.img.bit_per_pixels,
+										&a->north.img.line_lenght,
+										&a->north.img.endian);
+	a->south.img.img_ptr = mlx_xpm_file_to_image(data->mlx, a->so_path, &a->south.tex_w, &a->south.tex_h);
+	if (!a->south.img.img_ptr)
 		return (1);
-	t.south.addr = mlx_get_data_addr(t.south.img_ptr,
-										&t.south.bit_per_pixels,
-										&t.south.line_lenght,
-										&t.south.endian);
-	t.east.img_ptr = mlx_xpm_file_to_image(data->mlx, a->ea_path, &w, &h);
-	if (!t.east.img_ptr)
+	a->south.img.addr = mlx_get_data_addr(a->south.img.img_ptr,
+										&a->south.img.bit_per_pixels,
+										&a->south.img.line_lenght,
+										&a->south.img.endian);
+	a->east.img.img_ptr = mlx_xpm_file_to_image(data->mlx, a->ea_path, &a->east.tex_w, &a->east.tex_h);
+	if (!a->east.img.img_ptr)
 		return (1);
-	t.east.addr = mlx_get_data_addr(t.east.img_ptr,
-										&t.east.bit_per_pixels,
-										&t.east.line_lenght,
-										&t.east.endian);
-	t.west.img_ptr = mlx_xpm_file_to_image(data->mlx, a->we_path, &w, &h);
-	if (!t.west.img_ptr)
+	a->east.img.addr = mlx_get_data_addr(a->east.img.img_ptr,
+										&a->east.img.bit_per_pixels,
+										&a->east.img.line_lenght,
+										&a->east.img.endian);
+	a->west.img.img_ptr = mlx_xpm_file_to_image(data->mlx, a->we_path, &a->west.tex_w, &a->west.tex_h);
+	if (!a->west.img.img_ptr)
 		return (1);
-	t.west.addr = mlx_get_data_addr(t.west.img_ptr,
-										&t.west.bit_per_pixels,
-										&t.west.line_lenght,
-										&t.west.endian);
-	t.north.bit_per_pixels /= 8;
-	t.south.bit_per_pixels /= 8;
-	t.east.bit_per_pixels /= 8;
-	t.west.bit_per_pixels /= 8;
-	t.ceiling = rgb_to_int(*a->ceiling);
-	t.floor = rgb_to_int(*a->floor);
-	t.tex_h = h;
-	t.tex_w = w;
-	data->texture = t;
+	a->west.img.addr = mlx_get_data_addr(a->west.img.img_ptr,
+										&a->west.img.bit_per_pixels,
+										&a->west.img.line_lenght,
+										&a->west.img.endian);
+	a->north.img.bit_per_pixels /= 8;
+	a->south.img.bit_per_pixels /= 8;
+	a->east.img.bit_per_pixels /= 8;
+	a->west.img.bit_per_pixels /= 8;
+	// a->ceiling = rgb_to_int(*a->ceiling);
+	// a->floor = rgb_to_int(*a->floor);
 	return (0);
 }

@@ -6,27 +6,53 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 17:22:15 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:20:43 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_asset_null(t_asset *asset)
-{
-	asset->no_path = NULL;
-	asset->so_path = NULL;
-	asset->we_path = NULL;
-	asset->ea_path = NULL;
-	asset->ceiling = NULL;
-	asset->floor = NULL;
-}
+// void	init_asset_null(t_asset *asset)
+// {
+// 	asset->no_path = NULL;
+// 	asset->so_path = NULL;
+// 	asset->we_path = NULL;
+// 	asset->ea_path = NULL;
+// 	asset->ceiling = NULL;
+// 	asset->floor = NULL;
+// }
 
-t_color	*get_color(char *value)
+// t_color	*get_color(char *value)
+// {
+// 	char	**cut_line;
+// 	t_color	*color;
+// 	int		i;
+
+// 	cut_line = ft_split(value, ',');
+// 	i = 0;
+// 	while (cut_line[i] != NULL)
+// 	{
+// 		i++;
+// 	}
+// 	if (i != 3)
+// 	{
+// 		ft_fprintf(2, "%sERROR :wrong color format%s\n", BRED, NC);
+// 		return (free_tab(cut_line), NULL);
+// 	}
+// 	color = malloc(sizeof(t_color));
+// 	color->r = ft_atol(cut_line[0]) % 255;
+// 	color->g = ft_atol(cut_line[1]) % 255;
+// 	color->b = ft_atol(cut_line[2]) % 255;
+// 	return (free_tab(cut_line), color);
+// }
+
+int	get_color(char *value)
 {
 	char	**cut_line;
-	t_color	*color;
 	int		i;
+	int		r;
+	int		g;
+	int		b;
 
 	cut_line = ft_split(value, ',');
 	i = 0;
@@ -37,13 +63,13 @@ t_color	*get_color(char *value)
 	if (i != 3)
 	{
 		ft_fprintf(2, "%sERROR :wrong color format%s\n", BRED, NC);
-		return (free_tab(cut_line), NULL);
+		return (free_tab(cut_line), -1);
 	}
-	color = malloc(sizeof(t_color));
-	color->r = ft_atol(cut_line[0]) % 255;
-	color->g = ft_atol(cut_line[1]) % 255;
-	color->b = ft_atol(cut_line[2]) % 255;
-	return (free_tab(cut_line), color);
+	r = ft_atol(cut_line[0]) % 255;
+	g = ft_atol(cut_line[1]) % 255;
+	b = ft_atol(cut_line[2]) % 255;
+	free_tab(cut_line);
+	return ((r << 16) | (g << 8) | (b));
 }
 
 void	save_path(t_asset *asset, char *key, char *value)

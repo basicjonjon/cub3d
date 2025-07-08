@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:52:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 17:28:44 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:34:10 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ void	print_asset_path(t_asset asset)
 	printf("so wall %s%s%s\n", BGREEN, asset.so_path, NC);
 	printf("we wall %s%s%s\n", BGREEN, asset.we_path, NC);
 	printf("ea wall %s%s%s\n", BGREEN, asset.ea_path, NC);
-	printf("floor %s%i/%i/%i%s\n", BGREEN, asset.floor->r, asset.floor->g,
-		asset.floor->b, NC);
-	printf("ceiling %s%i/%i/%i%s\n", BGREEN, asset.ceiling->r, asset.ceiling->g,
-		asset.ceiling->b, NC);
+	// printf("floor %s%i/%i/%i%s\n", BGREEN, asset.floor->r, asset.floor->g,
+	// 	asset.floor->b, NC);
+	// printf("ceiling %s%i/%i/%i%s\n", BGREEN, asset.ceiling->r, asset.ceiling->g,
+	// 	asset.ceiling->b, NC);
+	printf("floor %s%x%s\n", BGREEN, asset.floor, NC);
+	printf("ceiling %s%x%s\n", BGREEN, asset.ceiling, NC);
 }
 
 void	print_player_info(t_data *data)

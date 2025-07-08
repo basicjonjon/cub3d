@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 17:22:15 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:31:34 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,18 @@ void	free_asset(t_data *data)
 		free(data->asset.ea_path);
 	if (data->asset.we_path)
 		free(data->asset.we_path);
-	if (data->asset.floor)
-		free(data->asset.floor);
-	if (data->asset.ceiling)
-		free(data->asset.ceiling);
+	if (data->asset.north.img.img_ptr)
+		mlx_destroy_image(data->mlx, data->asset.north.img.img_ptr);
+	if (data->asset.south.img.img_ptr)
+		mlx_destroy_image(data->mlx, data->asset.south.img.img_ptr);
+	if (data->asset.west.img.img_ptr)
+		mlx_destroy_image(data->mlx, data->asset.west.img.img_ptr);
+	if (data->asset.east.img.img_ptr)
+		mlx_destroy_image(data->mlx, data->asset.east.img.img_ptr);
+	// if (data->asset.floor)
+	// 	free(data->asset.floor);
+	// if (data->asset.ceiling)
+	// 	free(data->asset.ceiling);
 }
 
 void	free_map(t_data *data)
