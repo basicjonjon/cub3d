@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 15:15:14 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:49:01 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,32 +45,49 @@ void	init_config(t_config *conf, t_map *map)
 	conf->move_speed = 0.008;
 	conf->run_speed = conf->move_speed * 2.5;
 	conf->rot_speed = 0.008;
-	// conf->nbr_rays = NBR_RAYS;
-	// conf->column_width = screenWidth / conf->nbr_rays;
 	conf->nbr_rays = screenWidth;
 	conf->column_width = 1;
 }
 
-t_data	*init_data(char *map_file)
+int	init_data(t_data *data, char *map_file)
 {
-	t_data	*data;
-
-	data = malloc(sizeof(t_data));
-	if (!data)
-		return (NULL);
 	ft_memset(data, 0, sizeof(t_data));
 	if (init_mlx(data) == 1)
-		return (NULL);
+		return (1);
 	if (get_asset(map_file, data))
-		return (free_all(data), NULL);
+		return (free_all(data), 1);
 	if (texture_init(data, &data->asset))
-		return (free_all(data), NULL);
+		return (free_all(data), 1);
 	if (get_map(data, map_file))
-		return (free_all(data), NULL);
+		return (free_all(data), 1);
 	if (verif_map(data) || verif_map_player(data))
-		return (free_all(data), NULL);
+		return (free_all(data), 1);
 	init_config(&data->conf, &data->param);
 	init_player(data);
 	ft_memset(&data->hit, 0, sizeof(t_hit));
-	return (data);
+	return (0);
 }
+
+// int	init_data(t_data *data, char *map_file)
+// {
+// 	t_data	*data;
+
+// 	data = malloc(sizeof(t_data));
+// 	if (!data)
+// 		return (NULL);
+// 	ft_memset(data, 0, sizeof(t_data));
+// 	if (init_mlx(data) == 1)
+// 		return (NULL);
+// 	if (get_asset(map_file, data))
+// 		return (free_all(data), NULL);
+// 	if (texture_init(data, &data->asset))
+// 		return (free_all(data), NULL);
+// 	if (get_map(data, map_file))
+// 		return (free_all(data), NULL);
+// 	if (verif_map(data) || verif_map_player(data))
+// 		return (free_all(data), NULL);
+// 	init_config(&data->conf, &data->param);
+// 	init_player(data);
+// 	ft_memset(&data->hit, 0, sizeof(t_hit));
+// 	return (data);
+// }

@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/20 17:43:29 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:39:48 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		verif_map_player(t_data *data);
 // Data_init
 ////////////////////////////////////////////////////////////
 
-t_data	*init_data(char *map_file);
+int	init_data(t_data *data, char *map_file);
 
 ////////////////////////////////////////////////////////////
 // Free

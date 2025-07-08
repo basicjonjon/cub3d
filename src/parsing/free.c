@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/06/05 17:04:11 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/08 15:47:55 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	free_all(t_data *data)
 			mlx_destroy_display(data->mlx);
 			free(data->mlx);
 		}
-		free(data);
 		data = NULL;
 	}
 }
