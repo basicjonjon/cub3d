@@ -66,6 +66,7 @@ OBJS_BONUS			:= $(SRCS_BONUS:$(SRC_BONUS_DIR)/%.c=$(OBJ_BONUS_DIR)/%.o)
 
 # Default target
 all: $(NAME)
+	@rm -f $(NAME_BONUS)
 
 $(NAME): $(OBJS) lib
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@ $(MLX_FLAGS)
@@ -78,12 +79,12 @@ $(NAME_BONUS): $(OBJS_BONUS) lib
 # Pattern rules for object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 	@echo "$@ : $(GREEN)[OK]$(NC)"
 
 $(OBJ_BONUS_DIR)/%.o: $(SRC_BONUS_DIR)/%.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INC_BONUS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INC_BONUS) -c $< -o $@
 	@echo "$@ : $(GREEN)[OK]$(NC)"
 
 lib:
