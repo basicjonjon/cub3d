@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/04 21:09:23 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/08 15:22:30 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	get_texture_pixel(t_img *texture, int x, int y)
 	char	*pixel;
 	int		color;
 
-	// if (x < 0 || y < 0 || x >= 200 || y >= 200)
-	// 	return (0);
+	if (x < 0 || y < 0 || x >= 200 || y >= 200)
+		return (0);
 	pixel = texture->addr + (y * texture->line_lenght) + (x * texture->bit_per_pixels);
 	color = *(unsigned int *)pixel;
 	return (color);
@@ -50,6 +50,7 @@ int	check_colision(float x, float y, t_map *m)
 	int		j;
 	char	**map;
 
+	// return (1);
 	i = (int)x;
 	j = (int)y;
 	map = m->map;
