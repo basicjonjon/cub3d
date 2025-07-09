@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 19:14:15 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:36:01 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,15 @@ typedef struct s_ray
 	float	sideDistX;
 	float	sideDistY;
 }			t_ray;
+
+typedef struct s_hit_floor_ceiling
+{
+	int		x;
+	int		y;
+	float	rowDistance;
+	float	stepX;
+	float	stepY;
+}			t_hit_fc;
 
 typedef struct s_hit_info
 {
