@@ -28,6 +28,18 @@ void	free_asset(t_data *data)
 		free(data->asset.ceiling);
 }
 
+void	free_texture(t_data *data)
+{
+	if (data->texture.north.img_ptr)
+		mlx_destroy_image(data->mlx, data->texture.north.img_ptr);
+	if (data->texture.south.img_ptr)
+		mlx_destroy_image(data->mlx, data->texture.south.img_ptr);
+	if (data->texture.east.img_ptr)
+		mlx_destroy_image(data->mlx, data->texture.east.img_ptr);
+	if (data->texture.west.img_ptr)
+		mlx_destroy_image(data->mlx, data->texture.west.img_ptr);
+}
+
 void	free_map(t_data *data)
 {
 	int	i;
@@ -46,6 +58,7 @@ void	free_all(t_data *data)
 	if (data)
 	{
 		free_asset(data);
+		free_texture(data);
 		if (data->param.exist)
 			free_map(data);
 		if (data->img.img_ptr)

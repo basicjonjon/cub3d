@@ -12,6 +12,14 @@
 
 #include "../../includes/cub3d.h"
 
+void init_texture_null(t_texture *texture)
+{
+	texture->south.img_ptr = NULL;
+	texture->east.img_ptr = NULL;
+	texture->west.img_ptr = NULL;
+	texture->north.img_ptr = NULL;
+}
+
 int	create_img(t_data *data, t_img *img, char *path, int *h)
 {
 	img->img_ptr = mlx_xpm_file_to_image(data->mlx, path, h, h);
@@ -27,7 +35,7 @@ int	texture_init(t_data *data, t_asset *a)
 {
 	t_texture	t;
 	int			h;
-
+	init_texture_null(&t);
 	create_img(data, &t.north, a->no_path, &h);
 	create_img(data, &t.south, a->so_path, &h);
 	create_img(data, &t.east, a->ea_path, &h);
