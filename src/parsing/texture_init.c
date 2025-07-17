@@ -20,6 +20,8 @@ void init_texture_null(t_texture *texture)
 	texture->north.img_ptr = NULL;
 }
 
+
+
 int	create_img(t_data *data, t_img *img, char *path, int *h)
 {
 	img->img_ptr = mlx_xpm_file_to_image(data->mlx, path, h, h);

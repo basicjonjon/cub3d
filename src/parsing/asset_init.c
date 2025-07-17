@@ -46,24 +46,36 @@ t_color	*get_color(char *value)
 	return (free_tab(cut_line), color);
 }
 
+void	register_path(char *key, char *key_compare, char *value, char *path)
+{
+	if (!strncmp(key, key_compare, 2) && path == NULL)
+	{
+		printf(GREEN "%s\n" NC, value);
+		path = ft_strdup(value);
+		printf(BLUE "%s\n" NC, path);
+		path[ft_strlen(path) - 1] = '\0';
+	}
+}
+
 void	save_path(t_asset *asset, char *key, char *value)
 {
-	if (!strncmp(key, "SO", 2))
-	{
-		asset->so_path = ft_strdup(value);
-		asset->so_path[ft_strlen(asset->so_path) - 1] = '\0';
-	}
-	if (!strncmp(key, "NO", 2))
+	
+	if (!strncmp(key, "NO", 2) && asset->no_path == NULL)
 	{
 		asset->no_path = ft_strdup(value);
 		asset->no_path[ft_strlen(asset->no_path) - 1] = '\0';
 	}
-	if (!strncmp(key, "WE", 2))
+	if (!strncmp(key, "SO", 2) && asset->so_path == NULL)
+	{
+		asset->so_path = ft_strdup(value);
+		asset->so_path[ft_strlen(asset->so_path) - 1] = '\0';
+	}
+	if (!strncmp(key, "WE", 2) && asset->we_path == NULL)
 	{
 		asset->we_path = ft_strdup(value);
 		asset->we_path[ft_strlen(asset->we_path) - 1] = '\0';
 	}
-	if (!strncmp(key, "EA", 2))
+	if (!strncmp(key, "EA", 2) && asset->ea_path == NULL)
 	{
 		asset->ea_path = ft_strdup(value);
 		asset->ea_path[ft_strlen(asset->ea_path) - 1] = '\0';
