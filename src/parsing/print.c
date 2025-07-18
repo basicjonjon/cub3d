@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:52:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 19:34:10 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/18 14:25:26 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	print_asset_path(t_asset asset)
 {
-	printf("no wall %s%s%s\n", BGREEN, asset.no_path, NC);
-	printf("so wall %s%s%s\n", BGREEN, asset.so_path, NC);
-	printf("we wall %s%s%s\n", BGREEN, asset.we_path, NC);
-	printf("ea wall %s%s%s\n", BGREEN, asset.ea_path, NC);
+	printf("no wall %s%s%s\n", BGREEN, asset.north.path, NC);
+	printf("so wall %s%s%s\n", BGREEN, asset.south.path, NC);
+	printf("we wall %s%s%s\n", BGREEN, asset.east.path, NC);
+	printf("ea wall %s%s%s\n", BGREEN, asset.west.path, NC);
 	// printf("floor %s%i/%i/%i%s\n", BGREEN, asset.floor->r, asset.floor->g,
 	// 	asset.floor->b, NC);
 	// printf("ceiling %s%i/%i/%i%s\n", BGREEN, asset.ceiling->r, asset.ceiling->g,

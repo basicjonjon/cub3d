@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_parsing.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 19:14:15 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/18 14:13:21 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	char		 **map;
+	char		**map;
 	int			mapX;
 	int			mapY;
 }				t_map;

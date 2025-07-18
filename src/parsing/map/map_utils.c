@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 17:28:44 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:21:11 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,18 @@ char	*dup_map_line(char *line, int x)
 
 	i = 0;
 	y = 0;
-	res = malloc(sizeof(char) * (x + 1));
+	res = malloc(sizeof(char) * x);
 	if (!res)
 		return (NULL);
+	if (line[0] == '\n' || line[0] == '\0')
+	{
+		while (y < x - 1)
+		{
+			res[y++] = ' ';
+		}
+		res[y] = '\0';
+		return (res);
+	}
 	while (line[i])
 	{
 		z = 0;
@@ -36,11 +45,12 @@ char	*dup_map_line(char *line, int x)
 			}
 		}
 		else if (line[i] == '0' || line[i] == '1' || line[i] == 'N'
-			|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W' || line[i] == ' ')
+			|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W'
+			|| line[i] == ' ')
 			res[y++] = line[i];
 		i++;
 	}
-	while (y != x)
+	while (y < x - 1)
 	{
 		res[y++] = ' ';
 	}

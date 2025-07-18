@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   map_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:04:31 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/08 17:28:44 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:24:39 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_map(char *line)
+{
+	if ((line[0] == ' ' || line[0] == '0' || line[0] == '1' || line[0] == 1
+			|| line[0] == 9))
+	{
+		return (1);
+	}
+	return (0);
+}
 
 int	verif_floor(char **map, int x, int y)
 {

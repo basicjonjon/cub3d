@@ -34,12 +34,14 @@ OBJ_BONUS_DIR		:= obj_bonus
 # Source files (without .c)
 PARSING_FILES	:=	main \
 					verif_args \
-					asset \
-					asset_init \
+					asset/asset_init \
+					asset/asset_get \
+					asset/asset_verif \
 					print \
-					map_init \
-					map_utils \
-					map_verif \
+					map/map_init \
+					map/map_utils \
+					map/map_verif \
+					map/map_size \
 					data_init \
 					free \
 					end \
