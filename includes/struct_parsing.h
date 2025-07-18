@@ -71,7 +71,7 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	char		**map;
+	char		 **map;
 	int			mapX;
 	int			mapY;
 }				t_map;
