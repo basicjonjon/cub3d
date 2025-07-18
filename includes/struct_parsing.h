@@ -13,20 +13,13 @@
 #ifndef STRUCT_PARSING_H
 # define STRUCT_PARSING_H
 
-// typedef struct s_color
-// {
-// 	int			r;
-// 	int			g;
-// 	int			b;
-// }				t_color;
-
 typedef enum e_dir
 {
 	NORTH,
 	SOUTH,
 	EAST,
 	WEST
-}	s_dir;
+}				s_dir;
 
 typedef struct s_img
 {
@@ -39,32 +32,17 @@ typedef struct s_img
 
 typedef struct s_texture
 {
-	t_img	img;
-	int		tex_w;
-	int		tex_h;
-}			t_texture;
-
-// typedef struct s_texture
-// {
-// 	t_img	north;
-// 	t_img	south;
-// 	t_img	east;
-// 	t_img	west;
-// 	int		tex_w;
-// 	int		tex_h;
-// 	int		ceiling;
-// 	int		floor;
-// }			t_texture;
+	char		*path;
+	t_img		img;
+	int			tex_w;
+	int			tex_h;
+}				t_texture;
 
 typedef struct s_asset
 {
-	char		*no_path;
 	t_texture	north;
-	char		*so_path;
 	t_texture	south;
-	char		*we_path;
 	t_texture	west;
-	char		*ea_path;
 	t_texture	east;
 	int			ceiling;
 	int			floor;
@@ -100,51 +78,50 @@ typedef struct s_map
 
 typedef struct s_ray
 {
-	float	posX;
-	float	posY;
+	float		posX;
+	float		posY;
 
-	int		mapX;
-	int		mapY;
+	int			mapX;
+	int			mapY;
 
-	float	rayDirX;
-	float	rayDirY;
+	float		rayDirX;
+	float		rayDirY;
 
-	float	deltaDistX;
-	float	deltaDistY;
-	
-	int		stepX;
-	int		stepY;
-	float	sideDistX;
-	float	sideDistY;
-}			t_ray;
+	float		deltaDistX;
+	float		deltaDistY;
+
+	int			stepX;
+	int			stepY;
+	float		sideDistX;
+	float		sideDistY;
+}				t_ray;
 
 typedef struct s_hit_info
 {
-	s_dir	wall_dir;
-	float	wall_hit_x;
-	int		tex_x;
-	int		tex_y;
-}			t_hit;
+	s_dir		wall_dir;
+	float		wall_hit_x;
+	int			tex_x;
+	int			tex_y;
+}				t_hit;
 
 typedef struct s_config
 {
-	int		block;
-	int		player_size;
-	int		mapW;
-	int		mapH;
-	float	fov;
-	float	rot_speed;
-	float	move_speed;
-	float	run_speed;
-	int		nbr_rays;
-	float	column_width;
-}			t_config;
+	int			block;
+	int			player_size;
+	int			mapW;
+	int			mapH;
+	float		fov;
+	float		rot_speed;
+	float		move_speed;
+	float		run_speed;
+	int			nbr_rays;
+	float		column_width;
+}				t_config;
 
 typedef struct s_data
 {
 	t_config	conf;
 	t_asset		asset;
-	// t_texture	texture;
 	t_hit		hit;
 	t_map		param;
 	t_player	player;

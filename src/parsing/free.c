@@ -14,14 +14,14 @@
 
 void	free_asset(t_data *data)
 {
-	if (data->asset.no_path)
-		free(data->asset.no_path);
-	if (data->asset.so_path)
-		free(data->asset.so_path);
-	if (data->asset.ea_path)
-		free(data->asset.ea_path);
-	if (data->asset.we_path)
-		free(data->asset.we_path);
+	if (data->asset.north.path)
+		free(data->asset.north.path);
+	if (data->asset.south.path)
+		free(data->asset.south.path);
+	if (data->asset.east.path)
+		free(data->asset.east.path);
+	if (data->asset.west.path)
+		free(data->asset.west.path);
 	if (data->asset.north.img.img_ptr)
 		mlx_destroy_image(data->mlx, data->asset.north.img.img_ptr);
 	if (data->asset.south.img.img_ptr)

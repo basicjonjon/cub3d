@@ -12,40 +12,6 @@
 
 #include "cub3d.h"
 
-// void	init_asset_null(t_asset *asset)
-// {
-// 	asset->no_path = NULL;
-// 	asset->so_path = NULL;
-// 	asset->we_path = NULL;
-// 	asset->ea_path = NULL;
-// 	asset->ceiling = NULL;
-// 	asset->floor = NULL;
-// }
-
-// t_color	*get_color(char *value)
-// {
-// 	char	**cut_line;
-// 	t_color	*color;
-// 	int		i;
-
-// 	cut_line = ft_split(value, ',');
-// 	i = 0;
-// 	while (cut_line[i] != NULL)
-// 	{
-// 		i++;
-// 	}
-// 	if (i != 3)
-// 	{
-// 		ft_fprintf(2, "%sERROR :wrong color format%s\n", BRED, NC);
-// 		return (free_tab(cut_line), NULL);
-// 	}
-// 	color = malloc(sizeof(t_color));
-// 	color->r = ft_atol(cut_line[0]) % 255;
-// 	color->g = ft_atol(cut_line[1]) % 255;
-// 	color->b = ft_atol(cut_line[2]) % 255;
-// 	return (free_tab(cut_line), color);
-// }
-
 int	get_color(char *value)
 {
 	char	**cut_line;
@@ -76,23 +42,23 @@ void	save_path(t_asset *asset, char *key, char *value)
 {
 	if (!strncmp(key, "SO", 2))
 	{
-		asset->so_path = ft_strdup(value);
-		asset->so_path[ft_strlen(asset->so_path) - 1] = '\0';
+		asset->south.path = ft_strdup(value);
+		asset->south.path[ft_strlen(asset->south.path) - 1] = '\0';
 	}
 	if (!strncmp(key, "NO", 2))
 	{
-		asset->no_path = ft_strdup(value);
-		asset->no_path[ft_strlen(asset->no_path) - 1] = '\0';
+		asset->north.path = ft_strdup(value);
+		asset->north.path[ft_strlen(asset->north.path) - 1] = '\0';
 	}
 	if (!strncmp(key, "WE", 2))
 	{
-		asset->we_path = ft_strdup(value);
-		asset->we_path[ft_strlen(asset->we_path) - 1] = '\0';
+		asset->west.path = ft_strdup(value);
+		asset->west.path[ft_strlen(asset->west.path) - 1] = '\0';
 	}
 	if (!strncmp(key, "EA", 2))
 	{
-		asset->ea_path = ft_strdup(value);
-		asset->ea_path[ft_strlen(asset->ea_path) - 1] = '\0';
+		asset->east.path = ft_strdup(value);
+		asset->east.path[ft_strlen(asset->east.path) - 1] = '\0';
 	}
 	if (!strncmp(key, "F", 1))
 		asset->floor = get_color(value);
