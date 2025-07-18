@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/18 17:17:45 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:41:50 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ char	**malloc_map(char *maps_file)
 	int		y;
 	char	**map;
 
-	// int		i;
-	// x = get_map_size_x(maps_file);
 	y = get_map_size_y(maps_file);
-	// i = 0;
 	map = malloc(sizeof(char *) * (y + 1));
 	if (map == NULL)
 		return (NULL);
@@ -48,12 +45,16 @@ int	get_map(t_data *data, char *maps_file)
 	char	*line;
 
 	i = 0;
-	data->param.mapY = get_map_size_y(maps_file);
 	fd = open(maps_file, O_RDONLY);
 	line = get_next_line(fd);
 	data->param.map = malloc_map(maps_file);
 	data->param.mapX = get_map_size_x(maps_file);
 	data->param.mapY = get_map_size_y(maps_file);
+	while (!is_map(line))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
 	while (line != NULL && i < data->param.mapY)
 	{
 		if (is_map(line) || line[0] == '\n')

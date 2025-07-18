@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:45:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/18 17:04:47 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:40:31 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ int	get_map_size_y(char *maps_file)
 	y = 0;
 	fd = open(maps_file, O_RDONLY);
 	line = get_next_line(fd);
+	while (!is_map(line))
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
 	while (line != NULL)
 	{
 		if (is_map(line))
