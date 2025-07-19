@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/19 14:14:12 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/19 15:59:41 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	init_config(t_config *conf, t_map *map)
 int	init_data(t_data *data, char *map_file)
 {
 	ft_memset(data, 0, sizeof(t_data));
+	data->param.map = NULL;
 	if (init_mlx(data) == 1)
 		return (1);
 	if (get_asset(map_file, data))

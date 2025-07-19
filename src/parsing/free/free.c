@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/19 14:18:43 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/19 16:00:36 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	free_all(t_data *data)
 	if (data)
 	{
 		free_asset(data);
-		free_map(data);
+		if (data->param.map)
+			free_map(data);
 		if (data->img.img_ptr)
 			mlx_destroy_image(data->mlx, data->img.img_ptr);
 		if (data->win)

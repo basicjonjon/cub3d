@@ -1,7 +1,7 @@
-NO ./assets/xpm/blue.xpm
-EA ./assets/xpm/green.xpm
-SO ./assets/xpm/yellow.xpm
-WE ./assets/xpm/red.xpm
+NO ./assets/xpm/wall/wall1.xpm
+EA ./assets/xpm/wall/wall1.xpm
+SO ./assets/xpm/wall/wall1.xpm
+WE ./assets/xpm/wall/wall1.xpm
 F 220,100,0
 C 225,30,0
 

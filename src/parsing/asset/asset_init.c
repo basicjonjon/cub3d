@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/19 13:28:04 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/19 16:03:19 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	get_asset(char *maps_file, t_data *data)
 	while (line != NULL)
 	{
 		if (get_path(line, data, &nb_asset))
-			return (1);
+			return (free(line), 1);
 		if (is_map(line) && nb_asset != 0)
-			return (ft_fprintf(2, "%sERROR : invalide assets\n%s", BRED, NC),
-				1);
+			return (free(line), ft_fprintf(2, "%sERROR : invalide assets\n%s",
+					BRED, NC), 1);
 		free(line);
 		line = get_next_line(fd);
 	}
