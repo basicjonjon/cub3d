@@ -6,23 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:45:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/18 17:40:31 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/19 13:51:39 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// int	get_separated_map(int fd)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (is_map(line))
-// 	{
-// 		/* code */
-// 	}
-// 	return (i);
-// }
 
 int	get_map_size_x(char *maps_file)
 {
@@ -58,40 +46,52 @@ int	get_map_size_x(char *maps_file)
 	return (free(line), close(fd), x);
 }
 
-int	get_map_size_y(char *maps_file)
+int	count_blank_line(int fd)
 {
-	int		y;
 	int		i;
-	int		fd;
 	char	*line;
 
-	y = 0;
-	fd = open(maps_file, O_RDONLY);
+	i = 1;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		i++;
+		if (is_map(line))
+			return (free(line), i);
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (0);
+}
+
+char	*skip_line(int fd)
+{
+	char	*line;
+
 	line = get_next_line(fd);
 	while (!is_map(line))
 	{
 		free(line);
 		line = get_next_line(fd);
 	}
+	return (line);
+}
+
+int	get_map_size_y(char *maps_file)
+{
+	int		y;
+	int		fd;
+	char	*line;
+
+	y = 0;
+	fd = open(maps_file, O_RDONLY);
+	line = skip_line(fd);
 	while (line != NULL)
 	{
 		if (is_map(line))
 			y++;
 		if (line[0] == '\n')
-		{
-			i = 0;
-			while (line != NULL)
-			{
-				i++;
-				if (is_map(line))
-				{
-					y += i;
-					break ;
-				}
-				free(line);
-				line = get_next_line(fd);
-			}
-		}
+			y += count_blank_line(fd);
 		free(line);
 		line = get_next_line(fd);
 	}

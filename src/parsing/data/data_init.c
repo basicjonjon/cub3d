@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/18 16:37:43 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/19 14:14:12 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,19 @@ void	init_config(t_config *conf, t_map *map)
 int	init_data(t_data *data, char *map_file)
 {
 	ft_memset(data, 0, sizeof(t_data));
-	// if (init_mlx(data) == 1)
-	// 	return (1);
+	if (init_mlx(data) == 1)
+		return (1);
 	if (get_asset(map_file, data))
-		return (/*free_all(data),*/ 1);
-	// if (texture_init(data, &data->asset))
-	// 	return (free_all(data), 1);
+		return (free_all(data), 1);
+	if (texture_init(data, &data->asset))
+		return (free_all(data), 1);
 	if (get_map(data, map_file))
 		return (free_all(data), 1);
-	// if (verif_map(data) || verif_map_player(data))
-	// 	return (free_all(data), 1);
-	// init_config(&data->conf, &data->param);
-	// init_player(data);
-	// ft_memset(&data->hit, 0, sizeof(t_hit));
+	if (verif_map(data) || verif_map_player(data))
+		return (free_all(data), 1);
+	init_config(&data->conf, &data->param);
+	init_player(data);
+	ft_memset(&data->hit, 0, sizeof(t_hit));
 	return (0);
 }
 

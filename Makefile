@@ -33,20 +33,21 @@ OBJ_BONUS_DIR		:= obj_bonus
 
 # Source files (without .c)
 PARSING_FILES	:=	main \
-					verif_args \
+					data/verif_args \
 					asset/asset_init \
 					asset/asset_get \
 					asset/asset_verif \
-					print \
+					print/print \
 					map/map_init \
 					map/map_utils \
 					map/map_verif \
 					map/map_size \
-					data_init \
-					free \
-					end \
-					player_init \
-					texture_init \
+					texture/create_img \
+					texture/texture_init \
+					data/data_init \
+					free/free \
+					player/player_init \
+					
 
 CASTING_FILES	:=	hooks \
 					raycasting \

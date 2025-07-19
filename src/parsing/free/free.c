@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/18 16:39:30 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/19 14:18:43 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,14 @@ void	free_asset(t_data *data)
 		free(data->asset.east.path);
 	if (data->asset.west.path)
 		free(data->asset.west.path);
-	// if (data->asset.north.img.img_ptr)
-	// 	mlx_destroy_image(data->mlx, data->asset.north.img.img_ptr);
-	// if (data->asset.south.img.img_ptr)
-	// 	mlx_destroy_image(data->mlx, data->asset.south.img.img_ptr);
-	// if (data->asset.west.img.img_ptr)
-	// 	mlx_destroy_image(data->mlx, data->asset.west.img.img_ptr);
-	// if (data->asset.east.img.img_ptr)
-	// 	mlx_destroy_image(data->mlx, data->asset.east.img.img_ptr);
-	// if (data->asset.floor)
-	// 	free(data->asset.floor);
-	// if (data->asset.ceiling)
-	// 	free(data->asset.ceiling);
+	if (data->asset.north.img.img_ptr)
+		mlx_destroy_image(data->mlx, data->asset.north.img.img_ptr);
+	if (data->asset.south.img.img_ptr)
+		mlx_destroy_image(data->mlx, data->asset.south.img.img_ptr);
+	if (data->asset.west.img.img_ptr)
+		mlx_destroy_image(data->mlx, data->asset.west.img.img_ptr);
+	if (data->asset.east.img.img_ptr)
+		mlx_destroy_image(data->mlx, data->asset.east.img.img_ptr);
 }
 
 void	free_map(t_data *data)
@@ -55,16 +51,16 @@ void	free_all(t_data *data)
 	{
 		free_asset(data);
 		free_map(data);
-		// if (data->img.img_ptr)
-		// 	mlx_destroy_image(data->mlx, data->img.img_ptr);
-		// if (data->win)
-		// 	mlx_destroy_window(data->mlx, data->win);
-		// if (data->mlx)
-		// {
-		// 	mlx_destroy_display(data->mlx);
-		// 	free(data->mlx);
-		// }
-		// data = NULL;
+		if (data->img.img_ptr)
+			mlx_destroy_image(data->mlx, data->img.img_ptr);
+		if (data->win)
+			mlx_destroy_window(data->mlx, data->win);
+		if (data->mlx)
+		{
+			mlx_destroy_display(data->mlx);
+			free(data->mlx);
+		}
+		data = NULL;
 	}
 }
 
