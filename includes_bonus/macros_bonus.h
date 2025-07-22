@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_img.c                                       :+:      :+:    :+:   */
+/*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 13:41:54 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:42:38 by jle-doua         ###   ########.fr       */
+/*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
+/*   Updated: 2025/07/22 14:26:26 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef MACROS_BONUS_H
+# define MACROS_BONUS_H
 
-int	create_img(t_data *data, t_texture *t)
-{
-	t->img.img_ptr = mlx_xpm_file_to_image(data->mlx, t->path, &t->tex_w,
-			&t->tex_h);
-	if (!t->img.img_ptr)
-		return (1);
-	t->img.addr = mlx_get_data_addr(t->img.img_ptr, &t->img.bit_per_pixels,
-			&t->img.line_lenght, &t->img.endian);
-	if (!t->img.addr)
-		return (1);
-	t->img.bit_per_pixels /= 8;
-	return (0);
-}
+# define M_PI 3.14159265358979323846
+# define M_PI_2 (M_PI / 2)
+
+# define playerSize 10
+
+# define screenWidth 640 * 2
+# define screenHeight 480 * 2
+
+# define BLOCK 64
+
+# define NBR_RAYS 500
+
+#endif

@@ -6,15 +6,16 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 13:41:54 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/19 14:09:49 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:30:28 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	create_img(t_data *data, t_texture *t)
 {
-	t->img.img_ptr = mlx_xpm_file_to_image(data->mlx, t->path, &t->tex_w, &t->tex_h);
+	t->img.img_ptr = mlx_xpm_file_to_image(data->mlx, t->path, &t->tex_w,
+			&t->tex_h);
 	if (!t->img.img_ptr)
 		return (1);
 	t->img.addr = mlx_get_data_addr(t->img.img_ptr, &t->img.bit_per_pixels,

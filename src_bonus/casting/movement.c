@@ -3,28 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/08 17:28:44 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:37:31 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	move_player(t_data *data, t_player *player, t_config *c)
 {
+	float	dx;
+	float	dy;
+	float	strafeX;
+	float	strafeY;
+	// float	strafeX;
+	// float	strafeY;
+
 	// float x = player->posX;
 	// float y = player->posY;
-
 	if (player->run)
 		c->move_speed = c->run_speed;
 	else
 		c->move_speed = 0.008;
-
-	float dx = cos(player->angle) * c->move_speed;
-	float dy = sin(player->angle) * c->move_speed;
-
+	dx = cos(player->angle) * c->move_speed;
+	dy = sin(player->angle) * c->move_speed;
 	if (player->keyUp == true)
 	{
 		if (check_colision(player->x + dx, player->y + dy, &data->param))
@@ -41,12 +45,12 @@ int	move_player(t_data *data, t_player *player, t_config *c)
 			player->y -= dy;
 		}
 	}
-
 	if (player->keyLeft == true)
 	{
-		float strafeX = cos(player->angle - M_PI_2) * c->move_speed;
-		float strafeY = sin(player->angle - M_PI_2) * c->move_speed;
-		if (check_colision(player->x + strafeX, player->y + strafeY, &data->param))
+		strafeX = cos(player->angle - M_PI_2) * c->move_speed;
+		strafeY = sin(player->angle - M_PI_2) * c->move_speed;
+		if (check_colision(player->x + strafeX, player->y + strafeY,
+				&data->param))
 		{
 			player->x += strafeX;
 			player->y += strafeY;
@@ -54,25 +58,23 @@ int	move_player(t_data *data, t_player *player, t_config *c)
 	}
 	if (player->keyRight == true)
 	{
-		float strafeX = cos(player->angle + M_PI_2) * c->move_speed;
-		float strafeY = sin(player->angle + M_PI_2) * c->move_speed;
-		if (check_colision(player->x + strafeX, player->y + strafeY, &data->param))
+		strafeX = cos(player->angle + M_PI_2) * c->move_speed;
+		strafeY = sin(player->angle + M_PI_2) * c->move_speed;
+		if (check_colision(player->x + strafeX, player->y + strafeY,
+				&data->param))
 		{
 			player->x += strafeX;
 			player->y += strafeY;
 		}
 	}
-
 	if (player->rotLeft == true)
 		player->angle -= c->rot_speed;
 	if (player->rotRight == true)
 		player->angle += c->rot_speed;
-
 	if (player->angle < 0)
 		player->angle += 2 * M_PI;
 	else if (player->angle >= 2 * M_PI)
 		player->angle -= 2 * M_PI;
-
 	return (0);
 }
 

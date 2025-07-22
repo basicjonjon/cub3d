@@ -6,11 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:38:01 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/19 14:11:29 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:30:23 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	texture_init(t_data *data, t_asset *a)
 {

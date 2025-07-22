@@ -6,11 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:45:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/19 13:51:39 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:29:27 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	get_map_size_x(char *maps_file)
 {

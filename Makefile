@@ -71,6 +71,7 @@ BONUS_PARSING_FILES	:= main \
 					data/data_init \
 					free/free \
 					player/player_init \
+					hud/print_hud \
 
 BONUS_CASTING_FILES	:=hooks \
 					raycasting \
@@ -86,8 +87,8 @@ SRC_CASTING		:= $(addprefix $(CASTING_DIR)/, $(addsuffix .c, $(CASTING_FILES)))
 SRCS			:= $(SRC_PARSING) $(SRC_CASTING)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-SRC_PARSING_BONUS	:= $(addprefix $(PARSING_BONUS_DIR)/, $(addsuffix .c, $(PARSING_FILES)))
-SRC_CASTING_BONUS	:= $(addprefix $(CASTING_BONUS_DIR)/, $(addsuffix .c, $(CASTING_FILES)))
+SRC_PARSING_BONUS	:= $(addprefix $(PARSING_BONUS_DIR)/, $(addsuffix .c, $(BONUS_PARSING_FILES)))
+SRC_CASTING_BONUS	:= $(addprefix $(CASTING_BONUS_DIR)/, $(addsuffix .c, $(BONUS_CASTING_FILES)))
 SRCS_BONUS			:= $(SRC_PARSING_BONUS) $(SRC_CASTING_BONUS)
 OBJS_BONUS			:= $(SRCS_BONUS:$(SRC_BONUS_DIR)/%.c=$(OBJ_BONUS_DIR)/%.o)
 

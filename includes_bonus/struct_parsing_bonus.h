@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_parsing.h                                   :+:      :+:    :+:   */
+/*   struct_parsing_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/18 14:13:21 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:26:48 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_PARSING_H
-# define STRUCT_PARSING_H
+#ifndef STRUCT_PARSING_BONUS_H
+# define STRUCT_PARSING_BONUS_H
 
 typedef enum e_dir
 {

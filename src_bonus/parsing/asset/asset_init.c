@@ -6,11 +6,12 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/19 16:03:19 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:28:52 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
+
 
 int	get_path(char *line, t_data *data, int *nb_asset)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/08 19:26:42 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:35:45 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	ft_pixel_put(int x, int y, t_img *img, int color)
 {
@@ -29,15 +29,15 @@ int	get_texture_pixel(t_texture *texture, int x, int y)
 
 	if (x < 0 || y < 0 || x >= texture->tex_w || y >= texture->tex_w)
 		return (0);
-	pixel = texture->img.addr + (y * texture->img.line_lenght) + (x * texture->img.bit_per_pixels);
+	pixel = texture->img.addr + (y * texture->img.line_lenght) + (x
+			* texture->img.bit_per_pixels);
 	color = *(unsigned int *)pixel;
 	return (color);
 }
 
-int verif_move(t_player *player)
+int	verif_move(t_player *player)
 {
-	if (player->keyDown || player->keyLeft
-		|| player->keyRight || player->keyUp
+	if (player->keyDown || player->keyLeft || player->keyRight || player->keyUp
 		|| player->rotLeft || player->rotRight)
 		return (1);
 	else

@@ -6,11 +6,12 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 13:44:06 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/18 15:43:12 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:28:56 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
+
 
 int	is_asset(char *line)
 {

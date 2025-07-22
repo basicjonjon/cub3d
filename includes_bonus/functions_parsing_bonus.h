@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   functions_parsing.h                                :+:      :+:    :+:   */
+/*   functions_parsing_bonus.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/19 14:14:51 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:34:12 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNCTIONS_PARSING_H
-# define FUNCTIONS_PARSING_H
+#ifndef FUNCTIONS_PARSING_BONUS_H
+# define FUNCTIONS_PARSING_BONUS_H
 
 ////////////////////////////////////////////////////////////
 // Data_init
@@ -103,9 +103,15 @@ int		create_img(t_data *data, t_texture *t);
 int		texture_init(t_data *data, t_asset *a);
 
 ////////////////////////////////////////////////////////////
-// PLayer_init
+// Player_init
 ////////////////////////////////////////////////////////////
 
 int		init_player(t_data *data);
+
+////////////////////////////////////////////////////////////
+// print_hud
+////////////////////////////////////////////////////////////
+
+void	put_hud_test(t_data *data, int x_start, int y_start, int size);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:52:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/18 14:25:26 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:30:12 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	print_asset_path(t_asset asset)
 {
@@ -18,10 +18,6 @@ void	print_asset_path(t_asset asset)
 	printf("so wall %s%s%s\n", BGREEN, asset.south.path, NC);
 	printf("we wall %s%s%s\n", BGREEN, asset.east.path, NC);
 	printf("ea wall %s%s%s\n", BGREEN, asset.west.path, NC);
-	// printf("floor %s%i/%i/%i%s\n", BGREEN, asset.floor->r, asset.floor->g,
-	// 	asset.floor->b, NC);
-	// printf("ceiling %s%i/%i/%i%s\n", BGREEN, asset.ceiling->r, asset.ceiling->g,
-	// 	asset.ceiling->b, NC);
 	printf("floor %s%x%s\n", BGREEN, asset.floor, NC);
 	printf("ceiling %s%x%s\n", BGREEN, asset.ceiling, NC);
 }
