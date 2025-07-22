@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:35:42 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/19 14:14:51 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ int		verif_map(t_data *data);
 int		verif_map_player(t_data *data);
 
 ////////////////////////////////////////////////////////////
-// Map_size
+// Map_utils
 ////////////////////////////////////////////////////////////
 
-char	*skip_line(int fd);
 int		get_map_size_x(char *maps_file);
 int		get_map_size_y(char *maps_file);
 

@@ -56,6 +56,30 @@ CASTING_FILES	:=	hooks \
 					map_casting \
 					utils \
 
+BONUS_PARSING_FILES	:= main \
+					data/verif_args \
+					asset/asset_init \
+					asset/asset_get \
+					asset/asset_verif \
+					print/print \
+					map/map_init \
+					map/map_utils \
+					map/map_verif \
+					map/map_size \
+					texture/create_img \
+					texture/texture_init \
+					data/data_init \
+					free/free \
+					player/player_init \
+
+BONUS_CASTING_FILES	:=hooks \
+					raycasting \
+					raycasting_utils \
+					movement \
+					map_casting \
+					utils \
+
+
 # Source and object files
 SRC_PARSING		:= $(addprefix $(PARSING_DIR)/, $(addsuffix .c, $(PARSING_FILES)))
 SRC_CASTING		:= $(addprefix $(CASTING_DIR)/, $(addsuffix .c, $(CASTING_FILES)))

@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 13:44:06 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:31:52 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/18 15:43:12 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	verif_asset(t_asset *asset)
 
 int	split_size(char **res)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (res[i])

@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_img.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 13:41:54 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:42:38 by jle-doua         ###   ########.fr       */
+/*   Created: 2025/04/15 16:30:10 by jle-doua          #+#    #+#             */
+/*   Updated: 2025/07/19 15:57:13 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	create_img(t_data *data, t_texture *t)
+int	main(int argc, char **argv, char **envp)
 {
-	t->img.img_ptr = mlx_xpm_file_to_image(data->mlx, t->path, &t->tex_w,
-			&t->tex_h);
-	if (!t->img.img_ptr)
+	t_data	data;
+
+	if (!envp[0] || verif_args(argc, argv))
 		return (1);
-	t->img.addr = mlx_get_data_addr(t->img.img_ptr, &t->img.bit_per_pixels,
-			&t->img.line_lenght, &t->img.endian);
-	if (!t->img.addr)
+	if (init_data(&data, argv[1]) != 0)
 		return (1);
-	t->img.bit_per_pixels /= 8;
+	print_asset_path(data.asset);
+	print_player_info(&data);
+	print_map_info(&data);
+	print_map(data.param.map);
+	hooks(&data);
+	mlx_loop_hook(data.mlx, raycasting, &data);
+	mlx_loop(data.mlx);
+	free_all(&data);
 	return (0);
 }

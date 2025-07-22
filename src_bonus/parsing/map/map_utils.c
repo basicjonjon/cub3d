@@ -6,43 +6,33 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:10:45 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:21:11 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*dup_blank_line(char *res, int x)
+char	*dup_map_line(char *line, int x)
 {
-	int	y;
-
-	y = 0;
-	while (y < x - 1)
-	{
-		res[y++] = ' ';
-	}
-	res[y] = '\0';
-	return (res);
-}
-
-char	*complet_line(int y, int x, char *res)
-{
-	while (y < x - 1)
-	{
-		res[y++] = ' ';
-	}
-	res[y] = '\0';
-	return (res);
-}
-
-char	*dup_normal_line(char *line, char *res, int x)
-{
-	int	i;
-	int	z;
-	int	y;
+	int		i;
+	int		y;
+	int		z;
+	char	*res;
 
 	i = 0;
 	y = 0;
+	res = malloc(sizeof(char) * x);
+	if (!res)
+		return (NULL);
+	if (line[0] == '\n' || line[0] == '\0')
+	{
+		while (y < x - 1)
+		{
+			res[y++] = ' ';
+		}
+		res[y] = '\0';
+		return (res);
+	}
 	while (line[i])
 	{
 		z = 0;
@@ -60,18 +50,10 @@ char	*dup_normal_line(char *line, char *res, int x)
 			res[y++] = line[i];
 		i++;
 	}
-	return (complet_line(y, x, res));
-}
-
-char	*dup_map_line(char *line, int x)
-{
-	char	*res;
-
-	res = malloc(sizeof(char) * x);
-	if (!res)
-		return (NULL);
-	if (line[0] == '\n' || line[0] == '\0')
-		return (dup_blank_line(res, x));
-	dup_normal_line(line, res, x);
+	while (y < x - 1)
+	{
+		res[y++] = ' ';
+	}
+	res[y] = '\0';
 	return (res);
 }

@@ -6,36 +6,16 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:45:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:59:27 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/19 13:51:39 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	count_line_size(char *line, int *x)
-{
-	int	i;
-	int	y;
-
-	i = 0;
-	if (is_map(line))
-	{
-		y = 0;
-		while (line[y] != '\0')
-		{
-			if (line[y] == 9)
-				i += 4;
-			else
-				i++;
-			y++;
-		}
-		if (i > *x)
-			*x = i;
-	}
-}
-
 int	get_map_size_x(char *maps_file)
 {
+	int		i;
+	int		y;
 	int		fd;
 	int		x;
 	char	*line;
@@ -45,7 +25,21 @@ int	get_map_size_x(char *maps_file)
 	x = 0;
 	while (line != NULL)
 	{
-		count_line_size(line, &x);
+		i = 0;
+		if (is_map(line))
+		{
+			y = 0;
+			while (line[y] != '\0')
+			{
+				if (line[y] == 9)
+					i += 4;
+				else
+					i++;
+				y++;
+			}
+			if (i > x)
+				x = i;
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
