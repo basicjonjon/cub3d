@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/22 16:04:13 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:21:44 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ int	raycasting(t_data *data)
 		draw_map(data, &data->conf);
 		draw_player(data, &data->player, &data->conf);
 		rays_process(data, &data->player, &data->conf);
-		put_hud_test(data, 10, 10, 200);
+		put_hud_test(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 		return (0);
 	}
@@ -196,7 +196,7 @@ int	raycasting(t_data *data)
 	// cast_ceiling(&data->img, data->texture.ceiling);
 	// cast_floor(&data->img, data->texture.floor);
 	rays_process(data, &data->player, &data->conf);
-	put_hud_test(data, 10, 10, 200);
+	put_hud_test(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	return (0);
 }
