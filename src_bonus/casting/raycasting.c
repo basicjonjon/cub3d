@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/22 16:21:44 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:32:51 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,59 @@ void	cast_ceiling(t_img *img, int color)
 	}
 }
 
+void	draw_floor_ceiling(t_data *data)
+{
+	float	dirX = cos(data->player.angle);
+	float	dirY = sin(data->player.angle);
+
+	float	planeX = -dirY * data->conf.fov;
+	float	planeY =  dirX * data->conf.fov;
+
+	for (int y = screenHeight / 2 + 1; y < screenHeight; y++)
+	{
+		// Distance entre le joueur et la ligne actuelle
+		float rayDirX0 = dirX - planeX;
+		float rayDirY0 = dirY - planeY;
+		float rayDirX1 = dirX + planeX;
+		float rayDirY1 = dirY + planeY;
+
+		int p = y - screenHeight / 2;
+		float posZ = 0.5f * screenHeight;  // Hauteur du plan projeté (modifiable)
+
+		float rowDistance = posZ / p;
+
+		float floorStepX = rowDistance * (rayDirX1 - rayDirX0) / screenWidth;
+		float floorStepY = rowDistance * (rayDirY1 - rayDirY0) / screenWidth;
+
+		float floorX = data->player.x + rowDistance * rayDirX0;
+		float floorY = data->player.y + rowDistance * rayDirY0;
+
+		for (int x = 0; x < screenWidth; ++x)
+		{
+			int cellX = (int)floorX;
+			int cellY = (int)floorY;
+
+			int tx = (int)(data->asset.south.tex_w * (floorX - cellX)) % data->asset.south.tex_w;
+			int ty = (int)(data->asset.south.tex_h * (floorY - cellY)) % data->asset.south.tex_h;
+
+			if (tx < 0) tx += data->asset.south.tex_w;
+			if (ty < 0) ty += data->asset.south.tex_h;
+
+			int floorColor = get_texture_pixel(&data->asset.south, tx, ty);
+			int ceilColor  = get_texture_pixel(&data->asset.south, tx, ty);
+
+			// Sol
+			ft_pixel_put(x, y, &data->img, floorColor);
+
+			// Plafond (symétrique)
+			ft_pixel_put(x, screenHeight - y, &data->img, ceilColor);
+
+			floorX += floorStepX;
+			floorY += floorStepY;
+		}
+	}
+}
+
 int	raycasting(t_data *data)
 {
 	if (data->player.map == true)
@@ -195,6 +248,7 @@ int	raycasting(t_data *data)
 	move_player(data, &data->player, &data->conf);
 	// cast_ceiling(&data->img, data->texture.ceiling);
 	// cast_floor(&data->img, data->texture.floor);
+	draw_floor_ceiling(data);
 	rays_process(data, &data->player, &data->conf);
 	put_hud_test(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);

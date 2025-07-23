@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_parsing_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:26:48 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:18:30 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ typedef struct s_player
 {
 	float		x;
 	float		y;
-	float		posX;
-	float		posY;
 	float		angle;
 
 	bool		keyUp;
