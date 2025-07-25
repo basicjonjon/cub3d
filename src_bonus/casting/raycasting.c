@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/22 21:32:51 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/27 20:41:09 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,7 @@ int	raycasting(t_data *data)
 		draw_map(data, &data->conf);
 		draw_player(data, &data->player, &data->conf);
 		rays_process(data, &data->player, &data->conf);
-		put_hud_test(data);
+		// print_hud(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 		return (0);
 	}
@@ -250,7 +250,7 @@ int	raycasting(t_data *data)
 	// cast_floor(&data->img, data->texture.floor);
 	draw_floor_ceiling(data);
 	rays_process(data, &data->player, &data->conf);
-	put_hud_test(data);
+	print_hud(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	return (0);
 }

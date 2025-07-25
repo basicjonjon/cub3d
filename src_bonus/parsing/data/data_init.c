@@ -6,12 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:29:18 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:47:23 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
 
 int	init_mlx(t_data *data)
 {
@@ -63,6 +62,8 @@ int	init_data(t_data *data, char *map_file)
 	if (get_map(data, map_file))
 		return (free_all(data), 1);
 	if (verif_map(data) || verif_map_player(data))
+		return (free_all(data), 1);
+	if (init_hud(data))
 		return (free_all(data), 1);
 	init_config(&data->conf, &data->param);
 	init_player(data);

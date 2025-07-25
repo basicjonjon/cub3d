@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 21:18:30 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/27 20:41:35 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,14 @@ typedef struct s_config
 	float		column_width;
 }				t_config;
 
+typedef struct s_hud
+{
+	t_texture	batterie[6];
+	t_texture	rec[2];
+	t_texture	border[4];
+	t_texture	center_cam;
+}				t_hud;
+
 typedef struct s_data
 {
 	t_config	conf;
@@ -124,6 +132,7 @@ typedef struct s_data
 	t_map		param;
 	t_player	player;
 	t_img		img;
+	t_hud		hud;
 	void		*mlx;
 	void		*win;
 
