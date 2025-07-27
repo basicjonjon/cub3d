@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/22 14:35:49 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/27 22:05:48 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,12 @@ int	key_press(int keysym, t_data *data)
 	return (keysym);
 }
 
+
+
 void	hooks(t_data *data)
 {
+	mlx_mouse_hide(data->mlx, data->win);
+	mlx_mouse_move(data->mlx, data->win, screenWidth / 2, screenHeight / 2);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
 	mlx_hook(data->win, DestroyNotify, StructureNotifyMask, close_win, data);

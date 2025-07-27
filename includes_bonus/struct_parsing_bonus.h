@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/25 18:49:56 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/27 22:15:29 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ typedef struct s_player
 	float		x;
 	float		y;
 	float		angle;
+
+	float		dirX;
+	float		dirY;
+	float		planeX;
+	float		planeY;
 
 	bool		keyUp;
 	bool		keyDown;
@@ -110,6 +115,7 @@ typedef struct s_config
 	int			mapH;
 	float		fov;
 	float		rot_speed;
+	float		sensitivity;
 	float		move_speed;
 	float		run_speed;
 	int			nbr_rays;

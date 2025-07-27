@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 21:18:59 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/27 21:47:55 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	get_player_direction(t_data *data)
 		data->player.angle = M_PI / 2;
 	else
 		data->player.angle = M_PI;
+	data->player.dirX = cos(data->player.angle);
+	data->player.dirY = sin(data->player.angle);
+	data->player.planeX = -data->player.dirY * data->conf.fov;
+	data->player.planeY = data->player.dirX * data->conf.fov;
 }
 
 void	init_bool(t_data *data)
