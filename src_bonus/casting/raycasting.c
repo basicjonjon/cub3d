@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/27 20:41:09 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/27 22:11:18 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +195,7 @@ void	draw_floor_ceiling(t_data *data)
 		float rayDirY1 = dirY + planeY;
 
 		int p = y - screenHeight / 2;
-		float posZ = 0.5f * screenHeight;  // Hauteur du plan projeté (modifiable)
+		float posZ = 0.5f * screenHeight - 10;  // Hauteur du plan projeté (modifiable)
 
 		float rowDistance = posZ / p;
 

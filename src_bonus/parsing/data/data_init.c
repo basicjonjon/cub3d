@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/25 14:47:23 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/27 21:50:59 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	init_config(t_config *conf, t_map *map)
 	conf->move_speed = 0.008;
 	conf->run_speed = conf->move_speed * 2.5;
 	conf->rot_speed = 0.008 * 2;
+	conf->sensitivity = 0.003;
 	conf->nbr_rays = screenWidth;
 	conf->column_width = 1;
 }
