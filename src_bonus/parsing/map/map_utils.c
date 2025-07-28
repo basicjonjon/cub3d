@@ -6,12 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:28:15 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:14:51 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
 
 char	*dup_map_line(char *line, int x)
 {
@@ -45,9 +44,9 @@ char	*dup_map_line(char *line, int x)
 				z++;
 			}
 		}
-		else if (line[i] == '0' || line[i] == '1' || line[i] == 'N'
-			|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W'
-			|| line[i] == ' ')
+		else if (line[i] == '0' || line[i] == '1' || line[0] == 'P'
+			|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
+			|| line[i] == 'W' || line[i] == ' ')
 			res[y++] = line[i];
 		i++;
 	}
