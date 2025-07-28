@@ -1,6 +1,10 @@
 cub3d
+cub3d_bonus
 objet/
 obj
+obj_bonus
 *.o
 .vscode
 minilibx*
+libft.a
+backup
