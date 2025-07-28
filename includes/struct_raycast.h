@@ -6,12 +6,13 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 18:32:13 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/05/13 18:35:40 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/06/03 17:19:01 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_PARSING_H
 # define STRUCT_PARSING_H
+
 
 
 
