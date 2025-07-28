@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/25 15:03:09 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:55:58 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,12 @@ typedef struct s_hud
 	t_texture	rec[2];
 	t_texture	border[4];
 	t_texture	center_cam;
+	int			rec_position;
+	int			rec_tempo;
+	long		time_start;
+	long		bat_tempo;
+	int			bat_pos;
+	int			save_bat_pos;
 }				t_hud;
 
 typedef struct s_data

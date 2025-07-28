@@ -73,6 +73,7 @@ BONUS_PARSING_FILES	:= main \
 					player/player_init \
 					hud/print_hud \
 					hud/init_hud \
+					time/time \
 
 BONUS_CASTING_FILES	:=hooks \
 					raycasting \

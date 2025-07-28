@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:23:30 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:27:08 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:12:18 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 # include "X11/X.h"
 # include "X11/keysym.h"

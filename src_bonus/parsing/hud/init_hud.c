@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 14:05:48 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/25 15:04:22 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:56:17 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,17 @@ int	init_rec(t_data *data)
 
 int	init_hud(t_data *data)
 {
-	(void)data;
 	if (init_batterie(data))
 		return (1);
 	if (init_rec(data))
 		return (1);
 	if (init_border(data))
 		return (1);
+	data->hud.rec_tempo = 0;
+	data->hud.rec_position = 0;
+	data->hud.time_start = get_time();
+	data->hud.bat_tempo = get_time();
+	data->hud.bat_pos = 5;
+	data->hud.save_bat_pos = 5;
 	return (0);
 }

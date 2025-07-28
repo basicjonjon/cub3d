@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/25 15:05:56 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 14:18:29 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 # define playerSize 10
 
-// # define screenWidth 640 * 2
-// # define screenHeight 480 * 2
-# define screenWidth 2560
-# define screenHeight 1350
+# define screenWidth 640 * 2
+# define screenHeight 480 * 2
+// # define screenWidth 2560
+// # define screenHeight 1350
 
 # define BLOCK 64
 
