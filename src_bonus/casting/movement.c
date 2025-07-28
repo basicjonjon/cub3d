@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/27 22:03:25 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/07/28 17:50:04 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	rotate_with_mouse(t_data *d, t_player *p)
 
 	mouse_x = 0;
 	mouse_y = 0;
-	sensitivity = 0.003f;
+	sensitivity = d->conf.sensitivity;
 
 	mlx_mouse_get_pos(d->mlx, d->win, &mouse_x, &mouse_y);
 	delta_x = mouse_x - (screenWidth / 2);
