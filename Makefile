@@ -77,6 +77,7 @@ BONUS_PARSING_FILES	:= main \
 BONUS_CASTING_FILES	:=hooks \
 					raycasting \
 					raycasting_utils \
+					floor_and_ceiling \
 					movement \
 					map_casting \
 					utils \
