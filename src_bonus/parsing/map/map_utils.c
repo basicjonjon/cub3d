@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:14:51 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:21:54 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*dup_map_line(char *line, int x)
 				z++;
 			}
 		}
-		else if (line[i] == '0' || line[i] == '1' || line[0] == 'P'
+		else if (line[i] == '0' || line[i] == '1' || line[i] == 'P'
 			|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
 			|| line[i] == 'W' || line[i] == ' ')
 			res[y++] = line[i];

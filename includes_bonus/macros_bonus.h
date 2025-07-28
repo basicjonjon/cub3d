@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/28 15:48:30 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:29:32 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@
 # define BORDERLB "assets/xpm/hud/border/left_bottom.xpm"
 
 # define CENTERCAM "assets/xpm/hud/border/center_cam.xpm"
+
+# define DOOR "assets/xpm/wall/wall2.xpm"
 
 #endif

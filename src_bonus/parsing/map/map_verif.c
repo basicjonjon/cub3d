@@ -6,17 +6,16 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:04:31 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:14:28 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:23:34 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-
 int	is_map(char *line)
 {
-	if ((line[0] == ' ' || line[0] == '0' || line[0] == '1' || line[0] == 'P' || line[0] == 1
-			|| line[0] == 9))
+	if ((line[0] == ' ' || line[0] == '0' || line[0] == '1' || line[0] == 'P'
+			|| line[0] == 1 || line[0] == 9))
 	{
 		return (1);
 	}
@@ -76,7 +75,7 @@ int	verif_map(t_data *data)
 		x = 0;
 		while (data->param.map[y][x])
 		{
-			if (data->param.map[y][x] == '0')
+			if (data->param.map[y][x] == '0' || data->param.map[y][x] == 'P')
 			{
 				if (verif_floor(data->param.map, x, y)
 					|| verif_floor_diag(data->param.map, x, y))

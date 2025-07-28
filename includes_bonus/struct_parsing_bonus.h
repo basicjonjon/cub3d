@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 15:49:05 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:30:32 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_asset
 	t_texture	south;
 	t_texture	west;
 	t_texture	east;
+	t_texture	door;
 	int			ceiling;
 	int			floor;
 }				t_asset;
