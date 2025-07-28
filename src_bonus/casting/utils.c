@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/22 14:35:45 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:31:09 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,43 @@ int	verif_move(t_player *player)
 		return (0);
 }
 
+// int	check_colision(float x, float y, t_map *m)
+// {
+// 	int		i;
+// 	int		j;
+// 	char	**map;
+
+// 	i = (int)x;
+// 	j = (int)y;
+// 	map = m->map;
+// 	if (x < 0 || x >= m->mapX || y < 0 || y >= m->mapY)
+// 		return (0);
+// 	if (map[j][i] && map[j][i] == '1')
+// 		return (0);
+// 	return (1);
+// }
+
 int	check_colision(float x, float y, t_map *m)
 {
-	int		i;
-	int		j;
 	char	**map;
+	int		mapX;
+	int		mapY;
+	float	radius;
 
-	// return (1);
-	i = (int)x;
-	j = (int)y;
 	map = m->map;
-	if (x < 0 || x >= m->mapX || y < 0 || y >= m->mapY)
+	mapX = m->mapX;
+	mapY = m->mapY;
+	radius = 0.1f;
+
+	if (x - radius < 0 || x + radius >= mapX || y - radius < 0 || y + radius >= mapY)
 		return (0);
-	if (map[j][i] && map[j][i] == '1')
+
+	if (map[(int)(y - radius)][(int)(x - radius)] == '1' ||
+		map[(int)(y - radius)][(int)(x + radius)] == '1' ||
+		map[(int)(y + radius)][(int)(x - radius)] == '1' ||
+		map[(int)(y + radius)][(int)(x + radius)] == '1')
 		return (0);
+
 	return (1);
 }
 
