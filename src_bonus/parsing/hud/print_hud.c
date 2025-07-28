@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hud.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:14:23 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 15:00:03 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:00:20 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	calc_rec(t_data *data)
 
 void	calc_batterie(t_data *data)
 {
-	if (get_time() - data->hud.bat_tempo > 500)
+	if (get_time() - data->hud.bat_tempo > 500 && data->hud.bat_pos > 0)
 	{
 		data->hud.bat_tempo = get_time();
 		if (data->hud.bat_pos == data->hud.save_bat_pos)
@@ -64,7 +64,7 @@ void	calc_batterie(t_data *data)
 		else
 			data->hud.bat_pos++;
 	}
-	if (get_time() - data->hud.time_start > 10000)
+	if (get_time() - data->hud.time_start > 1000)
 	{
 		data->hud.time_start = get_time();
 		if (data->hud.bat_pos != 0)
