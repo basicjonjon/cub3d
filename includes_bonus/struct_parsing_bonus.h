@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 14:55:58 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:49:05 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@ typedef struct s_player
 {
 	float		x;
 	float		y;
-	float		posX;
-	float		posY;
 	float		angle;
+
+	float		dirX;
+	float		dirY;
+	float		planeX;
+	float		planeY;
 
 	bool		keyUp;
 	bool		keyDown;
@@ -112,6 +115,7 @@ typedef struct s_config
 	int			mapH;
 	float		fov;
 	float		rot_speed;
+	float		sensitivity;
 	float		move_speed;
 	float		run_speed;
 	int			nbr_rays;

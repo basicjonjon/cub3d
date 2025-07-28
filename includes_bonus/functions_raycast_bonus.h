@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions_raycast_bonus.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:26:19 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:25:32 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,10 @@ int		raycasting(t_data *data);
 t_ray	init_ray_struct(t_player *player, float ray_angle);
 void	calc_hit(t_data *data, t_ray *ray, char **map, int *side);
 float	calc_wall_hit_x(t_ray *ray, int side, float dist);
+
+////////////////////////////////////////////////////////////
+// DRAW FLOOR AND CEILING
+////////////////////////////////////////////////////////////
+void	draw_floor_ceiling(t_data *data);
 
 #endif

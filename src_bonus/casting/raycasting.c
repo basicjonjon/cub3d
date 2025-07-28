@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/25 14:58:48 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:28:47 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,7 @@ int	raycasting(t_data *data)
 	move_player(data, &data->player, &data->conf);
 	// cast_ceiling(&data->img, data->texture.ceiling);
 	// cast_floor(&data->img, data->texture.floor);
+	draw_floor_ceiling(data);
 	rays_process(data, &data->player, &data->conf);
 	print_hud(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
