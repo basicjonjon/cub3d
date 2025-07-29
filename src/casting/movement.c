@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/29 12:12:49 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:40:00 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	update_player_vectors(t_player *p, t_config *c)
 {
-	p->dirX = cosf(p->angle);
-	p->dirY = sinf(p->angle);
-	p->planeX = -p->dirY * tanf(c->fov / 2.0f);
-	p->planeY = p->dirX * tanf(c->fov / 2.0f);
+	p->dirx = cosf(p->angle);
+	p->diry = sinf(p->angle);
+	p->plane_x = -p->diry * tanf(c->fov / 2.0f);
+	p->plane_y = p->dirx * tanf(c->fov / 2.0f);
 }
 
 void	move_forward_backward(t_player *p, float speed)
@@ -25,17 +25,17 @@ void	move_forward_backward(t_player *p, float speed)
 	float	new_x;
 	float	new_y;
 
-	if (p->keyUp == true)
+	if (p->keyup == true)
 	{
-		new_x = p->x + p->dirX * speed;
-		new_y = p->y + p->dirY * speed;
+		new_x = p->x + p->dirx * speed;
+		new_y = p->y + p->diry * speed;
 		p->x = new_x;
 		p->y = new_y;
 	}
-	if (p->keyDown == true)
+	if (p->keydown == true)
 	{
-		new_x = p->x - p->dirX * speed;
-		new_y = p->y - p->dirY * speed;
+		new_x = p->x - p->dirx * speed;
+		new_y = p->y - p->diry * speed;
 		p->x = new_x;
 		p->y = new_y;
 	}
@@ -46,17 +46,17 @@ void	move_strafe(t_player *p, float speed)
 	float	strafe_x;
 	float	strafe_y;
 
-	if (p->keyLeft == true)
+	if (p->keyleft == true)
 	{
-		strafe_x = p->dirY * speed;
-		strafe_y = -p->dirX * speed;
+		strafe_x = p->diry * speed;
+		strafe_y = -p->dirx * speed;
 		p->x += strafe_x;
 		p->y += strafe_y;
 	}
-	if (p->keyRight == true)
+	if (p->keyright == true)
 	{
-		strafe_x = -p->dirY * speed;
-		strafe_y = p->dirX * speed;
+		strafe_x = -p->diry * speed;
+		strafe_y = p->dirx * speed;
 		p->x += strafe_x;
 		p->y += strafe_y;
 	}
@@ -64,9 +64,9 @@ void	move_strafe(t_player *p, float speed)
 
 void	rotate_player(t_player *p, t_config *c)
 {
-	if (p->rotLeft == true)
+	if (p->rotleft == true)
 		p->angle -= c->rot_speed;
-	if (p->rotRight == true)
+	if (p->rotright == true)
 		p->angle += c->rot_speed;
 	if (p->angle < 0.0f)
 		p->angle += 2.0f * M_PI;

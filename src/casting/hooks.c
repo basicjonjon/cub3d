@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/29 12:02:04 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:40:00 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	close_win(t_data *data)
 int	key_release(int keysym, t_data *data)
 {
 	if (keysym == XK_w)
-		data->player.keyUp = false;
+		data->player.keyup = false;
 	if (keysym == XK_s)
-		data->player.keyDown = false;
+		data->player.keydown = false;
 	if (keysym == XK_a)
-		data->player.keyLeft = false;
+		data->player.keyleft = false;
 	if (keysym == XK_d)
-		data->player.keyRight = false;
+		data->player.keyright = false;
 	if (keysym == XK_Left)
-		data->player.rotLeft = false;
+		data->player.rotleft = false;
 	if (keysym == XK_Right)
-		data->player.rotRight = false;
+		data->player.rotright = false;
 	if (keysym == XK_Shift_L)
 		data->player.run = false;
 	return (keysym);
@@ -40,17 +40,17 @@ int	key_release(int keysym, t_data *data)
 int	key_press(int keysym, t_data *data)
 {
 	if (keysym == XK_w)
-		data->player.keyUp = true;
+		data->player.keyup = true;
 	if (keysym == XK_s)
-		data->player.keyDown = true;
+		data->player.keydown = true;
 	if (keysym == XK_a)
-		data->player.keyLeft = true;
+		data->player.keyleft = true;
 	if (keysym == XK_d)
-		data->player.keyRight = true;
+		data->player.keyright = true;
 	if (keysym == XK_Left)
-		data->player.rotLeft = true;
+		data->player.rotleft = true;
 	if (keysym == XK_Right)
-		data->player.rotRight = true;
+		data->player.rotright = true;
 	if (keysym == XK_Shift_L)
 		data->player.run = true;
 	if (keysym == XK_Escape)

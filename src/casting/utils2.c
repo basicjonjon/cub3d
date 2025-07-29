@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:09:05 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/29 12:15:56 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:30:14 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ t_texture	*find_texture(t_data *data)
 	return (NULL);
 }
 
-s_dir	find_dir(t_ray *ray, int side)
+t_dir	find_dir(t_ray *ray, int side)
 {
 	if (side == 0)
 	{
-		if (ray->rayDirX > 0)
+		if (ray->raydirx > 0)
 			return (EAST);
 		else
 			return (WEST);
 	}
 	else
 	{
-		if (ray->rayDirY > 0)
+		if (ray->raydiry > 0)
 			return (SOUTH);
 		else
 			return (NORTH);

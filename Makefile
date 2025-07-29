@@ -79,7 +79,7 @@ lib:
 	@make -C $(MLX)
 
 clean:
-	@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR)
+	@rm -rf $(OBJ_DIR) $(OBJ_BONUt_dir)
 	@make -C $(LIBFT_PATH) clean
 	@make -C $(MLX) clean
 	@echo "$(RED)============== [OBJECT DELETED] ==============$(NC)"

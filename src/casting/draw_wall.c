@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:05:07 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/29 12:14:30 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:28:04 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	get_tex_y(int y, float wall_height, t_texture *t)
 {
 	int	d;
 
-	d = y * 256 - screenHeight * 128 + wall_height * 128;
+	d = y * 256 - SCREENHEIGHT * 128 + wall_height * 128;
 	return (((d * t->tex_h) / (int)wall_height) / 256);
 }
 
@@ -33,7 +33,7 @@ static void	draw_column(t_data *data, t_texture *t, t_config *c,
 	while (x < c->column_width)
 	{
 		screen_x = draw.i * c->column_width + x;
-		if (screen_x >= 0 && screen_x < screenWidth)
+		if (screen_x >= 0 && screen_x < SCREENWIDTH)
 		{
 			y = draw.start;
 			while (++y < draw.end)
@@ -55,12 +55,12 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 	t = find_texture(data);
 	draw.i = i;
 	draw.height = wall_height;
-	draw.start = (screenHeight / 2) - (wall_height / 2);
-	draw.end = (screenHeight / 2) + (wall_height / 2);
+	draw.start = (SCREENHEIGHT / 2) - (wall_height / 2);
+	draw.end = (SCREENHEIGHT / 2) + (wall_height / 2);
 	if (draw.start < 0)
 		draw.start = 0;
-	if (draw.end >= screenHeight)
-		draw.end = screenHeight - 1;
+	if (draw.end >= SCREENHEIGHT)
+		draw.end = SCREENHEIGHT - 1;
 	data->hit.tex_x = (int)(data->hit.wall_hit_x * t->tex_w);
 	if (data->hit.tex_x < 0)
 		data->hit.tex_x = 0;
