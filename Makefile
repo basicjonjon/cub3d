@@ -52,9 +52,10 @@ PARSING_FILES	:=	main \
 CASTING_FILES	:=	hooks \
 					raycasting \
 					raycasting_utils \
+					draw_wall \
 					movement \
-					map_casting \
 					utils \
+					utils2 \
 
 BONUS_PARSING_FILES	:= main \
 					data/verif_args \

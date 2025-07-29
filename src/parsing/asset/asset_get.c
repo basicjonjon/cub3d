@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:36:18 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:04:47 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	get_color(char *value)
 	cut_line = ft_split(value, ',');
 	i = 0;
 	if (split_size(cut_line) != 3)
-		return (ft_fprintf(2, "%sERROR: wrong color format2%s\n", BRED, NC),
+		return (ft_fprintf(2, "%sERROR: wrong color format%s\n", BRED, NC),
 			free_tab(cut_line), -1);
 	if (cut_line[0][0] == '\n' || cut_line[1][0] == '\n'
 		|| cut_line[2][0] == '\n')

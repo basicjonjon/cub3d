@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:42:01 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:40:00 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ void	get_player_pos(t_data *data)
 				|| data->param.map[y][x] == 'W' || data->param.map[y][x] == 'E')
 			{
 				data->player.x = x + 0.5;
-				data->player.posX = x * BLOCK + BLOCK / 2;
 				data->player.y = y + 0.5;
-				data->player.posY = y * BLOCK + BLOCK / 2;
 				return ;
 			}
 			x++;
@@ -51,17 +49,20 @@ void	get_player_direction(t_data *data)
 		data->player.angle = M_PI / 2;
 	else
 		data->player.angle = M_PI;
+	data->player.dirx = cos(data->player.angle);
+	data->player.diry = sin(data->player.angle);
+	data->player.plane_x = -data->player.diry * data->conf.fov;
+	data->player.plane_y = data->player.dirx * data->conf.fov;
 }
 
 void	init_bool(t_data *data)
 {
-	data->player.keyUp = false;
-	data->player.keyDown = false;
-	data->player.keyLeft = false;
-	data->player.keyRight = false;
-	data->player.rotLeft = false;
-	data->player.rotRight = false;
-	data->player.map = false;
+	data->player.keyup = false;
+	data->player.keydown = false;
+	data->player.keyleft = false;
+	data->player.keyright = false;
+	data->player.rotleft = false;
+	data->player.rotright = false;
 	data->player.run = false;
 }
 

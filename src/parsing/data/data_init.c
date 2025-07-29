@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/19 15:59:41 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:36:22 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (ft_fprintf(2, "Error: mlx malloc"), free_all(data), 1);
-	data->win = mlx_new_window(data->mlx, screenWidth, screenHeight, "Cub3d");
+	data->win = mlx_new_window(data->mlx, SCREENWIDTH, SCREENHEIGHT, "Cub3d");
 	if (!data->win)
 		return (ft_fprintf(2, "Error: window malloc"), free_all(data), 1);
-	data->img.img_ptr = mlx_new_image(data->mlx, screenWidth, screenHeight);
+	data->img.img_ptr = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
 	if (!data->img.img_ptr)
 		return (ft_fprintf(2, "Error: img malloc"), free_all(data), 1);
 	data->img.addr = mlx_get_data_addr(data->img.img_ptr,
@@ -34,18 +34,13 @@ int	init_mlx(t_data *data)
 
 void	init_config(t_config *conf, t_map *map)
 {
-	if (map->mapX > map->mapY)
-		conf->block = screenWidth / map->mapX;
-	else
-		conf->block = screenHeight / map->mapY;
-	conf->player_size = conf->block / 10;
-	conf->mapW = map->mapX;
-	conf->mapH = map->mapY;
+	conf->map_w = map->map_x;
+	conf->map_h = map->map_y;
 	conf->fov = M_PI / 3;
 	conf->move_speed = 0.008;
-	conf->run_speed = conf->move_speed * 2.5;
-	conf->rot_speed = 0.008 * 2;
-	conf->nbr_rays = screenWidth;
+	conf->run_speed = conf->move_speed * 3;
+	conf->rot_speed = 0.02;
+	conf->nbr_rays = SCREENWIDTH;
 	conf->column_width = 1;
 }
 
@@ -68,27 +63,3 @@ int	init_data(t_data *data, char *map_file)
 	ft_memset(&data->hit, 0, sizeof(t_hit));
 	return (0);
 }
-
-// int	init_data(t_data *data, char *map_file)
-// {
-// 	t_data	*data;
-
-// 	data = malloc(sizeof(t_data));
-// 	if (!data)
-// 		return (NULL);
-// 	ft_memset(data, 0, sizeof(t_data));
-// 	if (init_mlx(data) == 1)
-// 		return (NULL);
-// 	if (get_asset(map_file, data))
-// 		return (free_all(data), NULL);
-// 	if (texture_init(data, &data->asset))
-// 		return (free_all(data), NULL);
-// 	if (get_map(data, map_file))
-// 		return (free_all(data), NULL);
-// 	if (verif_map(data) || verif_map_player(data))
-// 		return (free_all(data), NULL);
-// 	init_config(&data->conf, &data->param);
-// 	init_player(data);
-// 	ft_memset(&data->hit, 0, sizeof(t_hit));
-// 	return (data);
-// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:58:57 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:33:57 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	get_map(t_data *data, char *maps_file)
 	i = 0;
 	fd = open(maps_file, O_RDONLY);
 	data->param.map = malloc_map(maps_file);
-	data->param.mapX = get_map_size_x(maps_file);
-	data->param.mapY = get_map_size_y(maps_file);
+	data->param.map_x = get_map_size_x(maps_file);
+	data->param.map_y = get_map_size_y(maps_file);
 	line = skip_line(fd);
-	while (line != NULL && i < data->param.mapY)
+	while (line != NULL && i < data->param.map_y)
 	{
 		if (is_map(line) || line[0] == '\n')
 		{

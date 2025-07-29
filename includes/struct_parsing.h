@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   struct_parsing.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/25 14:30:15 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/07/29 13:40:17 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_PARSING_H
 # define STRUCT_PARSING_H
+
+typedef struct s_draw
+{
+	int		i;
+	int		start;
+	int		end;
+	float	height;
+}	t_draw;
 
 typedef enum e_dir
 {
@@ -19,7 +27,7 @@ typedef enum e_dir
 	SOUTH,
 	EAST,
 	WEST
-}				s_dir;
+}				t_dir;
 
 typedef struct s_img
 {
@@ -52,53 +60,46 @@ typedef struct s_player
 {
 	float		x;
 	float		y;
-	float		posX;
-	float		posY;
 	float		angle;
-
-	bool		keyUp;
-	bool		keyDown;
-	bool		keyLeft;
-	bool		keyRight;
-
-	bool		rotLeft;
-	bool		rotRight;
-
-	bool		map;
-
+	float		dirx;
+	float		diry;
+	float		plane_x;
+	float		plane_y;
+	bool		keyup;
+	bool		keydown;
+	bool		keyleft;
+	bool		keyright;
+	bool		rotleft;
+	bool		rotright;
 	bool		run;
 }				t_player;
 
 typedef struct s_map
 {
 	char		**map;
-	int			mapX;
-	int			mapY;
+	int			map_x;
+	int			map_y;
 }				t_map;
 
 typedef struct s_ray
 {
-	float		posX;
-	float		posY;
-
-	int			mapX;
-	int			mapY;
-
-	float		rayDirX;
-	float		rayDirY;
-
-	float		deltaDistX;
-	float		deltaDistY;
-
-	int			stepX;
-	int			stepY;
-	float		sideDistX;
-	float		sideDistY;
+	float		pos_x;
+	float		pos_y;
+	int			map_x;
+	int			map_y;
+	float		raydirx;
+	float		raydiry;
+	float		deltadist_x;
+	float		deltadist_y;
+	int			step_x;
+	int			step_y;
+	float		sidedist_x;
+	float		sidedist_y;
 }				t_ray;
 
 typedef struct s_hit_info
 {
-	s_dir		wall_dir;
+	t_dir		wall_dir;
 	float		wall_hit_x;
 	int			tex_x;
 	int			tex_y;
@@ -106,10 +107,9 @@ typedef struct s_hit_info
 
 typedef struct s_config
 {
-	int			block;
 	int			player_size;
-	int			mapW;
-	int			mapH;
+	int			map_w;
+	int			map_h;
 	float		fov;
 	float		rot_speed;
 	float		move_speed;
@@ -128,8 +128,6 @@ typedef struct s_data
 	t_img		img;
 	void		*mlx;
 	void		*win;
-
 }				t_data;
-
 
 #endif
