@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 16:49:21 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 17:38:31 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 
 t_texture	*find_texture(t_data *data)
 {
+	if (data->hit.door_flg == true)
+	{
+		return (&data->asset.door);
+	}
 	if (data->hit.wall_dir == NORTH)
 		return (&data->asset.north);
 	if (data->hit.wall_dir == SOUTH)

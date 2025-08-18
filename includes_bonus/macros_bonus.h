@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 16:45:03 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 17:30:55 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@
 
 # define CENTERCAM "assets/xpm/hud/border/center_cam.xpm"
 
-# define DOOR "assets/xpm/wall/wall2.xpm"
+# define DOOR "assets/xpm/door.xpm"
 
 #endif

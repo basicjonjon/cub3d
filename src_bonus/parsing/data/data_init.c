@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:51:09 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/08/18 17:40:25 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	init_data(t_data *data, char *map_file)
 	init_config(&data->conf, &data->param);
 	init_player(data);
 	ft_memset(&data->hit, 0, sizeof(t_hit));
+	data->hit.door_flg = false;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:18:43 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 15:53:22 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 17:39:00 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ void	calc_hit(t_data *data, t_ray *ray, char **map, int *side)
 			&& ray->mapX < data->param.mapX
 			&& (map[ray->mapY][ray->mapX] == '1'
 			|| map[ray->mapY][ray->mapX] == 'P'))
+		{
+			if (map[ray->mapY][ray->mapX] == 'P')
+				data->hit.door_flg = true;
+			else
+				data->hit.door_flg = false;
 			break ;
+		}
 	}
 }
 

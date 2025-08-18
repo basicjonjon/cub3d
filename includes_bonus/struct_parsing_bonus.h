@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/18 17:26:27 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 17:37:42 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ typedef enum e_dir
 	NORTH,
 	SOUTH,
 	EAST,
-	WEST
+	WEST,
+	CLOSE_DOOR
 }				s_dir;
 
 typedef struct s_img
@@ -111,6 +112,7 @@ typedef struct s_hit_info
 	float		wall_hit_x;
 	int			tex_x;
 	int			tex_y;
+	bool		door_flg;
 }				t_hit;
 
 typedef struct s_config
