@@ -153,6 +153,7 @@ typedef struct s_data
 	t_player	player;
 	t_img		img;
 	t_hud		hud;
+	float		**door_tab;
 	void		*mlx;
 	void		*win;
 

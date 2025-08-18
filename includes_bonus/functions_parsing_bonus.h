@@ -126,4 +126,13 @@ int		init_hud(t_data *data);
 
 long	get_time(void);
 
+////////////////////////////////////////////////////////////
+// Door_tab
+////////////////////////////////////////////////////////////
+
+float	**creat_door_tab(int x, int y);
+void fill_door_tab(float **door_tab, int x, int y);
+
+
+
 #endif
