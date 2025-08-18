@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/18 16:39:08 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 17:26:27 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_asset
 	t_texture	west;
 	t_texture	east;
 	t_texture	door;
+	t_texture	tfloor;
+	t_texture	tceiling;
 	int			ceiling;
 	int			floor;
 }				t_asset;
