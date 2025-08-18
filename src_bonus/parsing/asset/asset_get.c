@@ -84,3 +84,4 @@ int	get_asset_path(t_asset *asset, char *line)
 
 	return (0);
 }
+

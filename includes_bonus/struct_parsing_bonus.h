@@ -45,6 +45,8 @@ typedef struct s_asset
 	t_texture	west;
 	t_texture	east;
 	t_texture	door;
+	t_texture	tceiling;
+	t_texture	tfloor;
 	int			ceiling;
 	int			floor;
 }				t_asset;
