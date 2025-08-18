@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/28 17:21:16 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:49:21 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,40 +142,22 @@ void	rays_process(t_data *data, t_player *player, t_config *c)
 	}
 }
 
-void	cast_floor(t_img *img, int color)
+void	interact_door(t_player *p, t_map *m)
 {
-	int	x;
-	int	y;
+	int	px;
+	int	py;
 
-	y = screenHeight / 2;
-	while (y < screenHeight)
-	{
-		x = 0;
-		while (x < screenWidth)
-		{
-			ft_pixel_put(x, y, img, color);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	cast_ceiling(t_img *img, int color)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (x < screenWidth)
-	{
-		y = 0;
-		while (y < screenHeight / 2)
-		{
-			ft_pixel_put(x, y, img, color);
-			y++;
-		}
-		x++;
-	}
+	if (p->interact == false)
+		return ;
+	if (get_time() - p->tt_interact < 500)
+		return ;
+	px = (int)(p->x + p->dirX);
+	py = (int)(p->y + p->dirY);
+	if (m->map[py][px] && m->map[py][px] == 'P')
+		m->map[py][px] = 'O';
+	else if (m->map[py][px] && m->map[py][px] == 'O')
+		m->map[py][px] = 'P';
+	p->tt_interact = get_time();
 }
 
 int	raycasting(t_data *data)
@@ -196,6 +178,7 @@ int	raycasting(t_data *data)
 	// cast_ceiling(&data->img, data->texture.ceiling);
 	// cast_floor(&data->img, data->texture.floor);
 	draw_floor_ceiling(data);
+	interact_door(&data->player, &data->param);
 	rays_process(data, &data->player, &data->conf);
 	print_hud(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);

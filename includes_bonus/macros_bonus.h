@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macros_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/28 17:29:32 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:45:03 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 # define playerSize 10
 
-// # define screenWidth 640 * 2
-// # define screenHeight 480 * 2
-# define screenWidth 1920
-# define screenHeight 1080
+# define screenWidth (640 * 2)
+# define screenHeight (480 * 2)
+// # define screenWidth 1920
+// # define screenHeight 1080
 
 # define BLOCK 64
 

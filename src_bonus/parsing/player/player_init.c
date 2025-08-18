@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/27 21:47:55 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 16:40:36 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	init_bool(t_data *data)
 	data->player.rotRight = false;
 	data->player.map = false;
 	data->player.run = false;
+	data->player.interact = false;
+	data->player.tt_interact = get_time();
 }
 
 int	init_player(t_data *data)

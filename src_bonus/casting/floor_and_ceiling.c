@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_and_ceiling.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:22:43 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/28 17:20:36 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:02:48 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,41 @@ void	draw_floor_ceiling(t_data *data)
 	{
 		draw_floor_ceiling_line(data, y, rayDirX0, rayDirY0, rayDirX1, rayDirY1);
 		y++;
+	}
+}
+
+void	cast_floor(t_img *img, int color)
+{
+	int	x;
+	int	y;
+
+	y = screenHeight / 2;
+	while (y < screenHeight)
+	{
+		x = 0;
+		while (x < screenWidth)
+		{
+			ft_pixel_put(x, y, img, color);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	cast_ceiling(t_img *img, int color)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < screenWidth)
+	{
+		y = 0;
+		while (y < screenHeight / 2)
+		{
+			ft_pixel_put(x, y, img, color);
+			y++;
+		}
+		x++;
 	}
 }

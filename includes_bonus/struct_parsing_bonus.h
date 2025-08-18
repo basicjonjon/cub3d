@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_parsing_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:30:32 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:39:08 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ typedef struct s_player
 	bool		map;
 
 	bool		run;
+
+	bool		interact;
+	long		tt_interact;
 }				t_player;
 
 typedef struct s_map

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/28 17:31:09 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/08/18 15:55:25 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ int	check_colision(float x, float y, t_map *m)
 		map[(int)(y - radius)][(int)(x + radius)] == '1' ||
 		map[(int)(y + radius)][(int)(x - radius)] == '1' ||
 		map[(int)(y + radius)][(int)(x + radius)] == '1')
+		return (0);
+	else if (map[(int)(y - radius)][(int)(x - radius)] == 'P' ||
+		map[(int)(y - radius)][(int)(x + radius)] == 'P' ||
+		map[(int)(y + radius)][(int)(x - radius)] == 'P' ||
+		map[(int)(y + radius)][(int)(x + radius)] == 'P')
 		return (0);
 
 	return (1);

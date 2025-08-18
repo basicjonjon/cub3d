@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/27 22:05:48 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 16:35:12 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	key_release(int keysym, t_data *data)
 		data->player.rotRight = false;
 	if (keysym == XK_Shift_L)
 		data->player.run = false;
+	if (keysym == XK_e)
+		data->player.interact = false;
 	return (keysym);
 }
 
@@ -68,6 +70,8 @@ int	key_press(int keysym, t_data *data)
 	if (keysym == XK_p)
 		printf("posX = %f ; posY = %f ; angle = %f\n\n", data->player.x,
 			data->player.y, data->player.angle);
+	if (keysym == XK_e)
+		data->player.interact = true;
 	return (keysym);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:18:43 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/22 14:35:58 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/18 15:53:22 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	calc_hit(t_data *data, t_ray *ray, char **map, int *side)
 			*side = 1;
 		}
 		if (ray->mapY >= 0 && ray->mapY < data->param.mapY && ray->mapX >= 0
-			&& ray->mapX < data->param.mapX && map[ray->mapY][ray->mapX] == '1')
+			&& ray->mapX < data->param.mapX
+			&& (map[ray->mapY][ray->mapX] == '1'
+			|| map[ray->mapY][ray->mapX] == 'P'))
 			break ;
 	}
 }
