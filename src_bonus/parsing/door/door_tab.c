@@ -1,6 +1,6 @@
 #include "cub3d_bonus.h"
 
-float	**creat_door_tab(int x, int y)
+float	**creat_door_progress(int x, int y)
 {
 	float **door_tab;
 	int i;
@@ -27,7 +27,7 @@ float	**creat_door_tab(int x, int y)
     return (door_tab);
 }
 
-void fill_door_tab(float **door_tab, int x, int y)
+void fill_door_progress(float **door_tab, int x, int y)
 {
     int i;
     int j;

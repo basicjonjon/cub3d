@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 16:35:12 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 19:42:33 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	key_release(int keysym, t_data *data)
 		data->player.rotRight = false;
 	if (keysym == XK_Shift_L)
 		data->player.run = false;
-	if (keysym == XK_e)
-		data->player.interact = false;
+	// if (keysym == XK_e)
+	// 	data->player.interact = false;
 	return (keysym);
 }
 
@@ -71,7 +71,11 @@ int	key_press(int keysym, t_data *data)
 		printf("posX = %f ; posY = %f ; angle = %f\n\n", data->player.x,
 			data->player.y, data->player.angle);
 	if (keysym == XK_e)
-		data->player.interact = true;
+	{
+		int px = (int)(data->player.x + data->player.dirX);
+		int py = (int)(data->player.y + data->player.dirY);
+		toggle_door(data, px, py);
+	}
 	return (keysym);
 }
 

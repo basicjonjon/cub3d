@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/18 17:40:25 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 18:52:24 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int	init_data(t_data *data, char *map_file)
 		return (free_all(data), 1);
 	if (init_hud(data))
 		return (free_all(data), 1);
-	data->door_tab = creat_door_tab(data->param.mapX, data->param.mapY);
-	if (data->door_tab == NULL)
+	data->door_progress = creat_door_progress(data->param.mapX, data->param.mapY);
+	if (data->door_progress == NULL)
 		return (free_all(data), 1);
 	else
-		fill_door_tab(data->door_tab, data->param.mapX, data->param.mapY);
+		fill_door_progress(data->door_progress, data->param.mapX, data->param.mapY);
 	init_config(&data->conf, &data->param);
 	init_player(data);
 	ft_memset(&data->hit, 0, sizeof(t_hit));

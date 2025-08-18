@@ -82,6 +82,7 @@ BONUS_CASTING_FILES	:=hooks \
 					floor_and_ceiling \
 					movement \
 					map_casting \
+					doors \
 					utils \
 
 

@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/18 16:03:04 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 19:37:26 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,13 @@ float	calc_wall_hit_x(t_ray *ray, int side, float dist);
 void	draw_floor_ceiling(t_data *data);
 void	cast_floor(t_img *img, int color);
 void	cast_ceiling(t_img *img, int color);
+
+////////////////////////////////////////////////////////////
+// DOORS
+////////////////////////////////////////////////////////////
+void draw_door(t_data *data, t_config *c, int i, float wall_height, float progress);
+void toggle_door(t_data *data, int mapX, int mapY);
+void update_doors(t_data *data, float delta_time);
+
 
 #endif

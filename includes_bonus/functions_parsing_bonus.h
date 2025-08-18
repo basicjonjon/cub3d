@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions_parsing_bonus.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 14:16:16 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/18 18:57:03 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,8 @@ long	get_time(void);
 // Door_tab
 ////////////////////////////////////////////////////////////
 
-float	**creat_door_tab(int x, int y);
-void fill_door_tab(float **door_tab, int x, int y);
+float	**creat_door_progress(int x, int y);
+void fill_door_progress(float **door_tab, int x, int y);
 
 
 

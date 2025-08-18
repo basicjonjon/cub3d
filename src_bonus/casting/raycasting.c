@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 17:38:31 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 20:01:48 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,8 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 	data->hit.wall_hit_x = calc_wall_hit_x(&ray, side, dist_uncorrected);
 	if (hit_x && hit_y)
 	{
-		*hit_x = (int)((ray.posX + ray.rayDirX * dist_uncorrected)
-				* data->conf.block);
-		*hit_y = (int)((ray.posY + ray.rayDirY * dist_uncorrected)
-				* data->conf.block);
+		*hit_x = (int)((ray.posX + ray.rayDirX * dist_uncorrected));
+		*hit_y = (int)((ray.posY + ray.rayDirY * dist_uncorrected));
 	}
 	dist = dist_uncorrected * cos(ray_angle - data->player.angle);
 	// dist = dist_uncorrected;
@@ -123,8 +121,8 @@ void	rays_process(t_data *data, t_player *player, t_config *c)
 {
 	int		i;
 	float	ray_angle;
-	int		hit_x;
-	int		hit_y;
+	int		hit_x = 0;
+	int		hit_y = 0;
 	float	dist;
 	float	wall_height;
 
@@ -135,13 +133,20 @@ void	rays_process(t_data *data, t_player *player, t_config *c)
 		dist = calc_rays(data, ray_angle, &hit_x, &hit_y);
 		if (dist < 0.001)
 			dist = 0.001;
-		if (!player->map)
+		wall_height = screenHeight / dist;
+		if (hit_x >= 0 && hit_x < data->param.mapX &&
+			hit_y >= 0 && hit_y < data->param.mapY &&
+			data->param.map[hit_y][hit_x] == 'P')
 		{
-			wall_height = screenHeight / dist;
+			float progress = data->door_progress[hit_y][hit_x];
+			draw_door(data, c, i, wall_height, progress);
+		}
+		else if (!player->map)
+		{
 			draw_wall(data, c, i, wall_height);
 		}
 		else
-			put_line(data, c, player, hit_x, hit_y);
+			put_line(data, c, player, hit_x * data->conf.block, hit_y * data->conf.block);
 		i++;
 	}
 }
@@ -164,6 +169,22 @@ void	interact_door(t_player *p, t_map *m)
 	p->tt_interact = get_time();
 }
 
+float get_delta_time(void)
+{
+	static long last = 0;
+	long now = get_time();
+	float dt;
+
+	if (last == 0) { last = now; return 0.0f; }
+	dt = (now - last) / 1000.0f;
+	last = now;
+
+	// sécurité : on borne le dt (ex: pause debugger, alt-tab, etc.)
+	if (dt < 0.0f) dt = 0.0f;
+	if (dt > 0.1f) dt = 0.1f; // max 100 ms
+	return dt;
+}
+
 int	raycasting(t_data *data)
 {
 	if (data->player.map == true)
@@ -182,7 +203,8 @@ int	raycasting(t_data *data)
 	// cast_ceiling(&data->img, data->texture.ceiling);
 	// cast_floor(&data->img, data->texture.floor);
 	draw_floor_ceiling(data);
-	interact_door(&data->player, &data->param);
+	// interact_door(&data->player, &data->param);
+	update_doors(data, get_delta_time());
 	rays_process(data, &data->player, &data->conf);
 	print_hud(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
