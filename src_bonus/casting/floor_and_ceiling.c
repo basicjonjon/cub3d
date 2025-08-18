@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 15:22:43 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 16:02:48 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/18 18:12:02 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ void	draw_floor_ceiling_pixel(t_data *data, int x, int y,
 	cellX = (int)(*floorX);
 	cellY = (int)(*floorY);
 
-	tx = (int)(data->asset.south.tex_w * (*floorX - cellX));
-	ty = (int)(data->asset.south.tex_h * (*floorY - cellY));
+	tx = (int)(data->asset.tfloor.tex_h * (*floorX - cellX));
+	ty = (int)(data->asset.tfloor.tex_w * (*floorY - cellY));
 
 	if (tx < 0)
-		tx += data->asset.south.tex_w;
+		tx += data->asset.tfloor.tex_h;
 	if (ty < 0)
-		ty += data->asset.south.tex_h;
+		ty += data->asset.tfloor.tex_w;
 
-	tx %= data->asset.south.tex_w;
-	ty %= data->asset.south.tex_h;
+	tx %= data->asset.tfloor.tex_h;
+	ty %= data->asset.tfloor.tex_w;
 
-	floorColor = get_texture_pixel(&data->asset.south, tx, ty);
-	ceilColor = get_texture_pixel(&data->asset.south, tx, ty);
+	floorColor = get_texture_pixel(&data->asset.tfloor, tx, ty);
+	ceilColor = get_texture_pixel(&data->asset.tceiling, tx, ty);
 
 	ft_pixel_put(x, y, &data->img, floorColor);
 	ft_pixel_put(x, screenHeight - y, &data->img, ceilColor);

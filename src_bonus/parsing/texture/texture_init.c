@@ -30,5 +30,13 @@ int	texture_init(t_data *data, t_asset *a)
 	if (create_img(data, &a->door))
 		return (ft_fprintf(2, "%sERROR: door creation failed\n%s", BRED, NC),
 			1);
+	data->asset.tceiling.path = TCELING;
+	if (create_img(data, &a->tceiling))
+		return (ft_fprintf(2, "%sERROR: ceiling creation failed\n%s", BRED, NC),
+			1);
+	data->asset.tfloor.path = TFLOOR;
+	if (create_img(data, &a->tfloor))
+		return (ft_fprintf(2, "%sERROR: floor creation failed\n%s", BRED, NC),
+			1);
 	return (0);
 }
