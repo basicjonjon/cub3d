@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/19 17:49:52 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/19 23:01:29 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,11 @@ void	cast_ceiling(t_img *img, int color);
 // MINIMAP
 ////////////////////////////////////////////////////////////
 void	draw_minimap(t_data *data);
+
+////////////////////////////////////////////////////////////
+// MINIMAP
+////////////////////////////////////////////////////////////
+int	blend_color(int c1, int c2, float t);
+int	apply_fog(int color, float dist, float density, int fog_color);
 
 #endif
