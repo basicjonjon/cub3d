@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 18:16:52 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:49:06 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 
 # define playerSize 10
 
-# define screenWidth (640 * 2)
-# define screenHeight (480 * 2)
-// # define screenWidth 1920
-// # define screenHeight 1080
+// # define screenWidth (640 * 2)
+// # define screenHeight (480 * 2)
+# define screenWidth 1920
+# define screenHeight 1080
+// # define screenWidth 480
+// # define screenHeight 240
 
 # define BLOCK 64
 

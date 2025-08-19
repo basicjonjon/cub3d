@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 17:38:31 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:46:20 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 		if (screen_x >= 0 && screen_x < screenWidth)
 		{
 			y = start;
-			while (y++ < end)
+			while (y < end)
 			{
 				d = y * 256 - screenHeight * 128 + wall_height * 128;
 				data->hit.tex_y = ((d * texture->tex_h) / (int)wall_height)
@@ -113,6 +113,7 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 				color = get_texture_pixel(texture, data->hit.tex_x,
 						data->hit.tex_y);
 				ft_pixel_put(screen_x, y, &data->img, color);
+				y++;
 			}
 		}
 		x++;
@@ -135,13 +136,8 @@ void	rays_process(t_data *data, t_player *player, t_config *c)
 		dist = calc_rays(data, ray_angle, &hit_x, &hit_y);
 		if (dist < 0.001)
 			dist = 0.001;
-		if (!player->map)
-		{
-			wall_height = screenHeight / dist;
-			draw_wall(data, c, i, wall_height);
-		}
-		else
-			put_line(data, c, player, hit_x, hit_y);
+		wall_height = screenHeight / dist;
+		draw_wall(data, c, i, wall_height);
 		i++;
 	}
 }
@@ -170,10 +166,13 @@ int	raycasting(t_data *data)
 	{
 		clear_image(&data->img, screenWidth, screenHeight);
 		move_player(data, &data->player, &data->conf);
-		draw_map(data, &data->conf);
-		draw_player(data, &data->player, &data->conf);
+		// draw_map(data, &data->conf);
+		// draw_player(data, &data->player, &data->conf);
+		draw_floor_ceiling(data);
+		interact_door(&data->player, &data->param);
 		rays_process(data, &data->player, &data->conf);
-		// print_hud(data);
+		print_hud(data);
+		draw_minimap(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 		return (0);
 	}
@@ -184,7 +183,8 @@ int	raycasting(t_data *data)
 	draw_floor_ceiling(data);
 	interact_door(&data->player, &data->param);
 	rays_process(data, &data->player, &data->conf);
-	print_hud(data);
+	// print_hud(data);
+	// draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	return (0);
 }
