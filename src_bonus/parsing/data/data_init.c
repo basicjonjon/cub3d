@@ -14,6 +14,7 @@
 
 int	init_mlx(t_data *data)
 {
+	data->mlx = NULL;
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (ft_fprintf(2, "Error: mlx malloc"), free_all(data), 1);
@@ -66,11 +67,6 @@ int	init_data(t_data *data, char *map_file)
 		return (free_all(data), 1);
 	if (init_hud(data))
 		return (free_all(data), 1);
-	data->door_tab = creat_door_tab(data->param.mapX, data->param.mapY);
-	if (data->door_tab == NULL)
-		return (free_all(data), 1);
-	else
-		fill_door_tab(data->door_tab, data->param.mapX, data->param.mapY);
 	init_config(&data->conf, &data->param);
 	init_player(data);
 	ft_memset(&data->hit, 0, sizeof(t_hit));

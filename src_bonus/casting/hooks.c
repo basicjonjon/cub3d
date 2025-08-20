@@ -71,7 +71,7 @@ int	key_press(int keysym, t_data *data)
 
 void	hooks(t_data *data)
 {
-	mlx_mouse_hide(data->mlx, data->win);
+	// mlx_mouse_hide(data->mlx, data->win);
 	mlx_mouse_move(data->mlx, data->win, screenWidth / 2, screenHeight / 2);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);

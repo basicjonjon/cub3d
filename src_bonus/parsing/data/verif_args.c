@@ -6,12 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:04:39 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:29:18 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:19:17 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
 
 int	count_args(int argc)
 {
@@ -53,7 +52,8 @@ int	verif_extention_file(char *s, char *ext)
 
 int	verif_args(int argc, char **argv)
 {
-	int fd;
+	int	fd;
+
 	if (count_args(argc))
 		return (1);
 	if (verif_extention_file(argv[1], ".cub"))

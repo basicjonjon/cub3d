@@ -18,10 +18,10 @@
 
 # define playerSize 10
 
-// # define screenWidth (640 * 2)
-// # define screenHeight (480 * 2)
-# define screenWidth 1920
-# define screenHeight 1080
+# define screenWidth 640
+# define screenHeight 480
+// # define screenWidth 1920
+// # define screenHeight 1080
 // # define screenWidth 480
 // # define screenHeight 240
 
