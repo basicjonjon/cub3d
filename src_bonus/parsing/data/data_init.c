@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/18 17:40:25 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:18:55 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (ft_fprintf(2, "Error: mlx malloc"), free_all(data), 1);
-	data->win = mlx_new_window(data->mlx, screenWidth, screenHeight, "Cub3d");
+	data->win = mlx_new_window(data->mlx, SCREENWIDTH, SCREENHEIGHT, "Cub3d");
 	if (!data->win)
 		return (ft_fprintf(2, "Error: window malloc"), free_all(data), 1);
-	data->img.img_ptr = mlx_new_image(data->mlx, screenWidth, screenHeight);
+	data->img.img_ptr = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
 	if (!data->img.img_ptr)
 		return (ft_fprintf(2, "Error: img malloc"), free_all(data), 1);
 	data->img.addr = mlx_get_data_addr(data->img.img_ptr,
@@ -35,19 +35,19 @@ int	init_mlx(t_data *data)
 
 void	init_config(t_config *conf, t_map *map)
 {
-	if (map->mapX > map->mapY)
-		conf->block = screenWidth / map->mapX;
+	if (map->map_x > map->map_y)
+		conf->block = SCREENWIDTH / map->map_x;
 	else
-		conf->block = screenHeight / map->mapY;
+		conf->block = SCREENHEIGHT / map->map_y;
 	conf->player_size = conf->block / 10;
-	conf->mapW = map->mapX;
-	conf->mapH = map->mapY;
+	conf->map_w = map->map_x;
+	conf->map_h = map->map_y;
 	conf->fov = M_PI / 3;
 	conf->move_speed = 0.008;
 	conf->run_speed = conf->move_speed * 3;
 	conf->rot_speed = 0.008 * 2;
 	conf->sensitivity = 0.001;
-	conf->nbr_rays = screenWidth;
+	conf->nbr_rays = SCREENWIDTH;
 	conf->column_width = 1;
 }
 

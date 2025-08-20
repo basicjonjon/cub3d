@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 20:08:50 by mmarps            #+#    #+#             */
-/*   Updated: 2025/08/20 20:46:00 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:18:55 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ int	get_minimap_scale(t_data *data)
 	int	max_w;
 	int	max_h;
 
-	max_w = screenWidth * 6 / 10;
-	max_h = screenHeight / 4;
-	scale_x = max_w / data->param.mapX;
-	scale_y = max_h / data->param.mapY;
+	max_w = SCREENWIDTH * 6 / 10;
+	max_h = SCREENHEIGHT / 4;
+	scale_x = max_w / data->param.map_x;
+	scale_y = max_h / data->param.map_y;
 	if (scale_x < scale_y)
 		scale = scale_x;
 	else

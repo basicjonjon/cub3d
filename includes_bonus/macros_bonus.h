@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/20 18:45:10 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:19:09 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,14 @@
 # define MACROS_BONUS_H
 
 # define M_PI 3.14159265358979323846
-# define M_PI_2 (M_PI / 2)
+# define M_PI_2 1.5707963268
 
-# define playerSize 10
-
-# define screenWidth 1280
-# define screenHeight 960
-// # define screenWidth 1920
-// # define screenHeight 1080
-// # define screenWidth 480
-// # define screenHeight 240
-
-# define BLOCK 64
-
-# define NBR_RAYS 500
+# define SCREENWIDTH 1280
+# define SCREENHEIGHT 960
+// # define SCREENWIDTH 1920
+// # define SCREENHEIGHT 1080
+// # define SCREENWIDTH 480
+// # define SCREENHEIGHT 240
 
 # define BAT0 "assets/xpm/hud/batterie/bat0.xpm"
 # define BAT1 "assets/xpm/hud/batterie/bat1.xpm"

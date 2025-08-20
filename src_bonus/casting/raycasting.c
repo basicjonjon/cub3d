@@ -6,139 +6,73 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/20 22:24:26 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:34:02 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-s_dir	find_dir(t_ray *ray, int side)
+t_dir	find_dir(t_ray *ray, int side)
 {
 	if (side == 0)
 	{
-		if (ray->rayDirX > 0)
+		if (ray->raydir_x > 0)
 			return (EAST);
 		else
 			return (WEST);
 	}
 	else
 	{
-		if (ray->rayDirY > 0)
+		if (ray->raydir_y > 0)
 			return (SOUTH);
 		else
 			return (NORTH);
 	}
 }
 
-float	calc_rays_dir(t_data *data, float rayDirX, float rayDirY)
+float	calc_rayt_dir(t_data *data, float raydir_x, float raydir_y)
 {
 	t_ray	ray;
 	int		side;
 	float	dist_uncorrected;
 	float	cos_c;
 
-	ray = init_ray_dir(&data->player, rayDirX, rayDirY);
+	ray = init_ray_dir(&data->player, raydir_x, raydir_y);
 	side = 0;
 	calc_hit(data, &ray, data->param.map, &side);
 	if (side == 0)
-		dist_uncorrected = ray.sideDistX - ray.deltaDistX;
+		dist_uncorrected = ray.sidedist_x - ray.deltadist_x;
 	else
-		dist_uncorrected = ray.sideDistY - ray.deltaDistY;
+		dist_uncorrected = ray.sidedist_y - ray.deltadist_y;
 	data->hit.wall_dir = find_dir(&ray, side);
 	data->hit.wall_hit_x = calc_wall_hit_x(&ray, side, dist_uncorrected);
-	cos_c = ray.rayDirX * data->player.dirX + ray.rayDirY * data->player.dirY;
+	cos_c = ray.raydir_x * data->player.dir_x + ray.raydir_y
+		* data->player.dir_y;
 	return (dist_uncorrected * cos_c);
-}
-
-t_texture	*find_texture(t_data *data)
-{
-	if (data->hit.door_flg == true)
-	{
-		return (&data->asset.door);
-	}
-	if (data->hit.wall_dir == NORTH)
-		return (&data->asset.north);
-	if (data->hit.wall_dir == SOUTH)
-		return (&data->asset.south);
-	if (data->hit.wall_dir == EAST)
-		return (&data->asset.east);
-	if (data->hit.wall_dir == WEST)
-		return (&data->asset.west);
-	return (NULL);
-}
-
-void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
-{
-    int			x;
-    int			y;
-    int			screen_x;
-    int			start;
-    int			end;
-    int			color;
-    t_texture	*texture;
-    int			d;
-    int			ih;
-
-    texture = find_texture(data);
-    if (texture == NULL)
-        return ;
-    start = (screenHeight / 2) - (wall_height / 2);
-    if (start < 0)
-        start = 0;
-    end = (screenHeight / 2) + (wall_height / 2);
-    if (end >= screenHeight)
-        end = screenHeight - 1;
-    data->hit.tex_x = (int)(data->hit.wall_hit_x * texture->tex_w);
-    if (data->hit.tex_x < 0)
-        data->hit.tex_x = 0;
-    if (data->hit.tex_x >= texture->tex_w)
-        data->hit.tex_x = texture->tex_w - 1;
-    x = 0;
-    ih = (int)wall_height;
-    if (ih <= 0)
-        ih = 1;
-    while (x < c->column_width)
-    {
-        screen_x = i * c->column_width + x;
-        if (screen_x >= 0 && screen_x < screenWidth)
-        {
-            y = start;
-            while (y < end)
-            {
-                d = y * 256 - screenHeight * 128 + wall_height * 128;
-                data->hit.tex_y = ((d * texture->tex_h) / ih) / 256;
-                color = get_texture_pixel(texture, data->hit.tex_x,
-                        data->hit.tex_y);
-                ft_pixel_put(screen_x, y, &data->img, color);
-                y++;
-            }
-        }
-        x++;
-    }
 }
 
 void	rays_process(t_data *data, t_player *player, t_config *c)
 {
-    int		i;
-    int		col_cx;
-    float	rayDirX;
-    float	rayDirY;
-    float	dist;
+	int		i;
+	int		col_cx;
+	float	raydir_x;
+	float	raydir_y;
+	float	dist;
 
-    i = 0;
-    while (i < c->nbr_rays)
-    {
-        col_cx = i * c->column_width + (c->column_width / 2);
-        rayDirX = player->dirX + player->planeX
-            * (2.0f * (float)col_cx / (float)screenWidth - 1.0f);
-        rayDirY = player->dirY + player->planeY
-            * (2.0f * (float)col_cx / (float)screenWidth - 1.0f);
-        dist = calc_rays_dir(data, rayDirX, rayDirY);
-        if (dist < 0.001f)
-            dist = 0.001f;
-        draw_wall(data, c, i, screenHeight / dist);
-        i++;
-    }
+	i = 0;
+	while (i < c->nbr_rays)
+	{
+		col_cx = i * c->column_width + (c->column_width / 2);
+		raydir_x = player->dir_x + player->plane_x
+			* (2.0f * (float)col_cx / (float)SCREENWIDTH - 1.0f);
+		raydir_y = player->dir_y + player->plane_y
+			* (2.0f * (float)col_cx / (float)SCREENWIDTH - 1.0f);
+		dist = calc_rayt_dir(data, raydir_x, raydir_y);
+		if (dist < 0.001f)
+			dist = 0.001f;
+		draw_wall(data, c, i, SCREENHEIGHT / dist);
+		i++;
+	}
 }
 
 void	interact_door(t_player *p, t_map *m)
@@ -150,8 +84,8 @@ void	interact_door(t_player *p, t_map *m)
 		return ;
 	if (get_time() - p->tt_interact < 500)
 		return ;
-	px = (int)(p->x + p->dirX);
-	py = (int)(p->y + p->dirY);
+	px = (int)(p->x + p->dir_x);
+	py = (int)(p->y + p->dir_y);
 	if (m->map[py][px] && m->map[py][px] == 'P')
 		m->map[py][px] = 'O';
 	else if (m->map[py][px] && m->map[py][px] == 'O')
@@ -163,7 +97,7 @@ int	raycasting(t_data *data)
 {
 	if (data->player.map == true)
 	{
-		clear_image(&data->img, screenWidth, screenHeight);
+		clear_image(&data->img, SCREENWIDTH, SCREENHEIGHT);
 		move_player(data, &data->player, &data->conf);
 		draw_floor_ceiling(data);
 		interact_door(&data->player, &data->param);
@@ -173,7 +107,7 @@ int	raycasting(t_data *data)
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 		return (0);
 	}
-	clear_image(&data->img, screenWidth, screenHeight);
+	clear_image(&data->img, SCREENWIDTH, SCREENHEIGHT);
 	move_player(data, &data->player, &data->conf);
 	draw_floor_ceiling(data);
 	interact_door(&data->player, &data->param);

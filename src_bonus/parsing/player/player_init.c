@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/18 16:40:36 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:44:18 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,20 @@ void	get_player_direction(t_data *data)
 		data->player.angle = M_PI / 2;
 	else
 		data->player.angle = M_PI;
-	data->player.dirX = cos(data->player.angle);
-	data->player.dirY = sin(data->player.angle);
-	data->player.planeX = -data->player.dirY * data->conf.fov;
-	data->player.planeY = data->player.dirX * data->conf.fov;
+	data->player.dir_x = cos(data->player.angle);
+	data->player.dir_y = sin(data->player.angle);
+	data->player.plane_x = -data->player.dir_y * data->conf.fov;
+	data->player.plane_y = data->player.dir_x * data->conf.fov;
 }
 
 void	init_bool(t_data *data)
 {
-	data->player.keyUp = false;
-	data->player.keyDown = false;
-	data->player.keyLeft = false;
-	data->player.keyRight = false;
-	data->player.rotLeft = false;
-	data->player.rotRight = false;
+	data->player.key_up = false;
+	data->player.key_down = false;
+	data->player.key_left = false;
+	data->player.key_right = false;
+	data->player.rot_left = false;
+	data->player.rot_right = false;
 	data->player.map = false;
 	data->player.run = false;
 	data->player.interact = false;

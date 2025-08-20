@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 15:52:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 15:25:13 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/20 22:44:42 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	print_player_info(t_data *data)
 
 void	print_map_info(t_data *data)
 {
-	printf("map x %s%i%s\n", BGREEN, data->param.mapX, NC);
-	printf("map Y %s%i%s\n", BGREEN, data->param.mapY, NC);
+	printf("map x %s%i%s\n", BGREEN, data->param.map_x, NC);
+	printf("map Y %s%i%s\n", BGREEN, data->param.map_y, NC);
 }
 
 void	print_map(char **map)

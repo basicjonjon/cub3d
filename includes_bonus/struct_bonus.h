@@ -1,49 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_parsing_bonus.h                             :+:      :+:    :+:   */
+/*   struct_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 19:25:41 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 00:32:33 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_PARSING_BONUS_H
-# define STRUCT_PARSING_BONUS_H
+#ifndef STRUCT_BONUS_H
+# define STRUCT_BONUS_H
 
-typedef struct s_point
-{
-	int	x;
-	int	y;
-}		t_point;
-
-typedef enum e_dir
-{
-	NORTH,
-	SOUTH,
-	EAST,
-	WEST,
-	CLOSE_DOOR
-}				s_dir;
+# include "struct_utils.h"
 
 typedef struct s_img
 {
-	void		*img_ptr;
-	char		*addr;
-	int			bit_per_pixels;
-	int			line_lenght;
-	int			endian;
-}				t_img;
+	void	*img_ptr;
+	char	*addr;
+	int		bit_per_pixels;
+	int		line_lenght;
+	int		endian;
+}			t_img;
 
 typedef struct s_texture
 {
-	char		*path;
-	t_img		img;
-	int			tex_w;
-	int			tex_h;
-}				t_texture;
+	char	*path;
+	t_img	img;
+	int		tex_w;
+	int		tex_h;
+}			t_texture;
 
 typedef struct s_asset
 {
@@ -60,81 +47,45 @@ typedef struct s_asset
 
 typedef struct s_player
 {
-	float		x;
-	float		y;
-	float		angle;
-
-	float		dirX;
-	float		dirY;
-	float		planeX;
-	float		planeY;
-
-	bool		keyUp;
-	bool		keyDown;
-	bool		keyLeft;
-	bool		keyRight;
-
-	bool		rotLeft;
-	bool		rotRight;
-
-	bool		map;
-
-	bool		run;
-
-	bool		interact;
-	long		tt_interact;
-}				t_player;
+	float	x;
+	float	y;
+	float	angle;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+	bool	key_up;
+	bool	key_down;
+	bool	key_left;
+	bool	key_right;
+	bool	rot_left;
+	bool	rot_right;
+	bool	map;
+	bool	run;
+	bool	interact;
+	long	tt_interact;
+}			t_player;
 
 typedef struct s_map
 {
-	char		**map;
-	int			mapX;
-	int			mapY;
+	char	**map;
+	int		map_x;
+	int		map_y;
 }				t_map;
-
-typedef struct s_ray
-{
-	float		posX;
-	float		posY;
-
-	int			mapX;
-	int			mapY;
-
-	float		rayDirX;
-	float		rayDirY;
-
-	float		deltaDistX;
-	float		deltaDistY;
-
-	int			stepX;
-	int			stepY;
-	float		sideDistX;
-	float		sideDistY;
-}				t_ray;
-
-typedef struct s_hit_info
-{
-	s_dir		wall_dir;
-	float		wall_hit_x;
-	float		perpwalldist;
-	int			tex_x;
-	int			tex_y;
-	bool		door_flg;
-}				t_hit;
 
 typedef struct s_config
 {
-	int			block;
-	int			player_size;
-	int			mapW;
-	int			mapH;
-	float		fov;
-	float		rot_speed;
-	float		sensitivity;
-	float		move_speed;
-	float		run_speed;
-	int			nbr_rays;
-	float		column_width;
+	int		block;
+	int		player_size;
+	int		map_w;
+	int		map_h;
+	float	fov;
+	float	rot_speed;
+	float	sensitivity;
+	float	move_speed;
+	float	run_speed;
+	int		nbr_rays;
+	float	column_width;
 }				t_config;
 
 typedef struct s_hud
@@ -160,10 +111,8 @@ typedef struct s_data
 	t_player	player;
 	t_img		img;
 	t_hud		hud;
-	float		**door_tab;
 	void		*mlx;
 	void		*win;
-
 }				t_data;
 
 #endif

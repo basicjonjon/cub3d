@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hud.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:14:23 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 15:24:50 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/21 00:18:55 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ void	print_hud(t_data *data)
 	calc_rec(data);
 	calc_batterie(data);
 	print_texture(data, &data->hud.border[0], 10, 10);
-	print_texture(data, &data->hud.border[1], screenWidth - 210, 10);
-	print_texture(data, &data->hud.border[2], screenWidth - 210, screenHeight
+	print_texture(data, &data->hud.border[1], SCREENWIDTH - 210, 10);
+	print_texture(data, &data->hud.border[2], SCREENWIDTH - 210, SCREENHEIGHT
 		- 210);
-	print_texture(data, &data->hud.border[3], 10, screenHeight - 210);
-	print_texture(data, &data->hud.center_cam, (screenWidth - 210) / 2,
-		(screenHeight - 210) / 2);
-	print_texture(data, &data->hud.batterie[data->hud.bat_pos], screenWidth
+	print_texture(data, &data->hud.border[3], 10, SCREENHEIGHT - 210);
+	print_texture(data, &data->hud.center_cam, (SCREENWIDTH - 210) / 2,
+		(SCREENHEIGHT - 210) / 2);
+	print_texture(data, &data->hud.batterie[data->hud.bat_pos], SCREENWIDTH
 		- 220, 100);
 	print_texture(data, &data->hud.rec[data->hud.rec_position], 100, 100);
 }

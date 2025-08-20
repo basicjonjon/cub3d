@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/20 22:30:07 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:42:28 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	update_player_vectors(t_player *p, t_config *c)
 {
-	p->dirX = cosf(p->angle);
-	p->dirY = sinf(p->angle);
-	p->planeX = -p->dirY * tanf(c->fov / 2.0f);
-	p->planeY = p->dirX * tanf(c->fov / 2.0f);
+	p->dir_x = cosf(p->angle);
+	p->dir_y = sinf(p->angle);
+	p->plane_x = -p->dir_y * tanf(c->fov / 2.0f);
+	p->plane_y = p->dir_x * tanf(c->fov / 2.0f);
 }
 
 int	move_player(t_data *d, t_player *p, t_config *c)

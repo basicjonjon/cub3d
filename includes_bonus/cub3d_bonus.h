@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:23:30 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 14:12:18 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/21 00:29:44 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdbool.h>
 # include "macros_bonus.h"
-# include "struct_parsing_bonus.h"
+# include "struct_bonus.h"
 # include "functions_raycast_bonus.h"
 # include "functions_parsing_bonus.h"
 # include "color_bonus.h"
