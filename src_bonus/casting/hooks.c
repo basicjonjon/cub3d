@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:09:19 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/19 22:42:36 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 17:24:31 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	key_press(int keysym, t_data *data)
 
 void	hooks(t_data *data)
 {
-	// mlx_mouse_hide(data->mlx, data->win);
+	mlx_mouse_hide(data->mlx, data->win);
 	mlx_mouse_move(data->mlx, data->win, screenWidth / 2, screenHeight / 2);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
