@@ -46,8 +46,7 @@ PARSING_FILES	:=	main \
 					texture/texture_init \
 					data/data_init \
 					free/free \
-					player/player_init \
-					
+					player/player_init \		
 
 CASTING_FILES	:=	hooks \
 					raycasting \
@@ -76,6 +75,7 @@ BONUS_PARSING_FILES	:= main \
 					hud/print_hud \
 					hud/init_hud \
 					time/time \
+					door/door_tab \
 
 BONUS_CASTING_FILES	:=hooks \
 					raycasting \
@@ -83,6 +83,7 @@ BONUS_CASTING_FILES	:=hooks \
 					floor_and_ceiling \
 					movement \
 					map_casting \
+					minimap \
 					utils \
 
 
