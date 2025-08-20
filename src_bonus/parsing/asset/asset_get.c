@@ -6,12 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:36:56 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:24:21 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
 
 int	get_color(char *value)
 {
@@ -58,6 +57,7 @@ void	save_asset(t_asset *asset, char *key, char *value)
 		asset->east.path[ft_strlen(asset->east.path) - 1] = '\0';
 	}
 }
+
 void	save_color(t_asset *asset, char *key, char *value)
 {
 	if (!strncmp(key, "F", 1) && asset->floor != 0)
@@ -72,16 +72,13 @@ void	save_color(t_asset *asset, char *key, char *value)
 
 int	get_asset_path(t_asset *asset, char *line)
 {
-	char **res;
+	char	**res;
 
 	res = ft_split(line, ' ');
 	if (split_size(res) != 2)
-		return (ft_fprintf(2, BRED "ERROR: texture format\n" NC), 1); //
+		return (ft_fprintf(2, BRED "ERROR: texture format\n" NC), 1);
 	save_asset(asset, res[0], res[1]);
 	save_color(asset, res[0], res[1]);
-
 	free_tab(res);
-
 	return (0);
 }
-

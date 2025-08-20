@@ -75,7 +75,6 @@ BONUS_PARSING_FILES	:= main \
 					hud/print_hud \
 					hud/init_hud \
 					time/time \
-					door/door_tab \
 
 BONUS_CASTING_FILES	:=hooks \
 					raycasting \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hud.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:14:23 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 16:00:20 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:24:50 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	print_texture(t_data *data, t_texture *texture, int x, int y)
 void	calc_rec(t_data *data)
 {
 	data->hud.rec_tempo++;
-	// printf(BRED "%i" NC, data->hud.rec_tempo);
 	if (data->hud.rec_tempo == 40)
 	{
 		data->hud.rec_tempo = 0;
@@ -69,7 +68,7 @@ void	calc_batterie(t_data *data)
 		data->hud.time_start = get_time();
 		if (data->hud.bat_pos != 0)
 		{
-			data->hud.bat_pos = data->hud.save_bat_pos -1;
+			data->hud.bat_pos = data->hud.save_bat_pos - 1;
 			data->hud.save_bat_pos = data->hud.bat_pos;
 		}
 	}

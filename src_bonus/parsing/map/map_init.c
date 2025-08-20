@@ -6,12 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:29:26 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:48:02 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
 
 char	**init_map_null(char **map, int y)
 {
@@ -59,10 +58,8 @@ int	get_map(t_data *data, char *maps_file)
 	while (line != NULL && i < data->param.mapY)
 	{
 		if (is_map(line) || line[0] == '\n')
-		{
-			data->param.map[i] = dup_map_line(line, get_map_size_x(maps_file));
-			i++;
-		}
+			data->param.map[i++] = dup_map_line(line,
+					get_map_size_x(maps_file));
 		free(line);
 		line = get_next_line(fd);
 	}

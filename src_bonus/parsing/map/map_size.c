@@ -6,39 +6,45 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:45:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:29:27 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/20 15:51:21 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
+int	count_line_size(char *line)
+{
+	int	y;
+	int	i;
+
+	y = 0;
+	i = 0;
+	while (line[y] != '\0')
+	{
+		if (line[y] == 9)
+			i += 4;
+		else
+			i++;
+		y++;
+	}
+	return (i);
+}
+
 int	get_map_size_x(char *maps_file)
 {
-	int		i;
-	int		y;
-	int		fd;
 	int		x;
+	int		fd;
 	char	*line;
 
+	x = 0;
 	fd = open(maps_file, O_RDONLY);
 	line = get_next_line(fd);
-	x = 0;
 	while (line != NULL)
 	{
-		i = 0;
 		if (is_map(line))
 		{
-			y = 0;
-			while (line[y] != '\0')
-			{
-				if (line[y] == 9)
-					i += 4;
-				else
-					i++;
-				y++;
-			}
-			if (i > x)
-				x = i;
+			if (count_line_size(line) > x)
+				x = count_line_size(line);
 		}
 		free(line);
 		line = get_next_line(fd);
