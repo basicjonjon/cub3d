@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/18 15:55:25 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:29:46 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,13 @@ int	get_texture_pixel(t_texture *texture, int x, int y)
 	char	*pixel;
 	int		color;
 
-	if (x < 0 || y < 0 || x >= texture->tex_w || y >= texture->tex_w)
+	if (x < 0 || y < 0 || x >= texture->tex_w || y >= texture->tex_h)
 		return (0);
-	pixel = texture->img.addr + (y * texture->img.line_lenght) + (x
-			* texture->img.bit_per_pixels);
+	pixel = texture->img.addr + (y * texture->img.line_lenght)
+			+ (x * texture->img.bit_per_pixels);
 	color = *(unsigned int *)pixel;
 	return (color);
 }
-
-int	verif_move(t_player *player)
-{
-	if (player->keyDown || player->keyLeft || player->keyRight || player->keyUp
-		|| player->rotLeft || player->rotRight)
-		return (1);
-	else
-		return (0);
-}
-
-// int	check_colision(float x, float y, t_map *m)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	**map;
-
-// 	i = (int)x;
-// 	j = (int)y;
-// 	map = m->map;
-// 	if (x < 0 || x >= m->mapX || y < 0 || y >= m->mapY)
-// 		return (0);
-// 	if (map[j][i] && map[j][i] == '1')
-// 		return (0);
-// 	return (1);
-// }
 
 int	check_colision(float x, float y, t_map *m)
 {
@@ -71,10 +46,8 @@ int	check_colision(float x, float y, t_map *m)
 	mapX = m->mapX;
 	mapY = m->mapY;
 	radius = 0.1f;
-
 	if (x - radius < 0 || x + radius >= mapX || y - radius < 0 || y + radius >= mapY)
 		return (0);
-
 	if (map[(int)(y - radius)][(int)(x - radius)] == '1' ||
 		map[(int)(y - radius)][(int)(x + radius)] == '1' ||
 		map[(int)(y + radius)][(int)(x - radius)] == '1' ||
@@ -85,11 +58,20 @@ int	check_colision(float x, float y, t_map *m)
 		map[(int)(y + radius)][(int)(x - radius)] == 'P' ||
 		map[(int)(y + radius)][(int)(x + radius)] == 'P')
 		return (0);
-
 	return (1);
 }
 
-// int	rgb_to_int(t_color rgb)
-// {
-// 	return ((rgb.r << 16) | (rgb.g << 8) | (rgb.b));
-// }
+void	clear_image(t_img *img, int width, int height)
+{
+	char	*dst;
+
+	int x, y;
+	for (y = 0; y < height; y++)
+	{
+		for (x = 0; x < width; x++)
+		{
+			dst = img->addr + y * img->line_lenght + x * img->bit_per_pixels;
+			*(unsigned int *)dst = 0x000000;
+		}
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/20 21:04:54 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:24:26 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ s_dir	find_dir(t_ray *ray, int side)
 	}
 }
 
-float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
+float	calc_rays_dir(t_data *data, float rayDirX, float rayDirY)
 {
 	t_ray	ray;
 	int		side;
-	float	dist;
 	float	dist_uncorrected;
+	float	cos_c;
 
-	ray = init_ray_struct(&data->player, ray_angle);
+	ray = init_ray_dir(&data->player, rayDirX, rayDirY);
 	side = 0;
 	calc_hit(data, &ray, data->param.map, &side);
 	if (side == 0)
@@ -46,16 +46,8 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 		dist_uncorrected = ray.sideDistY - ray.deltaDistY;
 	data->hit.wall_dir = find_dir(&ray, side);
 	data->hit.wall_hit_x = calc_wall_hit_x(&ray, side, dist_uncorrected);
-	if (hit_x && hit_y)
-	{
-		*hit_x = (int)((ray.posX + ray.rayDirX * dist_uncorrected)
-				* data->conf.block);
-		*hit_y = (int)((ray.posY + ray.rayDirY * dist_uncorrected)
-				* data->conf.block);
-	}
-	dist = dist_uncorrected * cos(ray_angle - data->player.angle);
-	// dist = dist_uncorrected;
-	return (dist);
+	cos_c = ray.rayDirX * data->player.dirX + ray.rayDirY * data->player.dirY;
+	return (dist_uncorrected * cos_c);
 }
 
 t_texture	*find_texture(t_data *data)
@@ -74,51 +66,6 @@ t_texture	*find_texture(t_data *data)
 		return (&data->asset.west);
 	return (NULL);
 }
-
-// void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
-// {
-// 	int			x;
-// 	int			y;
-// 	int			screen_x;
-// 	int			start;
-// 	int			end;
-// 	int			color;
-// 	t_texture	*texture;
-// 	int			d;
-
-// 	texture = find_texture(data);
-// 	start = (screenHeight / 2) - (wall_height / 2);
-// 	if (start < 0)
-// 		start = 0;
-// 	end = (screenHeight / 2) + (wall_height / 2);
-// 	if (end >= screenHeight)
-// 		end = screenHeight - 1;
-// 	data->hit.tex_x = (int)(data->hit.wall_hit_x * texture->tex_w);
-// 	if (data->hit.tex_x < 0)
-// 		data->hit.tex_x = 0;
-// 	if (data->hit.tex_x >= texture->tex_w)
-// 		data->hit.tex_x = texture->tex_w - 1;
-// 	x = 0;
-// 	while (x < c->column_width)
-// 	{
-// 		screen_x = i * c->column_width + x;
-// 		if (screen_x >= 0 && screen_x < screenWidth)
-// 		{
-// 			y = start;
-// 			while (y < end)
-// 			{
-// 				d = y * 256 - screenHeight * 128 + wall_height * 128;
-// 				data->hit.tex_y = ((d * texture->tex_h) / (int)wall_height)
-// 					/ 256;
-// 				color = get_texture_pixel(texture, data->hit.tex_x,
-// 						data->hit.tex_y);
-// 				ft_pixel_put(screen_x, y, &data->img, color);
-// 				y++;
-// 			}
-// 		}
-// 		x++;
-// 	}
-// }
 
 void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 {
@@ -172,24 +119,26 @@ void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 
 void	rays_process(t_data *data, t_player *player, t_config *c)
 {
-	int		i;
-	float	ray_angle;
-	int		hit_x;
-	int		hit_y;
-	float	dist;
-	float	wall_height;
+    int		i;
+    int		col_cx;
+    float	rayDirX;
+    float	rayDirY;
+    float	dist;
 
-	i = 0;
-	while (i < c->nbr_rays)
-	{
-		ray_angle = player->angle - (c->fov / 2) + i * (c->fov / c->nbr_rays);
-		dist = calc_rays(data, ray_angle, &hit_x, &hit_y);
-		if (dist < 0.001)
-			dist = 0.001;
-		wall_height = screenHeight / dist;
-		draw_wall(data, c, i, wall_height);
-		i++;
-	}
+    i = 0;
+    while (i < c->nbr_rays)
+    {
+        col_cx = i * c->column_width + (c->column_width / 2);
+        rayDirX = player->dirX + player->planeX
+            * (2.0f * (float)col_cx / (float)screenWidth - 1.0f);
+        rayDirY = player->dirY + player->planeY
+            * (2.0f * (float)col_cx / (float)screenWidth - 1.0f);
+        dist = calc_rays_dir(data, rayDirX, rayDirY);
+        if (dist < 0.001f)
+            dist = 0.001f;
+        draw_wall(data, c, i, screenHeight / dist);
+        i++;
+    }
 }
 
 void	interact_door(t_player *p, t_map *m)
@@ -216,8 +165,6 @@ int	raycasting(t_data *data)
 	{
 		clear_image(&data->img, screenWidth, screenHeight);
 		move_player(data, &data->player, &data->conf);
-		// draw_map(data, &data->conf);
-		// draw_player(data, &data->player, &data->conf);
 		draw_floor_ceiling(data);
 		interact_door(&data->player, &data->param);
 		rays_process(data, &data->player, &data->conf);
@@ -228,13 +175,9 @@ int	raycasting(t_data *data)
 	}
 	clear_image(&data->img, screenWidth, screenHeight);
 	move_player(data, &data->player, &data->conf);
-	// cast_ceiling(&data->img, data->texture.ceiling);
-	// cast_floor(&data->img, data->texture.floor);
 	draw_floor_ceiling(data);
 	interact_door(&data->player, &data->param);
 	rays_process(data, &data->player, &data->conf);
-	// print_hud(data);
-	// draw_minimap(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img_ptr, 0, 0);
 	return (0);
 }

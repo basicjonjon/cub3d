@@ -6,13 +6,13 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:58:50 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/20 20:49:50 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:30:07 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	update_player_vectors(t_player *p, t_config *c)
+static void	update_player_vectors(t_player *p, t_config *c)
 {
 	p->dirX = cosf(p->angle);
 	p->dirY = sinf(p->angle);

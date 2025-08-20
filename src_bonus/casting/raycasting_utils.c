@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 23:18:43 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/20 21:05:05 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 22:20:12 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,48 +81,28 @@ float	calc_wall_hit_x(t_ray *ray, int side, float dist)
 	return (wall_hit_x);
 }
 
-// t_ray	init_ray_struct(t_player *player, float ray_angle)
-// {
-// 	t_ray	ray;
-
-// 	ray.posX = player->x;
-// 	ray.posY = player->y;
-// 	ray.mapX = (int)player->x;
-// 	ray.mapY = (int)player->y;
-// 	ray.rayDirX = cos(ray_angle);
-// 	ray.rayDirY = sin(ray_angle);
-// 	ray.deltaDistX = fabs(1.0 / ray.rayDirX);
-// 	ray.deltaDistY = fabs(1.0 / ray.rayDirY);
-// 	ray.stepX = 0;
-// 	ray.stepY = 0;
-// 	ray.sideDistX = 0;
-// 	ray.sideDistY = 0;
-// 	calc_ray_dir(&ray);
-// 	return (ray);
-// }
-
-t_ray	init_ray_struct(t_player *player, float ray_angle)
+t_ray	init_ray_dir(t_player *player, float rayDirX, float rayDirY)
 {
-    t_ray	ray;
+	t_ray	ray;
 
-    ray.posX = player->x;
-    ray.posY = player->y;
-    ray.mapX = (int)player->x;
-    ray.mapY = (int)player->y;
-    ray.rayDirX = cos(ray_angle);
-    ray.rayDirY = sin(ray_angle);
-    if (fabs(ray.rayDirX) < 1e-12)
-        ray.deltaDistX = 1e30;
-    else
-        ray.deltaDistX = fabs(1.0 / ray.rayDirX);
-    if (fabs(ray.rayDirY) < 1e-12)
-        ray.deltaDistY = 1e30;
-    else
-        ray.deltaDistY = fabs(1.0 / ray.rayDirY);
-    ray.stepX = 0;
-    ray.stepY = 0;
-    ray.sideDistX = 0;
-    ray.sideDistY = 0;
-    calc_ray_dir(&ray);
-    return (ray);
+	ray.posX = player->x;
+	ray.posY = player->y;
+	ray.mapX = (int)player->x;
+	ray.mapY = (int)player->y;
+	ray.rayDirX = rayDirX;
+	ray.rayDirY = rayDirY;
+	if (fabs(ray.rayDirX) < 1e-12)
+		ray.deltaDistX = 1e30;
+	else
+		ray.deltaDistX = fabs(1.0 / ray.rayDirX);
+	if (fabs(ray.rayDirY) < 1e-12)
+		ray.deltaDistY = 1e30;
+	else
+		ray.deltaDistY = fabs(1.0 / ray.rayDirY);
+	ray.stepX = 0;
+	ray.stepY = 0;
+	ray.sideDistX = 0;
+	ray.sideDistY = 0;
+	calc_ray_dir(&ray);
+	return (ray);
 }
