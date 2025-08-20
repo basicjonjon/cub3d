@@ -81,8 +81,10 @@ BONUS_CASTING_FILES	:=hooks \
 					raycasting_utils \
 					floor_and_ceiling \
 					movement \
+					movement_utils \
 					map_casting \
 					minimap \
+					minimap_utils \
 					utils \
 
 

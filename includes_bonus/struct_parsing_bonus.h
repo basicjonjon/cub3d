@@ -6,12 +6,18 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:31:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/19 23:11:28 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 19:25:41 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_PARSING_BONUS_H
 # define STRUCT_PARSING_BONUS_H
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}		t_point;
 
 typedef enum e_dir
 {

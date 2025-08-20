@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:03 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/19 23:01:29 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 20:10:24 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ void	hooks(t_data *data);
 // MOVEMENT
 ////////////////////////////////////////////////////////////
 int		move_player(t_data *data, t_player *player, t_config *c);
+
+////////////////////////////////////////////////////////////
+// MOVEMENT UTILS
+////////////////////////////////////////////////////////////
+void	move_forward_backward(t_data *d, t_player *p, float speed);
+void	move_strafe(t_data *d, t_player *p, float speed);
+void	rotate_player(t_player *p, t_config *c);
+void	rotate_with_mouse(t_data *d, t_player *p);
 
 ////////////////////////////////////////////////////////////
 // UTILS
@@ -77,5 +85,14 @@ void	draw_minimap(t_data *data);
 ////////////////////////////////////////////////////////////
 int	blend_color(int c1, int c2, float t);
 int	apply_fog(int color, float dist, float density, int fog_color);
+
+////////////////////////////////////////////////////////////
+// MINIMAP UTILS
+////////////////////////////////////////////////////////////
+void	draw_line(t_img *img, t_point *a, t_point *b, int color);
+void	draw_square(t_img *img, t_point *a, int size, int color);
+int	get_minimap_scale(t_data *data);
+
+
 
 #endif

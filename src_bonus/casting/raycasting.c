@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/19 22:46:20 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 21:04:54 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,49 +75,99 @@ t_texture	*find_texture(t_data *data)
 	return (NULL);
 }
 
+// void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
+// {
+// 	int			x;
+// 	int			y;
+// 	int			screen_x;
+// 	int			start;
+// 	int			end;
+// 	int			color;
+// 	t_texture	*texture;
+// 	int			d;
+
+// 	texture = find_texture(data);
+// 	start = (screenHeight / 2) - (wall_height / 2);
+// 	if (start < 0)
+// 		start = 0;
+// 	end = (screenHeight / 2) + (wall_height / 2);
+// 	if (end >= screenHeight)
+// 		end = screenHeight - 1;
+// 	data->hit.tex_x = (int)(data->hit.wall_hit_x * texture->tex_w);
+// 	if (data->hit.tex_x < 0)
+// 		data->hit.tex_x = 0;
+// 	if (data->hit.tex_x >= texture->tex_w)
+// 		data->hit.tex_x = texture->tex_w - 1;
+// 	x = 0;
+// 	while (x < c->column_width)
+// 	{
+// 		screen_x = i * c->column_width + x;
+// 		if (screen_x >= 0 && screen_x < screenWidth)
+// 		{
+// 			y = start;
+// 			while (y < end)
+// 			{
+// 				d = y * 256 - screenHeight * 128 + wall_height * 128;
+// 				data->hit.tex_y = ((d * texture->tex_h) / (int)wall_height)
+// 					/ 256;
+// 				color = get_texture_pixel(texture, data->hit.tex_x,
+// 						data->hit.tex_y);
+// 				ft_pixel_put(screen_x, y, &data->img, color);
+// 				y++;
+// 			}
+// 		}
+// 		x++;
+// 	}
+// }
+
 void	draw_wall(t_data *data, t_config *c, int i, float wall_height)
 {
-	int			x;
-	int			y;
-	int			screen_x;
-	int			start;
-	int			end;
-	int			color;
-	t_texture	*texture;
-	int			d;
+    int			x;
+    int			y;
+    int			screen_x;
+    int			start;
+    int			end;
+    int			color;
+    t_texture	*texture;
+    int			d;
+    int			ih;
 
-	texture = find_texture(data);
-	start = (screenHeight / 2) - (wall_height / 2);
-	if (start < 0)
-		start = 0;
-	end = (screenHeight / 2) + (wall_height / 2);
-	if (end >= screenHeight)
-		end = screenHeight - 1;
-	data->hit.tex_x = (int)(data->hit.wall_hit_x * texture->tex_w);
-	if (data->hit.tex_x < 0)
-		data->hit.tex_x = 0;
-	if (data->hit.tex_x >= texture->tex_w)
-		data->hit.tex_x = texture->tex_w - 1;
-	x = 0;
-	while (x < c->column_width)
-	{
-		screen_x = i * c->column_width + x;
-		if (screen_x >= 0 && screen_x < screenWidth)
-		{
-			y = start;
-			while (y < end)
-			{
-				d = y * 256 - screenHeight * 128 + wall_height * 128;
-				data->hit.tex_y = ((d * texture->tex_h) / (int)wall_height)
-					/ 256;
-				color = get_texture_pixel(texture, data->hit.tex_x,
-						data->hit.tex_y);
-				ft_pixel_put(screen_x, y, &data->img, color);
-				y++;
-			}
-		}
-		x++;
-	}
+    texture = find_texture(data);
+    if (texture == NULL)
+        return ;
+    start = (screenHeight / 2) - (wall_height / 2);
+    if (start < 0)
+        start = 0;
+    end = (screenHeight / 2) + (wall_height / 2);
+    if (end >= screenHeight)
+        end = screenHeight - 1;
+    data->hit.tex_x = (int)(data->hit.wall_hit_x * texture->tex_w);
+    if (data->hit.tex_x < 0)
+        data->hit.tex_x = 0;
+    if (data->hit.tex_x >= texture->tex_w)
+        data->hit.tex_x = texture->tex_w - 1;
+    x = 0;
+    ih = (int)wall_height;
+    if (ih <= 0)
+        ih = 1;
+    while (x < c->column_width)
+    {
+        screen_x = i * c->column_width + x;
+        if (screen_x >= 0 && screen_x < screenWidth)
+        {
+            y = start;
+            while (y < end)
+            {
+                d = y * 256 - screenHeight * 128 + wall_height * 128;
+                data->hit.tex_y = ((d * texture->tex_h) / ih) / 256;
+                color = get_texture_pixel(texture, data->hit.tex_x,
+                        data->hit.tex_y);
+                ft_pixel_put(screen_x, y, &data->img, color);
+                y++;
+            }
+        }
+        x++;
+    }
 }
 
 void	rays_process(t_data *data, t_player *player, t_config *c)
