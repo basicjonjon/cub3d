@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/20 17:23:53 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/20 18:45:10 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 # define playerSize 10
 
-# define screenWidth (640 * 2)
-# define screenHeight (480 * 2)
+# define screenWidth 1280
+# define screenHeight 960
 // # define screenWidth 1920
 // # define screenHeight 1080
 // # define screenWidth 480

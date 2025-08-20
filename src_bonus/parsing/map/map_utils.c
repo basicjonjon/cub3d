@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 15:46:58 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/20 18:45:20 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	dup_tab(char *res, int y)
 		res[y++] = ' ';
 		z++;
 	}
-	return (y);
+	return (4);
 }
 
 char	*dup_map_line(char *line, int x)

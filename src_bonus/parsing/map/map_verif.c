@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:04:31 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:23:34 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/20 17:35:57 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	verif_map(t_data *data)
 					|| verif_floor_diag(data->param.map, x, y))
 				{
 					printf("%sERROR: map is invalide%s\n", BRED, NC);
+					ft_print_tab_fd(data->param.map, 2);
 					return (1);
 				}
 			}
