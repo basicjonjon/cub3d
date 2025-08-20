@@ -44,8 +44,8 @@
 
 # define CENTERCAM "assets/xpm/hud/border/center_cam.xpm"
 
-# define DOOR "assets/xpm/wall/wall2.xpm"
-# define TCELING "assets/xpm/wall/wall2.xpm"
+# define DOOR "assets/xpm/door/door2.xpm"
+# define TCELING "assets/xpm/floor_ceiling/ceiling.xpm"
 # define TFLOOR "assets/xpm/floor_ceiling/floor2.xpm"
 
 #endif

@@ -12,27 +12,6 @@
 
 #include "cub3d_bonus.h"
 
-
-void	free_asset(t_data *data)
-{
-	if (data->asset.north.path)
-		free(data->asset.north.path);
-	if (data->asset.south.path)
-		free(data->asset.south.path);
-	if (data->asset.east.path)
-		free(data->asset.east.path);
-	if (data->asset.west.path)
-		free(data->asset.west.path);
-	if (data->asset.north.img.img_ptr)
-		mlx_destroy_image(data->mlx, data->asset.north.img.img_ptr);
-	if (data->asset.south.img.img_ptr)
-		mlx_destroy_image(data->mlx, data->asset.south.img.img_ptr);
-	if (data->asset.west.img.img_ptr)
-		mlx_destroy_image(data->mlx, data->asset.west.img.img_ptr);
-	if (data->asset.east.img.img_ptr)
-		mlx_destroy_image(data->mlx, data->asset.east.img.img_ptr);
-}
-
 void	free_map(t_data *data)
 {
 	int	i;

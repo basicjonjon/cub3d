@@ -71,6 +71,7 @@ BONUS_PARSING_FILES	:= main \
 					texture/texture_init \
 					data/data_init \
 					free/free \
+					free/free_asset \
 					player/player_init \
 					hud/print_hud \
 					hud/init_hud \
