@@ -6,7 +6,7 @@
 /*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/19 22:46:20 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/19 23:21:24 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,8 @@ float	calc_rays(t_data *data, float ray_angle, int *hit_x, int *hit_y)
 	data->hit.wall_hit_x = calc_wall_hit_x(&ray, side, dist_uncorrected);
 	if (hit_x && hit_y)
 	{
-		*hit_x = (int)((ray.posX + ray.rayDirX * dist_uncorrected)
-				* data->conf.block);
-		*hit_y = (int)((ray.posY + ray.rayDirY * dist_uncorrected)
-				* data->conf.block);
+		*hit_x = (int)((ray.posX + ray.rayDirX * dist_uncorrected));
+		*hit_y = (int)((ray.posY + ray.rayDirY * dist_uncorrected));
 	}
 	dist = dist_uncorrected * cos(ray_angle - data->player.angle);
 	// dist = dist_uncorrected;
