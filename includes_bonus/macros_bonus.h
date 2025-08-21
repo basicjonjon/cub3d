@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 17:15:46 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/21 13:12:03 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:09:39 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 
 # define CENTERCAM "assets/xpm/hud/border/center_cam.xpm"
 
-# define DOOR "assets/xpm/door/door3.xpm"
+# define DOOR "assets/xpm/door/door4.xpm"
 # define TCELING "assets/xpm/floor_ceiling/ceiling.xpm"
 # define TFLOOR "assets/xpm/floor_ceiling/floor2.xpm"
 
