@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 15:23:45 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:36:39 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	get_asset(char *maps_file, t_data *data)
 
 	fd = open(maps_file, O_RDONLY);
 	if (fd == -1)
-		return (ft_fprintf(2, "%sERROR: file inexistant%s\n", RED, NC));
+		return (ft_fprintf(2, "%sERROR: file does not exist%s\n", BRED, NC));
 	nb_asset = 6;
 	ft_memset(&data->asset, 0, sizeof(t_asset));
 	line = get_next_line(fd);

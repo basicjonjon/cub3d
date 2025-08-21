@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 22:44:42 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 12:46:21 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	get_map(t_data *data, char *maps_file)
 	data->param.map = malloc_map(maps_file);
 	data->param.map_x = get_map_size_x(maps_file);
 	data->param.map_y = get_map_size_y(maps_file);
-	while (!is_map(line))
+	while (line && !is_map(line))
 	{
 		free(line);
 		line = get_next_line(fd);

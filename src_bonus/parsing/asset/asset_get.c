@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 15:24:21 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:52:20 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	get_asset_path(t_asset *asset, char *line)
 
 	res = ft_split(line, ' ');
 	if (split_size(res) != 2)
-		return (ft_fprintf(2, BRED "ERROR: texture format\n" NC), 1);
+		return (free_tab(res), ft_fprintf(2, BRED "ERROR: texture format\n" NC), 1);
 	save_asset(asset, res[0], res[1]);
 	save_color(asset, res[0], res[1]);
 	free_tab(res);

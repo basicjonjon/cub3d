@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 16:45:59 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 15:51:21 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:45:22 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*skip_line(int fd)
 	char	*line;
 
 	line = get_next_line(fd);
-	while (!is_map(line))
+	while (line && !is_map(line))
 	{
 		free(line);
 		line = get_next_line(fd);

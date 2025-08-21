@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:04:31 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 17:35:57 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 12:44:16 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_map(char *line)
 {
-	if ((line[0] == ' ' || line[0] == '0' || line[0] == '1' || line[0] == 'P'
+	if (line && (line[0] == ' ' || line[0] == '0' || line[0] == '1' || line[0] == 'P'
 			|| line[0] == 1 || line[0] == 9))
 	{
 		return (1);
@@ -81,7 +81,6 @@ int	verif_map(t_data *data)
 					|| verif_floor_diag(data->param.map, x, y))
 				{
 					printf("%sERROR: map is invalide%s\n", BRED, NC);
-					ft_print_tab_fd(data->param.map, 2);
 					return (1);
 				}
 			}

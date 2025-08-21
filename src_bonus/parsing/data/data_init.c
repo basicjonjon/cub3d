@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/21 00:18:55 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 12:35:05 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ int	init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (ft_fprintf(2, "Error: mlx malloc"), free_all(data), 1);
-	data->win = mlx_new_window(data->mlx, SCREENWIDTH, SCREENHEIGHT, "Cub3d");
-	if (!data->win)
-		return (ft_fprintf(2, "Error: window malloc"), free_all(data), 1);
 	data->img.img_ptr = mlx_new_image(data->mlx, SCREENWIDTH, SCREENHEIGHT);
 	if (!data->img.img_ptr)
 		return (ft_fprintf(2, "Error: img malloc"), free_all(data), 1);
@@ -71,6 +68,9 @@ int	init_data(t_data *data, char *map_file)
 	init_player(data);
 	ft_memset(&data->hit, 0, sizeof(t_hit));
 	data->hit.door_flg = false;
+	data->win = mlx_new_window(data->mlx, SCREENWIDTH, SCREENHEIGHT, "Cub3d");
+	if (!data->win)
+		return (ft_fprintf(2, "Error: window malloc"), free_all(data), 1);
 	return (0);
 }
 
