@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/29 13:04:47 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/08/21 13:30:44 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 int	get_color(char *value)
 {
 	char	**cut_line;
-	int		i;
 	int		r;
 	int		g;
 	int		b;
 
 	cut_line = ft_split(value, ',');
-	i = 0;
 	if (split_size(cut_line) != 3)
 		return (ft_fprintf(2, "%sERROR: wrong color format%s\n", BRED, NC),
 			free_tab(cut_line), -1);
@@ -78,7 +76,8 @@ int	get_asset_path(t_asset *asset, char *line)
 
 	res = ft_split(line, ' ');
 	if (split_size(res) != 2)
-		return (ft_fprintf(2, BRED "ERROR: texture format\n" NC), 1);
+		return (free_tab(res), ft_fprintf(2, BRED "ERROR: texture format\n" NC),
+			1);
 	save_asset(asset, res[0], res[1]);
 	save_color(asset, res[0], res[1]);
 	free_tab(res);

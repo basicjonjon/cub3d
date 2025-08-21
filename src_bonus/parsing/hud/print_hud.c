@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hud.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:14:23 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/21 00:18:55 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/08/21 13:40:29 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	calc_batterie(t_data *data)
 		else
 			data->hud.bat_pos++;
 	}
-	if (get_time() - data->hud.time_start > 1000)
+	if (get_time() - data->hud.time_start > 10000)
 	{
 		data->hud.time_start = get_time();
 		if (data->hud.bat_pos != 0)
