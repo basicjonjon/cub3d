@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 17:31:27 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/29 13:28:04 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:31:08 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	get_texture_pixel(t_texture *texture, int x, int y)
 
 	if (x < 0 || y < 0 || x >= texture->tex_w || y >= texture->tex_w)
 		return (0);
-	pixel = texture->img.addr + (y * texture->img.line_lenght) \
+	pixel = texture->img.addr + (y * texture->img.line_lenght)
 		+ (x * texture->img.bit_per_pixels);
 	color = *(unsigned int *)pixel;
 	return (color);

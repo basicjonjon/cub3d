@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:38:01 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/21 11:58:11 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:35:32 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 int	texture_init(t_data *data, t_asset *a)
 {
 	if (create_img(data, &a->north))
-	{
-		printf("ca passe\n");
 		return (ft_fprintf(2, "%sERROR: north creation failed\n%s", BRED, NC),
 			1);
-	}
 	if (create_img(data, &a->south))
 		return (ft_fprintf(2, "%sERROR: south creation failed\n%s", BRED, NC),
 			1);
