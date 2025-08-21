@@ -76,16 +76,16 @@ BONUS_PARSING_FILES	:= main \
 					hud/init_hud \
 					time/time \
 
-BONUS_CASTING_FILES	:=hooks \
-					raycasting \
-					raycasting_utils \
-					draw_wall \
-					floor_ceiling \
-					movement \
-					movement_utils \
-					minimap \
-					minimap_utils \
-					utils \
+BONUS_CASTING_FILES	:= hooks/hooks \
+					raycasting/raycasting \
+					raycasting/raycasting_utils \
+					raycasting/draw_wall \
+					raycasting/floor_ceiling \
+					movement/movement \
+					movement/movement_utils \
+					minimap/minimap \
+					minimap/minimap_utils \
+					raycasting/utils \
 
 
 # Source and object files

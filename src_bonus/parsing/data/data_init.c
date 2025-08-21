@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:49:28 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/21 12:35:05 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/08/21 14:20:37 by mmarps           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,3 @@ int	init_data(t_data *data, char *map_file)
 		return (ft_fprintf(2, "Error: window malloc"), free_all(data), 1);
 	return (0);
 }
-
-// int	init_data(t_data *data, char *map_file)
-// {
-// 	t_data	*data;
-
-// 	data = malloc(sizeof(t_data));
-// 	if (!data)
-// 		return (NULL);
-// 	ft_memset(data, 0, sizeof(t_data));
-// 	if (init_mlx(data) == 1)
-// 		return (NULL);
-// 	if (get_asset(map_file, data))
-// 		return (free_all(data), NULL);
-// 	if (texture_init(data, &data->asset))
-// 		return (free_all(data), NULL);
-// 	if (get_map(data, map_file))
-// 		return (free_all(data), NULL);
-// 	if (verif_map(data) || verif_map_player(data))
-// 		return (free_all(data), NULL);
-// 	init_config(&data->conf, &data->param);
-// 	init_player(data);
-// 	ft_memset(&data->hit, 0, sizeof(t_hit));
-// 	return (data);
-// }
