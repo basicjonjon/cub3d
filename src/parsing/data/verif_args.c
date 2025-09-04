@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:04:39 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:32:46 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/09/04 12:49:17 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int	verif_args(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		ft_fprintf(2, "%sERROR: %s: invalide file%s\n", BRED, argv[1], NC);
+	close(fd);
 	return (0);
 }

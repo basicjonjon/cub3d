@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 16:17:10 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:36:17 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/09/04 12:47:38 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	get_path(char *line, t_data *data, int *nb_asset)
 	if (is_asset(line))
 	{
 		if (get_asset_path(&data->asset, line))
-			return (ft_fprintf(2, "%sERROR: invalide assets%s\n", BRED, NC),
-				1);
+			return (ft_fprintf(2, "%sERROR: invalide assets%s\n", BRED, NC), 1);
 		*nb_asset -= 1;
 	}
 	return (0);
@@ -39,13 +38,14 @@ int	get_asset(char *maps_file, t_data *data)
 	while (line != NULL)
 	{
 		if (get_path(line, data, &nb_asset))
-			return (free(line), 1);
+			return (free(line), close(fd), 1);
 		if (is_map(line) && nb_asset != 0)
-			return (free(line), ft_fprintf(2, "%sERROR: invalide assets\n%s",
-					BRED, NC), 1);
+			return (free(line), close(fd), ft_fprintf(2,
+					"%sERROR: invalide assets\n%s", BRED, NC), 1);
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 	if (verif_asset(&data->asset))
 		return (ft_fprintf(2, "%sERROR: invalide assets%s\n", BRED, NC), 1);
 	return (0);
