@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asset_get.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/21 14:34:31 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/09/08 14:18:59 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ int	get_color(char *value)
 		|| cut_line[2][0] == '\n')
 		return (ft_fprintf(2, "%sERROR: wrong color format%s\n", BRED, NC),
 			free_tab(cut_line), -1);
-	r = ft_atol(cut_line[0]) % 255;
-	g = ft_atol(cut_line[1]) % 255;
-	b = ft_atol(cut_line[2]) % 255;
+	r = ft_atol(cut_line[0]);
+	g = ft_atol(cut_line[1]);
+	b = ft_atol(cut_line[2]);
 	free_tab(cut_line);
+	if ((r < 0 || r > 255) || (g < 0 || g > 255) || (b < 0 || b > 255))
+		return (ft_fprintf(2, "%sERROR: wrong color format%s\n", BRED, NC), -1);
 	return ((r << 16) | (g << 8) | (b));
 }
 
@@ -76,8 +78,8 @@ int	get_asset_path(t_asset *asset, char *line)
 
 	res = ft_split(line, ' ');
 	if (split_size(res) != 2)
-		return (free_tab(res),
-			ft_fprintf(2, BRED "ERROR: texture format\n" NC), 1);
+		return (free_tab(res), ft_fprintf(2, BRED "ERROR: texture format\n" NC),
+			1);
 	save_asset(asset, res[0], res[1]);
 	save_color(asset, res[0], res[1]);
 	free_tab(res);

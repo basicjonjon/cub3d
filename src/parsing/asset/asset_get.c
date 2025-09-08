@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 13:47:47 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/21 13:30:44 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/09/08 14:19:34 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ int	get_color(char *value)
 		|| cut_line[2][0] == '\n')
 		return (ft_fprintf(2, "%sERROR: wrong color format%s\n", BRED, NC),
 			free_tab(cut_line), -1);
-	r = ft_atol(cut_line[0]) % 255;
-	g = ft_atol(cut_line[1]) % 255;
-	b = ft_atol(cut_line[2]) % 255;
+	r = ft_atol(cut_line[0]);
+	g = ft_atol(cut_line[1]);
+	b = ft_atol(cut_line[2]);
 	free_tab(cut_line);
+	if ((r < 0 || r > 255) || (g < 0 || g > 255) || (b < 0 || b > 255))
+		return (ft_fprintf(2, "%sERROR: wrong color format%s\n", BRED, NC), -1);
 	return ((r << 16) | (g << 8) | (b));
 }
 
