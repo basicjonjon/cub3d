@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/20 22:44:18 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/09/08 15:23:57 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	get_player_direction(t_data *data)
 	if (player == 'N')
 		data->player.angle = -(M_PI / 2);
 	else if (player == 'W')
-		data->player.angle = 0;
+		data->player.angle = M_PI;
 	else if (player == 'S')
 		data->player.angle = M_PI / 2;
 	else
-		data->player.angle = M_PI;
+		data->player.angle = 0;
 	data->player.dir_x = cos(data->player.angle);
 	data->player.dir_y = sin(data->player.angle);
 	data->player.plane_x = -data->player.dir_y * data->conf.fov;

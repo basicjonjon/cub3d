@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 13:12:58 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/29 13:40:00 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/09/08 15:22:54 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	get_player_direction(t_data *data)
 	if (player == 'N')
 		data->player.angle = -(M_PI / 2);
 	else if (player == 'W')
-		data->player.angle = 0;
+		data->player.angle = M_PI;
 	else if (player == 'S')
 		data->player.angle = M_PI / 2;
 	else
-		data->player.angle = M_PI;
+		data->player.angle = 0;
 	data->player.dirx = cos(data->player.angle);
 	data->player.diry = sin(data->player.angle);
 	data->player.plane_x = -data->player.diry * data->conf.fov;
