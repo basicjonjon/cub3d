@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 19:21:12 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/08/21 00:34:02 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/09/09 17:47:07 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_dir	find_dir(t_ray *ray, int side)
 	if (side == 0)
 	{
 		if (ray->raydir_x > 0)
-			return (EAST);
-		else
 			return (WEST);
+		else
+			return (EAST);
 	}
 	else
 	{

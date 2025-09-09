@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:09:05 by mmarpaul          #+#    #+#             */
-/*   Updated: 2025/07/29 13:30:14 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/09/09 17:46:16 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ t_dir	find_dir(t_ray *ray, int side)
 	if (side == 0)
 	{
 		if (ray->raydirx > 0)
-			return (EAST);
-		else
 			return (WEST);
+		else
+			return (EAST);
 	}
 	else
 	{
