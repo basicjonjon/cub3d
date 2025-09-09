@@ -6,11 +6,11 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/21 12:46:21 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:56:58 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "cub3d.h"
 
 char	**init_map_null(char **map, int y)
 {
@@ -46,20 +46,19 @@ int	get_map(t_data *data, char *maps_file)
 
 	i = 0;
 	fd = open(maps_file, O_RDONLY);
-	line = get_next_line(fd);
 	data->param.map = malloc_map(maps_file);
 	data->param.map_x = get_map_size_x(maps_file);
 	data->param.map_y = get_map_size_y(maps_file);
-	while (line && !is_map(line))
-	{
-		free(line);
-		line = get_next_line(fd);
-	}
+	line = skip_line(fd);
 	while (line != NULL && i < data->param.map_y)
 	{
 		if (is_map(line) || line[0] == '\n')
-			data->param.map[i++] = dup_map_line(line,
-					get_map_size_x(maps_file));
+		{
+			data->param.map[i] = dup_map_line(line, get_map_size_x(maps_file));
+			if (!data->param.map[i])
+				return (free(line), close(fd), 1);
+			i++;
+		}
 		free(line);
 		line = get_next_line(fd);
 	}

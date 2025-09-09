@@ -1,0 +1,26 @@
+==1093416== Memcheck, a memory error detector
+==1093416== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1093416== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1093416== Command: ./cub3D Cub3D-Destroyer/maps/maps_buged/maps_start_with_forbidden__copy.cub
+==1093416== 
+[1;31mERROR: invalide map char
+[0m==1093416== 
+==1093416== FILE DESCRIPTORS: 6 open (3 std) at exit.
+==1093416== Open file descriptor 103: /usr/share/code/v8_context_snapshot.bin
+==1093416==    <inherited from parent>
+==1093416== 
+==1093416== Open AF_UNIX socket 41: <unknown>
+==1093416==    <inherited from parent>
+==1093416== 
+==1093416== Open file descriptor 40: /home/jle-doua/.config/Code/logs/20250909T151911/ptyhost.log
+==1093416==    <inherited from parent>
+==1093416== 
+==1093416== 
+==1093416== HEAP SUMMARY:
+==1093416==     in use at exit: 0 bytes in 0 blocks
+==1093416==   total heap usage: 7,227 allocs, 7,227 frees, 1,278,755 bytes allocated
+==1093416== 
+==1093416== All heap blocks were freed -- no leaks are possible
+==1093416== 
+==1093416== For lists of detected and suppressed errors, rerun with: -s
+==1093416== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

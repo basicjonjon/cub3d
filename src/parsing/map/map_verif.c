@@ -5,115 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 14:04:31 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/28 17:35:43 by jle-doua         ###   ########.fr       */
+/*   Created: 2025/09/09 15:30:46 by jle-doua          #+#    #+#             */
+/*   Updated: 2025/09/09 15:46:34 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	is_map_char(char map_char)
+{
+	if (map_char == '0' || map_char == '1' || map_char == 'P' || map_char == 'N'
+		|| map_char == 'S' || map_char == 'E' || map_char == 'W'
+		|| map_char == ' ')
+	{
+		return (1);
+	}
+	return (0);
+}
 
 int	is_map(char *line)
 {
 	if ((line[0] == ' ' || line[0] == '0' || line[0] == '1' || line[0] == 1
 			|| line[0] == 9))
 	{
-		return (1);
-	}
-	return (0);
-}
-
-int	verif_floor(char **map, int x, int y)
-{
-	if ((x != 0 && map[y][x - 1] == ' ') || x == 0)
-	{
-		return (1);
-	}
-	if (map[y][x + 1] == '\0' || map[y][x + 1] == ' ')
-	{
-		return (1);
-	}
-	if ((y != 0 && map[y - 1][x] == ' ') || y == 0)
-	{
-		return (1);
-	}
-	if ((map[y + 1] != NULL && map[y + 1][x] == ' ') || map[y + 1] == NULL)
-	{
-		return (1);
-	}
-	return (0);
-}
-
-int	verif_floor_diag(char **map, int x, int y)
-{
-	if (map[y - 1][x - 1] == ' ')
-	{
-		return (1);
-	}
-	if (map[y + 1][x - 1] == ' ')
-	{
-		return (1);
-	}
-	if (map[y - 1][x + 1] == ' ')
-	{
-		return (1);
-	}
-	if (map[y + 1][x + 1] == ' ')
-	{
-		return (1);
-	}
-	return (0);
-}
-
-int	verif_map(t_data *data)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (data->param.map[y])
-	{
-		x = 0;
-		while (data->param.map[y][x])
-		{
-			if (data->param.map[y][x] == '0')
-			{
-				if (verif_floor(data->param.map, x, y)
-					|| verif_floor_diag(data->param.map, x, y))
-				{
-					printf("%sERROR: map is invalide%s\n", BRED, NC);
-					return (1);
-				}
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}
-
-int	verif_map_player(t_data *data)
-{
-	int	x;
-	int	y;
-	int	player;
-
-	player = 0;
-	y = 0;
-	while (data->param.map[y])
-	{
-		x = 0;
-		while (data->param.map[y][x])
-		{
-			if (data->param.map[y][x] == 'N' || data->param.map[y][x] == 'S'
-				|| data->param.map[y][x] == 'W' || data->param.map[y][x] == 'E')
-				player++;
-			x++;
-		}
-		y++;
-	}
-	if (player != 1)
-	{
-		printf("%sERROR: player is invalide%s\n", BRED, NC);
 		return (1);
 	}
 	return (0);

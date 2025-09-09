@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 14:10:45 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:46:07 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ char	*dup_normal_line(char *line, char *res, int x)
 				z++;
 			}
 		}
-		else if (line[i] == '0' || line[i] == '1' || line[i] == 'N'
-			|| line[i] == 'S' || line[i] == 'E' || line[i] == 'W'
-			|| line[i] == ' ')
+		else if (is_map_char(line[i]))
 			res[y++] = line[i];
+		else if(!is_map_char(line[i]) && line[i] != '\n')
+			return (ft_fprintf(2, "%sERROR: invalide map char\n%s", BRED, NC),
+				NULL);
 		i++;
 	}
 	return (complet_line(y, x, res));
@@ -72,6 +73,7 @@ char	*dup_map_line(char *line, int x)
 		return (NULL);
 	if (line[0] == '\n' || line[0] == '\0')
 		return (dup_blank_line(res, x));
-	dup_normal_line(line, res, x);
+	if (!dup_normal_line(line, res, x))
+		return (free(res), NULL);
 	return (res);
 }

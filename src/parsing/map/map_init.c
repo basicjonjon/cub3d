@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:36:56 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/29 13:33:57 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:23:06 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	get_map(t_data *data, char *maps_file)
 		if (is_map(line) || line[0] == '\n')
 		{
 			data->param.map[i] = dup_map_line(line, get_map_size_x(maps_file));
+			if (!data->param.map[i])
+				return (free(line), close(fd), 1);
 			i++;
 		}
 		free(line);

@@ -42,11 +42,12 @@ PARSING_FILES	:=	main \
 					map/map_utils \
 					map/map_verif \
 					map/map_size \
+					map/map_dup \
 					texture/create_img \
 					texture/texture_init \
 					data/data_init \
 					free/free \
-					player/player_init
+					player/player_init \
 
 CASTING_FILES	:=	hooks \
 					raycasting \
@@ -66,6 +67,7 @@ BONUS_PARSING_FILES	:= main \
 					map/map_utils \
 					map/map_verif \
 					map/map_size \
+					map/map_dup \
 					texture/create_img \
 					texture/texture_init \
 					data/data_init \

@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/07/22 13:35:42 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:37:20 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,17 @@ int		split_size(char **res);
 // Map_verif
 ////////////////////////////////////////////////////////////
 
+int		is_map_char(char c);
 int		is_map(char *line);
+
+////////////////////////////////////////////////////////////
+// Map_dup
+////////////////////////////////////////////////////////////
+
+int		verif_floor(char **map, int x, int y);
+int		verif_floor_diag(char **map, int x, int y);
+int		verif_map(t_data *data);
+int		verif_map_player(t_data *data);
 
 ////////////////////////////////////////////////////////////
 // Print
@@ -72,7 +82,6 @@ int		get_map(t_data *data, char *maps_file);
 
 char	*dup_map_line(char *line, int x);
 int		verif_map(t_data *data);
-int		verif_map_player(t_data *data);
 
 ////////////////////////////////////////////////////////////
 // Map_size

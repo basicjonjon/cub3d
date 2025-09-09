@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions_parsing_bonus.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmarps <mmarps@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:26:05 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/08/21 00:36:32 by mmarps           ###   ########.fr       */
+/*   Updated: 2025/09/09 15:56:24 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,20 @@ long	get_time(void);
 
 float	**creat_door_tab(int x, int y);
 void	fill_door_tab(float **door_tab, int x, int y);
+
+////////////////////////////////////////////////////////////
+// Map_size
+////////////////////////////////////////////////////////////
+
+char	*skip_line(int fd);
+int		get_map_size_x(char *maps_file);
+int		get_map_size_y(char *maps_file);
+
+////////////////////////////////////////////////////////////
+// Map_verif
+////////////////////////////////////////////////////////////
+
+int		is_map_char(char map_char);
+int		is_map(char *line);
 
 #endif

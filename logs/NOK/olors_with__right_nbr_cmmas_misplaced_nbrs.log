@@ -1,0 +1,28 @@
+==1093587== Memcheck, a memory error detector
+==1093587== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1093587== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1093587== Command: ./cub3D Cub3D-Destroyer/maps/maps_buged/olors_with__right_nbr_cmmas_misplaced_nbrs.cub
+==1093587== 
+[1;31mERROR: wrong color format[0m
+[1;31mERROR: wrong color format[0m
+[1;31mERROR: invalide assets
+[0m==1093587== 
+==1093587== FILE DESCRIPTORS: 6 open (3 std) at exit.
+==1093587== Open file descriptor 103: /usr/share/code/v8_context_snapshot.bin
+==1093587==    <inherited from parent>
+==1093587== 
+==1093587== Open AF_UNIX socket 41: <unknown>
+==1093587==    <inherited from parent>
+==1093587== 
+==1093587== Open file descriptor 40: /home/jle-doua/.config/Code/logs/20250909T151911/ptyhost.log
+==1093587==    <inherited from parent>
+==1093587== 
+==1093587== 
+==1093587== HEAP SUMMARY:
+==1093587==     in use at exit: 0 bytes in 0 blocks
+==1093587==   total heap usage: 406 allocs, 406 frees, 67,578 bytes allocated
+==1093587== 
+==1093587== All heap blocks were freed -- no leaks are possible
+==1093587== 
+==1093587== For lists of detected and suppressed errors, rerun with: -s
+==1093587== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
