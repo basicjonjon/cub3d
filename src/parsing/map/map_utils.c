@@ -6,7 +6,7 @@
 /*   By: jle-doua <jle-doua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 15:37:25 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/09/09 15:46:07 by jle-doua         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:41:57 by jle-doua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*dup_normal_line(char *line, char *res, int x)
 		}
 		else if (is_map_char(line[i]))
 			res[y++] = line[i];
-		else if(!is_map_char(line[i]) && line[i] != '\n')
+		else if (!is_map_char(line[i]) && line[i] != '\n')
 			return (ft_fprintf(2, "%sERROR: invalide map char\n%s", BRED, NC),
 				NULL);
 		i++;
