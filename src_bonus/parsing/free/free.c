@@ -6,7 +6,7 @@
 /*   By: mmarpaul <mmarpaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 13:33:22 by jle-doua          #+#    #+#             */
-/*   Updated: 2025/09/09 17:44:07 by mmarpaul         ###   ########.fr       */
+/*   Updated: 2025/09/15 16:01:49 by mmarpaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	free_all(t_data *data)
 {
 	if (data)
 	{
-		mlx_mouse_show(data->mlx, data->win);
+		if (data->mlx && data->win)
+			mlx_mouse_show(data->mlx, data->win);
 		free_asset(data);
 		if (data->param.map)
 			free_map(data);
